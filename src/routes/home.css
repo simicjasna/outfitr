@@ -1,0 +1,103 @@
+.home-page {
+	text-align: center;
+}
+
+.hero-text h1 {
+	margin: 0;
+	font-size: 28px;
+}
+
+.hero-text p {
+	color: var(--muted);
+	margin-top: 8px;
+}
+
+.start-card {
+	background: var(--card);
+	border: 2px solid var(--border);
+	border-radius: 14px;
+	width: 620px;
+	margin: 60px auto 48px;
+	padding: 28px;
+}
+
+.small {
+	margin: 0;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.start-card h2 {
+	font-size: 16px;
+	margin: 12px 0 22px;
+}
+
+.primary-button {
+	display: inline-block;
+	background: var(--primary);
+	color: white;
+	text-decoration: none;
+	padding: 12px 34px;
+	border-radius: 8px;
+	font-weight: bold;
+}
+
+.quick-actions {
+	display: flex;
+	justify-content: center;
+	gap: 160px;
+	margin-bottom: 48px;
+}
+
+.action-card {
+	background: var(--card);
+	border: 2px solid var(--border);
+	border-radius: 12px;
+	width: 220px;
+	height: 110px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	color: var(--text);
+	font-weight: bold;
+}
+
+.stats {
+	display: flex;
+	justify-content: center;
+	gap: 48px;
+	margin-bottom: 90px;
+}
+
+.stats div {
+	background: var(--card);
+	border: 2px solid var(--border);
+	border-radius: 8px;
+	padding: 12px 38px;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.last-outfits h2 {
+	font-size: 18px;
+	margin-bottom: 40px;
+}
+
+.outfit-grid {
+	display: flex;
+	justify-content: center;
+	gap: 48px;
+}
+
+.placeholder-card {
+	width: 170px;
+	height: 200px;
+	border: 2px solid var(--border);
+	border-radius: 12px;
+	background: #f7f7f7;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--muted);
+}
