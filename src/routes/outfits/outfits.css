@@ -1,0 +1,55 @@
+.outfits-page {
+	width: 100%;
+	text-align: center;
+}
+
+.outfits-page h1 {
+	font-size: 28px;
+	margin: 0 0 72px;
+}
+
+.outfits-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 44px 64px;
+	max-width: 1050px;
+	margin: 0 auto;
+}
+
+.outfit-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.outfit-image {
+	width: 190px;
+	height: 220px;
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: 12px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	color: #9aaec2;
+}
+
+.remove-button {
+	margin-top: 14px;
+	width: 130px;
+	height: 36px;
+
+	background: var(--primary);
+	color: #ffffff;
+	border: none;
+	border-radius: 8px;
+
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.remove-button:hover {
+	background: #5a4545;
+}
