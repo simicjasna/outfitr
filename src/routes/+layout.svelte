@@ -28,7 +28,7 @@
         <span>Generator</span>
       </a>
 
-      <a href="/favorites">
+      <a href="/outfits">
         <img src="/images/heart.png" alt="Favoriten" />
         <span>Outfits</span>
       </a>
