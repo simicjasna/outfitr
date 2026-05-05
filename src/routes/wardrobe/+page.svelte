@@ -31,7 +31,7 @@
 			</select>
 		</div>
 
-		<a class="primary-button add-button" href="/add-item">+ Kleider hinzufügen</a>
+		<a class="primary-button add-button" href="/upload">+ Kleider hinzufügen</a>
 	</div>
 
 	<div class="clothing-grid">
