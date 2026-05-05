@@ -1,0 +1,111 @@
+.upload-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.upload-page h1 {
+	font-size: 28px;
+	margin: 0 0 48px;
+}
+
+/* FORM */
+.item-form {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+/* CARD */
+.form-card {
+	width: 520px;
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	padding: 32px 42px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+/* UPLOAD BOX */
+.upload-box {
+	height: 180px;
+	background: #ffffff;
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	margin-bottom: 8px;
+	transition: all 0.2s ease;
+}
+
+.upload-box:hover {
+	background: #f4f1ed;
+	border-color: #d6c3b3;
+}
+
+/* FILE INPUT verstecken */
+.upload-box input[type='file'] {
+	display: none;
+}
+
+/* LABEL (Container für Icon + Text) */
+.upload-label {
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	text-align: center;
+}
+
+/* ICON */
+.upload-label img {
+	width: 70px;
+	height: 70px;
+	object-fit: contain;
+	margin-bottom: 6px;
+	opacity: 0.9;
+}
+
+/* TEXT */
+.upload-label p {
+	margin: 0;
+	font-weight: 600;
+	font-size: 14px;
+}
+
+.upload-hint {
+	font-size: 12px;
+	color: var(--muted);
+}
+
+/* FORM FIELDS */
+label {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+input,
+select {
+	height: 34px;
+	border: 1px solid var(--border);
+	border-radius: 18px;
+	background: #ffffff;
+	padding: 0 16px;
+	font-size: 14px;
+}
+
+/* BUTTON */
+.item-form button {
+	margin-top: 24px;
+	width: 150px;
+	height: 42px;
+}

@@ -16,7 +16,7 @@
 
 	<div class="quick-actions">
 		<a href="/wardrobe" class="action-card">Wardrobe öffnen</a>
-		<a href="/add-item" class="action-card">Kleidungsstück hinzufügen</a>
+		<a href="/upload" class="action-card">Kleidungsstück hinzufügen</a>
 	</div>
 
 	<div class="stats">
