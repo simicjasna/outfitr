@@ -1,19 +1,48 @@
+import db from "$lib/server/db.js";
+import { redirect } from "@sveltejs/kit";
+
 export const actions = {
-	default: async ({ request }) => {
-		const data = await request.formData();
+  generate: async ({ request }) => {
+    const data = await request.formData();
 
-		const occasion = data.get('occasion');
-		const color = data.get('color');
-		const style = data.get('style');
+    const filters = {
+      color: data.get("color"),
+      style: data.get("style"),
+    };
 
-		console.log('Filter:', { occasion, color, style });
+    const result = await db.generateOutfit(filters);
 
-		return {
-			outfit: {
-				top: 'T-Shirt',
-				bottom: 'Jeans',
-				shoes: 'Sneakers'
-			}
-		};
-	}
+    if (result.error) {
+      return {
+        error: true,
+        message: result.message,
+        filters,
+      };
+    }
+
+    return {
+      outfit: result.outfit,
+      filters,
+    };
+  },
+
+  save: async ({ request }) => {
+    const data = await request.formData();
+
+    const outfit = JSON.parse(data.get("outfit"));
+    const name = data.get("name");
+
+    outfit.name = name;
+
+    const result = await db.createOutfit(outfit);
+
+    if (result.alreadyExists) {
+      redirect(
+        303,
+        `/outfits?duplicate=${encodeURIComponent(outfit.name)}&existing=${encodeURIComponent(result.existingName)}`,
+      );
+    }
+
+    redirect(303, `/outfits?saved=${encodeURIComponent(outfit.name)}`);
+  },
 };
