@@ -1,101 +1,199 @@
 .wardrobe-page {
-	width: 100%;
+  width: 100%;
 }
 
 .wardrobe-header {
-	margin-bottom: 48px;
+  margin-bottom: 48px;
 }
 
 .wardrobe-header h1 {
-	font-size: 28px;
-	margin: 0;
+  font-size: 28px;
+  margin: 0;
 }
 
 .wardrobe-actions {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 56px;
 }
 
 .filter-bar {
-	display: flex;
-	gap: 32px;
-	margin-bottom: 0;
+  display: flex;
+  gap: 32px;
 }
 
 .filter-bar select {
-	width: 150px;
-	height: 34px;
-	border-radius: 18px;
-	background: var(--card);
-	border: 1px solid var(--border);
-	padding: 0 16px;
-	font-weight: bold;
-	color: var(--text);
+  width: 150px;
+  height: 34px;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 0 16px;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.filter-button {
+  height: 34px;
+  padding: 0 20px;
+  border-radius: 18px;
+  font-size: 13px;
+}
+
+.reset-filter {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.reset-filter:hover {
+  color: var(--primary);
 }
 
 .add-button {
-	height: 34px;
-	padding: 0 28px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 8px;
-	white-space: nowrap;
+  height: 42px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  white-space: nowrap;
 }
 
+/* GRID */
 .clothing-grid {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 48px 64px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 250px));
+  gap: 44px 56px;
+  align-items: start;
 }
 
+/* CARD */
 .clothing-card {
-	background: var(--card);
-	border: 1px solid var(--border);
-	border-radius: 12px;
-	padding: 18px;
-	box-sizing: border-box;
+  position: relative;
+  width: 250px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  box-sizing: border-box;
 
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.clothing-card img {
-	width: 100%;
-	height: 150px;
-	object-fit: contain;
-	background: #ffffff;
-	border: 1px solid var(--border);
-	border-radius: 10px;
-	margin-bottom: 16px;
+/* IMAGE */
+.clothing-image {
+  width: 100%;
+  height: 170px;
+  object-fit: contain;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 14px;
 }
 
+/* TEXT */
 .clothing-info h2 {
-	font-size: 15px;
-	margin: 0 0 6px;
+  font-size: 15px;
+  margin: 0 0 6px;
 }
 
 .clothing-info p {
-	margin: 0;
-	font-size: 13px;
-	color: var(--muted);
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
 }
 
+/* AUSMISTEN BUTTON */
+.remove-form {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.remove-button {
+  all: unset;
+
+  width: 34px;
+  height: 34px;
+
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  box-sizing: border-box;
+
+  transition: 0.2s;
+}
+
+.remove-button:hover {
+  background: #f4ede8;
+  transform: scale(1.08);
+}
+
+.remove-button img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+}
+
+/* EMPTY */
 .empty-state {
-	margin-top: 120px;
-	text-align: center;
+  margin-top: 120px;
+  text-align: center;
 }
 
 .empty-state h2 {
-	font-size: 22px;
-	margin-bottom: 10px;
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
 .empty-state p {
-	color: var(--muted);
-	margin-bottom: 24px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.success-message,
+.danger-message {
+  width: 100%;
+  max-width: 520px;
+
+  margin: 0 auto 40px auto;
+
+  padding: 14px 22px;
+
+  border-radius: 12px;
+
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+.success-message {
+  background: #eef8f0;
+  border: 1px solid #b9d9bf;
+  color: #2f6d3d;
+}
+
+.danger-message {
+  background: #fbf1ef;
+  border: 1px solid #e4b8b0;
+  color: #8a3a2f;
 }

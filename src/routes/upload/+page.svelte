@@ -1,17 +1,55 @@
 <script>
   import "./upload.css";
+
+  let { form } = $props();
+
+  let fileName = $state("");
+  let imagePreview = $state("");
+
+  function handleFileChange(event) {
+    const file = event.target.files[0];
+
+    if (!file) {
+      fileName = "";
+      imagePreview = "";
+      return;
+    }
+
+    fileName = file.name;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      imagePreview = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
 </script>
 
 <section class="upload-page">
   <h1>Neues Kleidungsstück hinzufügen</h1>
 
-  <form class="item-form" method="POST" enctype="multipart/form-data">
+  <form
+    class="item-form"
+    method="POST"
+    action="?/create"
+    enctype="multipart/form-data"
+  >
     <div class="form-card">
       <div class="upload-box">
         <label for="imageUpload" class="upload-label">
-          <img src="/images/upload.png" alt="Upload Icon" />
-          <p>Bild hochladen</p>
-          <span class="upload-hint">PNG oder JPG auswählen</span>
+          {#if imagePreview}
+            <img src={imagePreview} alt="Bildvorschau" class="preview-image" />
+            <p class="success-text">Bild ausgewählt</p>
+            <span class="file-name">{fileName}</span>
+          {:else}
+            <img
+              src="/images/upload.png"
+              alt="Upload Icon"
+              class="upload-icon"
+            />
+            <p>Bild hochladen</p>
+            <span class="upload-hint">PNG oder JPG auswählen</span>
+          {/if}
         </label>
 
         <input
@@ -19,6 +57,7 @@
           type="file"
           name="image"
           accept="image/png, image/jpeg"
+          onchange={handleFileChange}
         />
       </div>
 
@@ -44,6 +83,7 @@
           <option value="Schwarz">Schwarz</option>
           <option value="Weiss">Weiss</option>
           <option value="Beige">Beige</option>
+          <option value="Blau">Blau</option>
         </select>
       </label>
 
@@ -56,6 +96,10 @@
           <option value="Sportlich">Sportlich</option>
         </select>
       </label>
+
+      {#if form?.message}
+        <p class="error-message">{form.message}</p>
+      {/if}
     </div>
 
     <button type="submit">Speichern</button>
