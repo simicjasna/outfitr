@@ -168,32 +168,3 @@
   margin-bottom: 24px;
 }
 
-.success-message,
-.danger-message {
-  width: 100%;
-  max-width: 520px;
-
-  margin: 0 auto 40px auto;
-
-  padding: 14px 22px;
-
-  border-radius: 12px;
-
-  font-size: 15px;
-  font-weight: 600;
-  text-align: center;
-
-  box-sizing: border-box;
-}
-
-.success-message {
-  background: #eef8f0;
-  border: 1px solid #b9d9bf;
-  color: #2f6d3d;
-}
-
-.danger-message {
-  background: #fbf1ef;
-  border: 1px solid #e4b8b0;
-  color: #8a3a2f;
-}
