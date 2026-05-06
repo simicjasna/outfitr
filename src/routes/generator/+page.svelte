@@ -1,6 +1,10 @@
 <script>
   import "./generator.css";
 
+  import SelectField from "$lib/components/SelectField.svelte";
+
+  import { colors, styles } from "$lib/constants/options.js";
+
   let { form } = $props();
 
   let showNameModal = $state(false);
@@ -21,52 +25,21 @@
     <form method="POST" action="?/generate" class="filter-panel">
       <h2>Filter</h2>
 
-      <div class="filter-group">
-        <label for="style">Stil</label>
+      <SelectField
+        label="Stil"
+        name="style"
+        options={styles}
+        value={form?.filters?.style}
+        placeholder="Stil auswählen"
+      />
 
-        <select id="style" name="style">
-          <option value="">Stil auswählen</option>
-
-          <option value="Casual" selected={form?.filters?.style === "Casual"}>
-            Casual
-          </option>
-
-          <option value="Elegant" selected={form?.filters?.style === "Elegant"}>
-            Elegant
-          </option>
-
-          <option
-            value="Sportlich"
-            selected={form?.filters?.style === "Sportlich"}
-          >
-            Sportlich
-          </option>
-        </select>
-      </div>
-
-      <div class="filter-group">
-        <label for="color">Farbe optional</label>
-
-        <select id="color" name="color">
-          <option value="">Keine Präferenz</option>
-
-          <option value="Schwarz" selected={form?.filters?.color === "Schwarz"}>
-            Schwarz
-          </option>
-
-          <option value="Weiss" selected={form?.filters?.color === "Weiss"}>
-            Weiss
-          </option>
-
-          <option value="Beige" selected={form?.filters?.color === "Beige"}>
-            Beige
-          </option>
-
-          <option value="Blau" selected={form?.filters?.color === "Blau"}>
-            Blau
-          </option>
-        </select>
-      </div>
+      <SelectField
+        label="Farbe optional"
+        name="color"
+        options={colors}
+        value={form?.filters?.color}
+        placeholder="Keine Präferenz"
+      />
 
       <button class="primary-button generate-button" type="submit">
         Outfit generieren
@@ -77,6 +50,7 @@
       {#if form?.error}
         <div class="message-box error-message">
           <h2>Kein passendes Outfit gefunden</h2>
+
           <p>{form.message}</p>
         </div>
       {:else if form?.outfit}
@@ -91,7 +65,11 @@
                 <h3>{item.name}</h3>
 
                 <p>
-                  {item.category} • {item.color} • {item.style}
+                  {item.category}
+                  •
+                  {item.color}
+                  •
+                  {item.style}
                 </p>
               </div>
             {/each}

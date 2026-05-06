@@ -1,6 +1,10 @@
 <script>
   import "./upload.css";
 
+  import SelectField from "$lib/components/SelectField.svelte";
+
+  import { categories, colors, styles } from "$lib/constants/options.js";
+
   let { form } = $props();
 
   let fileName = $state("");
@@ -18,9 +22,11 @@
     fileName = file.name;
 
     const reader = new FileReader();
+
     reader.onload = () => {
       imagePreview = reader.result;
     };
+
     reader.readAsDataURL(file);
   }
 </script>
@@ -66,36 +72,26 @@
         <input type="text" name="name" placeholder="z. B. Schwarzes T-Shirt" />
       </label>
 
-      <label>
-        Kategorie
-        <select name="category">
-          <option value="">Kategorie auswählen</option>
-          <option value="Top">Top</option>
-          <option value="Hose">Hose</option>
-          <option value="Schuhe">Schuhe</option>
-        </select>
-      </label>
+      <SelectField
+        label="Kategorie"
+        name="category"
+        options={categories}
+        placeholder="Kategorie auswählen"
+      />
 
-      <label>
-        Farbe
-        <select name="color">
-          <option value="">Farbe auswählen</option>
-          <option value="Schwarz">Schwarz</option>
-          <option value="Weiss">Weiss</option>
-          <option value="Beige">Beige</option>
-          <option value="Blau">Blau</option>
-        </select>
-      </label>
+      <SelectField
+        label="Farbe"
+        name="color"
+        options={colors}
+        placeholder="Farbe auswählen"
+      />
 
-      <label>
-        Stil
-        <select name="style">
-          <option value="">Stil auswählen</option>
-          <option value="Casual">Casual</option>
-          <option value="Elegant">Elegant</option>
-          <option value="Sportlich">Sportlich</option>
-        </select>
-      </label>
+      <SelectField
+        label="Stil"
+        name="style"
+        options={styles}
+        placeholder="Stil auswählen"
+      />
 
       {#if form?.message}
         <p class="error-message">{form.message}</p>

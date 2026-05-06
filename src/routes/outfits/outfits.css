@@ -8,52 +8,6 @@
   margin: 0 0 40px;
 }
 
-/* ---------- FEEDBACK MESSAGES ---------- */
-
-.success-message,
-.danger-message,
-.warning-message {
-  padding: 18px 28px;
-  border-radius: 14px;
-
-  width: fit-content;
-  min-width: 420px;
-  max-width: 720px;
-
-  margin: 0 auto 42px auto;
-
-  text-align: center;
-
-  font-size: 16px;
-  font-weight: 600;
-
-  box-sizing: border-box;
-}
-
-.success-message {
-  background: #eef8f0;
-  border: 1px solid #b9d9bf;
-  color: #2f6d3d;
-
-  box-shadow: 0 2px 10px rgba(47, 109, 61, 0.06);
-}
-
-.danger-message {
-  background: #fff4f2;
-  border: 1px solid #f0c4bc;
-  color: #b24a3f;
-
-  box-shadow: 0 2px 10px rgba(178, 74, 63, 0.06);
-}
-
-.warning-message {
-  background: #fff7e8;
-  border: 1px solid #e8c98f;
-  color: #8a6220;
-
-  box-shadow: 0 2px 10px rgba(138, 98, 32, 0.06);
-}
-
 /* ---------- GRID ---------- */
 
 .outfits-grid {

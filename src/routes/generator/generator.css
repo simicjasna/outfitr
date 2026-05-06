@@ -23,18 +23,21 @@
   margin: 0;
 }
 
-.filter-group {
+.filter-group,
+.select-field {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.filter-group label {
+.filter-group label,
+.select-field label {
   font-size: 20px;
   font-weight: bold;
 }
 
-.filter-group select {
+.filter-group select,
+.select-field select {
   height: 42px;
   border-radius: 12px;
   border: 1px solid var(--border);
