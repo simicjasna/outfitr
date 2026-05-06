@@ -1,5 +1,6 @@
 <script>
   import "./outfits.css";
+  import FeedbackMessage from "$lib/components/FeedbackMessage.svelte";
 
   let { data } = $props();
 </script>
@@ -7,15 +8,7 @@
 <section class="outfits-page">
   <h1>Deine gespeicherten Kombinationen</h1>
 
-  {#if data.feedback}
-    <div
-      class:success-message={data.feedback.type === "success"}
-      class:danger-message={data.feedback.type === "danger"}
-      class:warning-message={data.feedback.type === "warning"}
-    >
-      {data.feedback.message}
-    </div>
-  {/if}
+  <FeedbackMessage feedback={data.feedback} />
 
   {#if data.outfits.length > 0}
     <div class="outfits-grid">
