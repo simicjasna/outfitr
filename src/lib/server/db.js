@@ -92,14 +92,14 @@ async function generateOutfit(filters = {}) {
 
     const clothes = await getClothes();
 
-    const top = findItemForCategory(clothes, "Top", filters);
+    const shirt = findItemForCategory(clothes, "Shirt", filters);
     const bottom = findItemForCategory(clothes, "Hose", filters);
     const shoes = findItemForCategory(clothes, "Schuhe", filters);
 
-    if (!top || !bottom || !shoes) {
+    if (!shirt || !bottom || !shoes) {
       return {
         error: true,
-        message: `Für den Stil ${filters.style} sind noch nicht genügend passende Kleidungsstücke vorhanden. Du brauchst mindestens ein Top, eine Hose und Schuhe.`,
+        message: `Für den Stil ${filters.style} sind noch nicht genügend passende Kleidungsstücke vorhanden. Du brauchst mindestens ein Shirt, eine Hose und Schuhe.`,
       };
     }
 
@@ -113,7 +113,7 @@ async function generateOutfit(filters = {}) {
         name: outfitName,
         color: filters.color,
         style: filters.style,
-        items: [top, bottom, shoes],
+        items: [shirt, bottom, shoes],
       },
     };
   } catch (error) {
