@@ -3,6 +3,7 @@
 
   import FeedbackMessage from "$lib/components/FeedbackMessage.svelte";
   import ClothingCard from "$lib/components/ClothingCard.svelte";
+  import SelectField from "$lib/components/SelectField.svelte";
 
   import { categories, colors, styles } from "$lib/constants/options.js";
 
@@ -31,35 +32,29 @@
 
   <div class="wardrobe-actions">
     <form class="filter-bar" onsubmit={applyFilters}>
-      <select name="category" value={data.filters.category}>
-        <option value=""> Kategorie </option>
+      <SelectField
+        label=""
+        name="category"
+        options={categories}
+        value={data.filters.category}
+        placeholder="Kategorie"
+      />
 
-        {#each categories as category}
-          <option value={category}>
-            {category}
-          </option>
-        {/each}
-      </select>
+      <SelectField
+        label=""
+        name="color"
+        options={colors}
+        value={data.filters.color}
+        placeholder="Farbe"
+      />
 
-      <select name="color" value={data.filters.color}>
-        <option value=""> Farbe </option>
-
-        {#each colors as color}
-          <option value={color}>
-            {color}
-          </option>
-        {/each}
-      </select>
-
-      <select name="style" value={data.filters.style}>
-        <option value=""> Stil </option>
-
-        {#each styles as style}
-          <option value={style}>
-            {style}
-          </option>
-        {/each}
-      </select>
+      <SelectField
+        label=""
+        name="style"
+        options={styles}
+        value={data.filters.style}
+        placeholder="Stil"
+      />
 
       <button class="filter-button" type="submit"> Filtern </button>
 
@@ -80,9 +75,7 @@
   {:else}
     <div class="empty-state">
       <h2>Keine passenden Kleidungsstücke gefunden</h2>
-
       <p>Ändere die Filter oder füge neue Kleidungsstücke hinzu.</p>
-
       <a class="primary-button" href="/upload"> Kleidungsstück hinzufügen </a>
     </div>
   {/if}

@@ -1,6 +1,8 @@
 <script>
   import "./generator.css";
 
+  import SelectField from "$lib/components/SelectField.svelte";
+
   import { colors, styles } from "$lib/constants/options.js";
 
   let { form } = $props();
@@ -23,33 +25,21 @@
     <form method="POST" action="?/generate" class="filter-panel">
       <h2>Filter</h2>
 
-      <div class="filter-group">
-        <label for="style">Stil</label>
+      <SelectField
+        label="Stil"
+        name="style"
+        options={styles}
+        value={form?.filters?.style}
+        placeholder="Stil auswählen"
+      />
 
-        <select id="style" name="style">
-          <option value="">Stil auswählen</option>
-
-          {#each styles as style}
-            <option value={style} selected={form?.filters?.style === style}>
-              {style}
-            </option>
-          {/each}
-        </select>
-      </div>
-
-      <div class="filter-group">
-        <label for="color">Farbe optional</label>
-
-        <select id="color" name="color">
-          <option value="">Keine Präferenz</option>
-
-          {#each colors as color}
-            <option value={color} selected={form?.filters?.color === color}>
-              {color}
-            </option>
-          {/each}
-        </select>
-      </div>
+      <SelectField
+        label="Farbe optional"
+        name="color"
+        options={colors}
+        value={form?.filters?.color}
+        placeholder="Keine Präferenz"
+      />
 
       <button class="primary-button generate-button" type="submit">
         Outfit generieren
