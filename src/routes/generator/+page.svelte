@@ -1,6 +1,8 @@
 <script>
   import "./generator.css";
 
+  import { colors, styles } from "$lib/constants/options.js";
+
   let { form } = $props();
 
   let showNameModal = $state(false);
@@ -27,20 +29,11 @@
         <select id="style" name="style">
           <option value="">Stil auswählen</option>
 
-          <option value="Casual" selected={form?.filters?.style === "Casual"}>
-            Casual
-          </option>
-
-          <option value="Elegant" selected={form?.filters?.style === "Elegant"}>
-            Elegant
-          </option>
-
-          <option
-            value="Sportlich"
-            selected={form?.filters?.style === "Sportlich"}
-          >
-            Sportlich
-          </option>
+          {#each styles as style}
+            <option value={style} selected={form?.filters?.style === style}>
+              {style}
+            </option>
+          {/each}
         </select>
       </div>
 
@@ -50,21 +43,11 @@
         <select id="color" name="color">
           <option value="">Keine Präferenz</option>
 
-          <option value="Schwarz" selected={form?.filters?.color === "Schwarz"}>
-            Schwarz
-          </option>
-
-          <option value="Weiss" selected={form?.filters?.color === "Weiss"}>
-            Weiss
-          </option>
-
-          <option value="Beige" selected={form?.filters?.color === "Beige"}>
-            Beige
-          </option>
-
-          <option value="Blau" selected={form?.filters?.color === "Blau"}>
-            Blau
-          </option>
+          {#each colors as color}
+            <option value={color} selected={form?.filters?.color === color}>
+              {color}
+            </option>
+          {/each}
         </select>
       </div>
 
@@ -77,6 +60,7 @@
       {#if form?.error}
         <div class="message-box error-message">
           <h2>Kein passendes Outfit gefunden</h2>
+
           <p>{form.message}</p>
         </div>
       {:else if form?.outfit}
@@ -91,7 +75,11 @@
                 <h3>{item.name}</h3>
 
                 <p>
-                  {item.category} • {item.color} • {item.style}
+                  {item.category}
+                  •
+                  {item.color}
+                  •
+                  {item.style}
                 </p>
               </div>
             {/each}

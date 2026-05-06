@@ -1,6 +1,8 @@
 <script>
   import "./upload.css";
 
+  import { categories, colors, styles } from "$lib/constants/options.js";
+
   let { form } = $props();
 
   let fileName = $state("");
@@ -18,9 +20,11 @@
     fileName = file.name;
 
     const reader = new FileReader();
+
     reader.onload = () => {
       imagePreview = reader.result;
     };
+
     reader.readAsDataURL(file);
   }
 </script>
@@ -68,32 +72,37 @@
 
       <label>
         Kategorie
+
         <select name="category">
           <option value="">Kategorie auswählen</option>
-          <option value="Top">Top</option>
-          <option value="Hose">Hose</option>
-          <option value="Schuhe">Schuhe</option>
+
+          {#each categories as category}
+            <option value={category}>{category}</option>
+          {/each}
         </select>
       </label>
 
       <label>
         Farbe
+
         <select name="color">
           <option value="">Farbe auswählen</option>
-          <option value="Schwarz">Schwarz</option>
-          <option value="Weiss">Weiss</option>
-          <option value="Beige">Beige</option>
-          <option value="Blau">Blau</option>
+
+          {#each colors as color}
+            <option value={color}>{color}</option>
+          {/each}
         </select>
       </label>
 
       <label>
         Stil
+
         <select name="style">
           <option value="">Stil auswählen</option>
-          <option value="Casual">Casual</option>
-          <option value="Elegant">Elegant</option>
-          <option value="Sportlich">Sportlich</option>
+
+          {#each styles as style}
+            <option value={style}>{style}</option>
+          {/each}
         </select>
       </label>
 

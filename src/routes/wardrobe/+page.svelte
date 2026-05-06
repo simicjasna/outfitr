@@ -2,6 +2,8 @@
   import "./wardrobe.css";
   import FeedbackMessage from "$lib/components/FeedbackMessage.svelte";
 
+  import { categories, colors, styles } from "$lib/constants/options.js";
+
   let { data } = $props();
 
   function applyFilters(event) {
@@ -29,24 +31,26 @@
     <form class="filter-bar" onsubmit={applyFilters}>
       <select name="category" value={data.filters.category}>
         <option value="">Kategorie</option>
-        <option value="Top">Top</option>
-        <option value="Hose">Hose</option>
-        <option value="Schuhe">Schuhe</option>
+
+        {#each categories as category}
+          <option value={category}>{category}</option>
+        {/each}
       </select>
 
       <select name="color" value={data.filters.color}>
         <option value="">Farbe</option>
-        <option value="Schwarz">Schwarz</option>
-        <option value="Weiss">Weiss</option>
-        <option value="Beige">Beige</option>
-        <option value="Blau">Blau</option>
+
+        {#each colors as color}
+          <option value={color}>{color}</option>
+        {/each}
       </select>
 
       <select name="style" value={data.filters.style}>
         <option value="">Stil</option>
-        <option value="Casual">Casual</option>
-        <option value="Elegant">Elegant</option>
-        <option value="Sportlich">Sportlich</option>
+
+        {#each styles as style}
+          <option value={style}>{style}</option>
+        {/each}
       </select>
 
       <button class="filter-button" type="submit">Filtern</button>
