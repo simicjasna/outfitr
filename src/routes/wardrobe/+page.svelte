@@ -24,13 +24,29 @@
 </script>
 
 <section class="wardrobe-page">
-  <header class="wardrobe-header">
-    <h1>Dein Kleiderschrank</h1>
-  </header>
+  <div class="wardrobe-hero">
+    <div>
+      <p class="eyebrow">Wardrobe</p>
+      <h1>Dein Kleiderschrank</h1>
+      <p>
+        Verwalte deine Kleidungsstücke, filtere nach Farbe, Stil oder Kategorie
+        und stelle daraus passende Outfits zusammen.
+      </p>
+    </div>
+
+    <a class="primary-button add-button" href="/upload">
+      + Kleider hinzufügen
+    </a>
+  </div>
 
   <FeedbackMessage feedback={data.feedback} />
 
-  <div class="wardrobe-actions">
+  <div class="filter-card">
+    <div>
+      <p class="eyebrow">Filter</p>
+      <h2>Kleidungsstücke durchsuchen</h2>
+    </div>
+
     <form class="filter-bar" onsubmit={applyFilters}>
       <SelectField
         label=""
@@ -60,10 +76,17 @@
 
       <a class="reset-filter" href="/wardrobe"> Zurücksetzen </a>
     </form>
+  </div>
 
-    <a class="primary-button add-button" href="/upload">
-      + Kleider hinzufügen
-    </a>
+  <div class="wardrobe-content-header">
+    <div>
+      <p class="eyebrow">Übersicht</p>
+
+      <h2>
+        {data.clothes.length}
+        {data.clothes.length === 1 ? "Kleidungsstück" : "Kleidungsstücke"}
+      </h2>
+    </div>
   </div>
 
   {#if data.clothes.length > 0}
@@ -75,7 +98,9 @@
   {:else}
     <div class="empty-state">
       <h2>Keine passenden Kleidungsstücke gefunden</h2>
+
       <p>Ändere die Filter oder füge neue Kleidungsstücke hinzu.</p>
+
       <a class="primary-button" href="/upload"> Kleidungsstück hinzufügen </a>
     </div>
   {/if}

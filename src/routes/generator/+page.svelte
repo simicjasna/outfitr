@@ -21,9 +21,25 @@
 </script>
 
 <section class="generator-page">
+  <div class="generator-hero">
+    <div>
+      <p class="eyebrow">Generator</p>
+
+      <h1>Outfit erstellen</h1>
+
+      <p>
+        Wähle einen Stil und optional eine Farbe. Outfitr sucht dir danach eine
+        passende Kombination aus deinem Kleiderschrank.
+      </p>
+    </div>
+  </div>
+
   <div class="generator-layout">
     <form method="POST" action="?/generate" class="filter-panel">
-      <h2>Filter</h2>
+      <div>
+        <p class="eyebrow">Filter</p>
+        <h2>Deine Auswahl</h2>
+      </div>
 
       <SelectField
         label="Stil"
@@ -52,25 +68,38 @@
           <h2>Kein passendes Outfit gefunden</h2>
 
           <p>{form.message}</p>
+
+          <a href="/upload" class="secondary-link">
+            Kleidungsstück hinzufügen
+          </a>
         </div>
       {:else if form?.outfit}
         <div class="result-content">
-          <h2>Dein Outfit</h2>
+          <div class="result-header">
+            <div>
+              <p class="eyebrow">Vorschlag</p>
+              <h2>Dein Outfit</h2>
+            </div>
+
+            <span class="match-pill">Passend zu deinem Stil</span>
+          </div>
 
           <div class="outfit-result">
             {#each form.outfit.items as item}
               <div class="outfit-card">
                 <img src={item.image} alt={item.name} />
 
-                <h3>{item.name}</h3>
+                <div>
+                  <h3>{item.name}</h3>
 
-                <p>
-                  {item.category}
-                  •
-                  {item.color}
-                  •
-                  {item.style}
-                </p>
+                  <p>
+                    {item.category}
+                    •
+                    {item.color}
+                    •
+                    {item.style}
+                  </p>
+                </div>
               </div>
             {/each}
           </div>
@@ -95,9 +124,13 @@
         </div>
       {:else}
         <div class="empty-state">
+          <div class="empty-icon">
+            <img src="/images/favorite.png" alt="" />
+          </div>
+
           <h2>Noch kein Outfit erstellt</h2>
 
-          <p>Wähle einen Stil und generiere ein Outfit.</p>
+          <p>Wähle links einen Stil aus und starte den Generator.</p>
         </div>
       {/if}
     </div>

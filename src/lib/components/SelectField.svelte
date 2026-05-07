@@ -1,8 +1,15 @@
 <script>
-  let { label, name, options = [], value = "", placeholder = "" } = $props();
+  let {
+    label,
+    name,
+    options = [],
+    value = "",
+    placeholder = "",
+    error = false,
+  } = $props();
 </script>
 
-<div class="select-field">
+<div class="select-field" class:error-field={error}>
   <label for={name}>
     {label}
   </label>

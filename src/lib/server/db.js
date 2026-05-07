@@ -302,6 +302,25 @@ async function deleteOutfit(id) {
   }
 }
 
+async function getLatestOutfits(limit = 3) {
+  let outfits = [];
+
+  try {
+    outfits = await db
+      .collection("outfits")
+      .find({})
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .toArray();
+
+    outfits.forEach(convertId);
+  } catch (error) {
+    console.error("Error loading latest outfits:", error);
+  }
+
+  return outfits;
+}
+
 export default {
   getClothes,
   getClothingItem,
@@ -312,4 +331,5 @@ export default {
   getOutfits,
   createOutfit,
   deleteOutfit,
+  getLatestOutfits,
 };
