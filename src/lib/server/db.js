@@ -33,6 +33,42 @@ async function getClothes(filters = {}) {
   return clothes;
 }
 
+async function getClothingItem(id) {
+  let item = null;
+
+  try {
+    item = await db.collection("clothes").findOne({
+      _id: new ObjectId(id),
+    });
+
+    if (item) {
+      item._id = item._id.toString();
+    }
+  } catch (error) {
+    console.error("Error loading clothing item:", error);
+  }
+
+  return item;
+}
+
+async function updateClothingItem(id, item) {
+  try {
+    await db.collection("clothes").updateOne(
+      { _id: new ObjectId(id) },
+      {
+        $set: {
+          name: item.name,
+          category: item.category,
+          color: item.color,
+          style: item.style,
+        },
+      },
+    );
+  } catch (error) {
+    console.error("Error updating clothing item:", error);
+  }
+}
+
 async function createClothingItem(item) {
   try {
     await db.collection("clothes").insertOne({
@@ -268,6 +304,8 @@ async function deleteOutfit(id) {
 
 export default {
   getClothes,
+  getClothingItem,
+  updateClothingItem,
   createClothingItem,
   deleteClothingItem,
   generateOutfit,
