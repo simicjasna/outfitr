@@ -1,32 +1,23 @@
 import db from "$lib/server/db.js";
-import { redirect } from "@sveltejs/kit";
 
 export async function load({ url }) {
   let feedback = null;
 
   const saved = url.searchParams.get("saved");
-  const removed = url.searchParams.get("removed");
   const duplicate = url.searchParams.get("duplicate");
   const existing = url.searchParams.get("existing");
 
   if (saved) {
     feedback = {
       type: "success",
-      message: `${saved} wurde gespeichert.`,
-    };
-  }
-
-  if (removed) {
-    feedback = {
-      type: "danger",
-      message: `${removed} wurde aus deinen Outfits entfernt.`,
+      message: `"${saved}" wurde gespeichert.`,
     };
   }
 
   if (duplicate) {
     feedback = {
       type: "warning",
-      message: `${duplicate} wurde bereits gespeichert und ist dasselbe wie ${existing}.`,
+      message: `"${duplicate}" wurde bereits gespeichert und ist dasselbe wie "${existing}".`,
     };
   }
 
@@ -41,10 +32,24 @@ export const actions = {
     const data = await request.formData();
 
     const id = data.get("id");
-    const name = data.get("name");
 
     await db.deleteOutfit(id);
 
-    redirect(303, `/outfits?removed=${encodeURIComponent(name)}`);
+    return {
+      success: true,
+    };
+  },
+
+  restore: async ({ request }) => {
+    const data = await request.formData();
+
+    const outfit = JSON.parse(data.get("outfit"));
+    delete outfit._id;
+
+    await db.createOutfit(outfit);
+
+    return {
+      success: true,
+    };
   },
 };

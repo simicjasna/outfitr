@@ -1,5 +1,5 @@
 import db from "$lib/server/db.js";
-import { redirect, fail } from "@sveltejs/kit";
+import { fail, redirect } from "@sveltejs/kit";
 import { writeFile } from "fs/promises";
 import path from "path";
 
@@ -13,31 +13,39 @@ export const actions = {
     const style = data.get("style");
     const image = data.get("image");
 
-    if (!name || !category || !color || !style) {
+    const missingFields = [];
+
+    if (!image || image.size === 0) missingFields.push("image");
+    if (!name) missingFields.push("name");
+    if (!category) missingFields.push("category");
+    if (!color) missingFields.push("color");
+    if (!style) missingFields.push("style");
+
+    if (missingFields.length > 0) {
       return fail(400, {
         message: "Bitte alle Pflichtfelder ausfüllen.",
+        missingFields,
+        values: {
+          name,
+          category,
+          color,
+          style,
+        },
       });
     }
 
-    let imagePath = "/images/placeholder.png";
+    const fileName = `${Date.now()}-${image.name}`;
+    const uploadPath = path.join("static", "uploads", fileName);
 
-    if (image && image.size > 0) {
-      const extension = image.name.split(".").pop();
-      const fileName = `${Date.now()}-${image.name}`;
-      const uploadPath = path.join("static", "uploads", fileName);
-
-      const buffer = Buffer.from(await image.arrayBuffer());
-      await writeFile(uploadPath, buffer);
-
-      imagePath = `/uploads/${fileName}`;
-    }
+    const buffer = Buffer.from(await image.arrayBuffer());
+    await writeFile(uploadPath, buffer);
 
     await db.createClothingItem({
       name,
       category,
       color,
       style,
-      image: imagePath,
+      image: `/uploads/${fileName}`,
     });
 
     redirect(303, `/wardrobe?created=${encodeURIComponent(name)}`);
