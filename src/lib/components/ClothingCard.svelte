@@ -1,32 +1,31 @@
 <script>
-	let { item } = $props();
+  let { item } = $props();
 </script>
 
 <div class="clothing-card">
-	<form method="POST" action="?/remove" class="remove-form">
-		<input type="hidden" name="id" value={item._id} />
-		<input type="hidden" name="name" value={item.name} />
+  <div class="card-actions">
+    <a
+      class="edit-button"
+      href={`/wardrobe/${item._id}/edit`}
+      title="Bearbeiten"
+    >
+      <img src="/images/edit.png" alt="Bearbeiten" />
+    </a>
 
-		<button type="submit" class="remove-button" title="Ausmisten">
-			<img src="/images/broom.png" alt="Ausmisten" />
-		</button>
-	</form>
+    <form method="POST" action="?/remove" class="remove-form">
+      <input type="hidden" name="id" value={item._id} />
+      <input type="hidden" name="name" value={item.name} />
 
-	<img
-		class="clothing-image"
-		src={item.image}
-		alt={item.name}
-	/>
+      <button type="submit" class="remove-button" title="Ausmisten">
+        <img src="/images/broom.png" alt="Ausmisten" />
+      </button>
+    </form>
+  </div>
 
-	<div class="clothing-info">
-		<h2>{item.name}</h2>
+  <img class="clothing-image" src={item.image} alt={item.name} />
 
-		<p>
-			{item.category}
-			•
-			{item.color}
-			•
-			{item.style}
-		</p>
-	</div>
+  <div class="clothing-info">
+    <h2>{item.name}</h2>
+    <p>{item.category} • {item.color} • {item.style}</p>
+  </div>
 </div>
