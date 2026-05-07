@@ -10,6 +10,7 @@ function convertId(document) {
   if (document?._id) {
     document._id = document._id.toString();
   }
+
   return document;
 }
 
@@ -48,7 +49,9 @@ async function createClothingItem(item) {
 
 async function deleteClothingItem(id) {
   try {
-    await db.collection("clothes").deleteOne({ _id: new ObjectId(id) });
+    await db.collection("clothes").deleteOne({
+      _id: new ObjectId(id),
+    });
   } catch (error) {
     console.error("Error deleting clothing item:", error);
   }
@@ -59,26 +62,73 @@ function pickRandom(items) {
   return items[randomIndex];
 }
 
-function findItemForCategory(clothes, category, filters) {
-  let matchingItems = clothes.filter((item) => {
-    return item.category === category && item.style === filters.style;
-  });
+function getColorHarmonyScore(colors, preferredColor) {
+  let score = 0;
 
-  if (matchingItems.length === 0) {
-    return null;
+  const uniqueColors = [...new Set(colors.filter(Boolean))];
+
+  if (preferredColor && colors.includes(preferredColor)) {
+    score += 4;
   }
 
-  if (filters.color) {
-    const colorMatches = matchingItems.filter(
-      (item) => item.color === filters.color,
-    );
+  if (uniqueColors.length === 1) {
+    score += 4;
+  }
 
-    if (colorMatches.length > 0) {
-      return pickRandom(colorMatches);
+  if (uniqueColors.length === 2) {
+    score += 3;
+  }
+
+  if (uniqueColors.includes("Schwarz")) {
+    score += 2;
+  }
+
+  if (uniqueColors.includes("Weiss")) {
+    score += 2;
+  }
+
+  if (uniqueColors.includes("Beige") || uniqueColors.includes("Braun")) {
+    score += 2;
+  }
+
+  if (uniqueColors.length > 3) {
+    score -= 2;
+  }
+
+  return score;
+}
+
+function scoreCombination(combination, filters) {
+  let score = 0;
+
+  for (const item of combination) {
+    if (item.style === filters.style) {
+      score += 5;
+    }
+
+    if (filters.color && item.color === filters.color) {
+      score += 4;
     }
   }
 
-  return pickRandom(matchingItems);
+  const colors = combination.map((item) => item.color);
+  score += getColorHarmonyScore(colors, filters.color);
+
+  return score;
+}
+
+function getCombinations(shirts, pants, shoes) {
+  const combinations = [];
+
+  for (const shirt of shirts) {
+    for (const pant of pants) {
+      for (const shoe of shoes) {
+        combinations.push([shirt, pant, shoe]);
+      }
+    }
+  }
+
+  return combinations;
 }
 
 async function generateOutfit(filters = {}) {
@@ -92,16 +142,38 @@ async function generateOutfit(filters = {}) {
 
     const clothes = await getClothes();
 
-    const shirt = findItemForCategory(clothes, "Shirt", filters);
-    const bottom = findItemForCategory(clothes, "Hose", filters);
-    const shoes = findItemForCategory(clothes, "Schuhe", filters);
+    const matchingClothes = clothes.filter((item) => {
+      return item.style === filters.style;
+    });
 
-    if (!shirt || !bottom || !shoes) {
+    const shirts = matchingClothes.filter((item) => item.category === "Shirt");
+    const pants = matchingClothes.filter((item) => item.category === "Hose");
+    const shoes = matchingClothes.filter((item) => item.category === "Schuhe");
+
+    if (shirts.length === 0 || pants.length === 0 || shoes.length === 0) {
       return {
         error: true,
         message: `Für den Stil ${filters.style} sind noch nicht genügend passende Kleidungsstücke vorhanden. Du brauchst mindestens ein Shirt, eine Hose und Schuhe.`,
       };
     }
+
+    const combinations = getCombinations(shirts, pants, shoes);
+
+    let bestScore = -1;
+    let bestCombinations = [];
+
+    for (const combination of combinations) {
+      const score = scoreCombination(combination, filters);
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestCombinations = [combination];
+      } else if (score === bestScore) {
+        bestCombinations.push(combination);
+      }
+    }
+
+    const selectedCombination = pickRandom(bestCombinations);
 
     const outfitName = filters.color
       ? `${filters.style} ${filters.color} Outfit`
@@ -113,7 +185,8 @@ async function generateOutfit(filters = {}) {
         name: outfitName,
         color: filters.color,
         style: filters.style,
-        items: [shirt, bottom, shoes],
+        score: bestScore,
+        items: selectedCombination,
       },
     };
   } catch (error) {
@@ -140,37 +213,54 @@ async function getOutfits() {
 }
 
 async function createOutfit(outfit) {
-  const outfits = db.collection("outfits");
+  try {
+    const outfits = db.collection("outfits");
 
-  const existingOutfits = await outfits.find({}).toArray();
+    const existingOutfits = await outfits.find({}).toArray();
 
-  const newIds = outfit.items.map((item) => item._id.toString()).sort();
+    const newIds = outfit.items.map((item) => item._id.toString()).sort();
 
-  for (const existing of existingOutfits) {
-    const existingIds = existing.items
-      .map((item) => item._id.toString())
-      .sort();
+    for (const existing of existingOutfits) {
+      const existingIds = existing.items
+        .map((item) => item._id.toString())
+        .sort();
 
-    const isSame = JSON.stringify(existingIds) === JSON.stringify(newIds);
+      const isSame = JSON.stringify(existingIds) === JSON.stringify(newIds);
 
-    if (isSame) {
-      return {
-        alreadyExists: true,
-        existingName: existing.name,
-      };
+      if (isSame) {
+        return {
+          alreadyExists: true,
+          existingName: existing.name,
+        };
+      }
     }
+
+    await outfits.insertOne({
+      name: outfit.name,
+      color: outfit.color,
+      style: outfit.style,
+      score: outfit.score,
+      items: outfit.items,
+      createdAt: new Date(),
+    });
+
+    return {
+      success: true,
+    };
+  } catch (error) {
+    console.error("Error creating outfit:", error);
+
+    return {
+      success: false,
+    };
   }
-
-  await outfits.insertOne(outfit);
-
-  return {
-    success: true,
-  };
 }
 
 async function deleteOutfit(id) {
   try {
-    await db.collection("outfits").deleteOne({ _id: new ObjectId(id) });
+    await db.collection("outfits").deleteOne({
+      _id: new ObjectId(id),
+    });
   } catch (error) {
     console.error("Error deleting outfit:", error);
   }
