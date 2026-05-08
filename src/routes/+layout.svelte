@@ -4,37 +4,44 @@
 
   let { data, children } = $props();
 
-  const authPages = ["/login", "/register"];
-  let isAuthPage = $derived(authPages.includes(page.url.pathname));
+  const publicPages = ["/", "/login", "/register"];
+  let isPublicPage = $derived(publicPages.includes(page.url.pathname));
 </script>
 
-{#if isAuthPage}
-  <main class="auth-layout">
+{#if isPublicPage}
+  <main class="public-layout">
     {@render children()}
   </main>
 {:else}
   <div class="app">
     <aside class="sidebar">
-      <div class="logo">
+      <a class="logo" href="/dashboard">
         <img src="/images/logo.png" alt="Outfitr Logo" />
-      </div>
+      </a>
 
       <nav>
-        <a href="/">Home</a>
+        <a href="/dashboard">Home</a>
         <a href="/wardrobe">Wardrobe</a>
         <a href="/generator">Generator</a>
         <a href="/outfits">Outfits</a>
       </nav>
-
-      {#if data.user}
-        <div class="user-box">
-          <p>{data.user.name}</p>
-          <a href="/logout">Logout</a>
-        </div>
-      {/if}
     </aside>
 
     <main class="content">
+      <header class="top-user-bar">
+        <details class="user-menu">
+          <summary class="user-menu-button">
+            <img src="/images/user.png" alt="User" />
+            <span>{data.user?.name}</span>
+            <span class="dropdown-arrow">▾</span>
+          </summary>
+
+          <div class="user-dropdown">
+            <a href="/logout">Logout</a>
+          </div>
+        </details>
+      </header>
+
       {@render children()}
     </main>
   </div>

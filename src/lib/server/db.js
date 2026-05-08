@@ -14,11 +14,18 @@ function convertId(document) {
   return document;
 }
 
-async function getClothes(filters = {}) {
+function userQuery(userId, extra = {}) {
+  return {
+    userId,
+    ...extra,
+  };
+}
+
+async function getClothes(filters = {}, userId) {
   let clothes = [];
 
   try {
-    const query = {};
+    const query = userQuery(userId);
 
     if (filters.category) query.category = filters.category;
     if (filters.color) query.color = filters.color;
@@ -33,16 +40,17 @@ async function getClothes(filters = {}) {
   return clothes;
 }
 
-async function getClothingItem(id) {
+async function getClothingItem(id, userId) {
   let item = null;
 
   try {
     item = await db.collection("clothes").findOne({
       _id: new ObjectId(id),
+      userId,
     });
 
     if (item) {
-      item._id = item._id.toString();
+      convertId(item);
     }
   } catch (error) {
     console.error("Error loading clothing item:", error);
@@ -51,10 +59,29 @@ async function getClothingItem(id) {
   return item;
 }
 
-async function updateClothingItem(id, item) {
+async function createClothingItem(item, userId) {
+  try {
+    await db.collection("clothes").insertOne({
+      userId,
+      name: item.name,
+      category: item.category,
+      color: item.color,
+      style: item.style,
+      image: item.image || "/images/placeholder.png",
+      createdAt: new Date(),
+    });
+  } catch (error) {
+    console.error("Error creating clothing item:", error);
+  }
+}
+
+async function updateClothingItem(id, item, userId) {
   try {
     await db.collection("clothes").updateOne(
-      { _id: new ObjectId(id) },
+      {
+        _id: new ObjectId(id),
+        userId,
+      },
       {
         $set: {
           name: item.name,
@@ -69,24 +96,11 @@ async function updateClothingItem(id, item) {
   }
 }
 
-async function createClothingItem(item) {
-  try {
-    await db.collection("clothes").insertOne({
-      name: item.name,
-      category: item.category,
-      color: item.color,
-      style: item.style,
-      image: item.image,
-    });
-  } catch (error) {
-    console.error("Error creating clothing item:", error);
-  }
-}
-
-async function deleteClothingItem(id) {
+async function deleteClothingItem(id, userId) {
   try {
     await db.collection("clothes").deleteOne({
       _id: new ObjectId(id),
+      userId,
     });
   } catch (error) {
     console.error("Error deleting clothing item:", error);
@@ -107,29 +121,15 @@ function getColorHarmonyScore(colors, preferredColor) {
     score += 4;
   }
 
-  if (uniqueColors.length === 1) {
-    score += 4;
-  }
+  if (uniqueColors.length === 1) score += 4;
+  if (uniqueColors.length === 2) score += 3;
 
-  if (uniqueColors.length === 2) {
-    score += 3;
-  }
-
-  if (uniqueColors.includes("Schwarz")) {
+  if (uniqueColors.includes("Schwarz")) score += 2;
+  if (uniqueColors.includes("Weiss")) score += 2;
+  if (uniqueColors.includes("Beige") || uniqueColors.includes("Braun"))
     score += 2;
-  }
 
-  if (uniqueColors.includes("Weiss")) {
-    score += 2;
-  }
-
-  if (uniqueColors.includes("Beige") || uniqueColors.includes("Braun")) {
-    score += 2;
-  }
-
-  if (uniqueColors.length > 3) {
-    score -= 2;
-  }
+  if (uniqueColors.length > 3) score -= 2;
 
   return score;
 }
@@ -138,13 +138,8 @@ function scoreCombination(combination, filters) {
   let score = 0;
 
   for (const item of combination) {
-    if (item.style === filters.style) {
-      score += 5;
-    }
-
-    if (filters.color && item.color === filters.color) {
-      score += 4;
-    }
+    if (item.style === filters.style) score += 5;
+    if (filters.color && item.color === filters.color) score += 4;
   }
 
   const colors = combination.map((item) => item.color);
@@ -167,7 +162,7 @@ function getCombinations(shirts, pants, shoes) {
   return combinations;
 }
 
-async function generateOutfit(filters = {}) {
+async function generateOutfit(filters = {}, userId) {
   try {
     if (!filters.style) {
       return {
@@ -176,11 +171,10 @@ async function generateOutfit(filters = {}) {
       };
     }
 
-    const clothes = await getClothes();
-
-    const matchingClothes = clothes.filter((item) => {
-      return item.style === filters.style;
-    });
+    const clothes = await getClothes({}, userId);
+    const matchingClothes = clothes.filter(
+      (item) => item.style === filters.style,
+    );
 
     const shirts = matchingClothes.filter((item) => item.category === "Shirt");
     const pants = matchingClothes.filter((item) => item.category === "Hose");
@@ -235,11 +229,16 @@ async function generateOutfit(filters = {}) {
   }
 }
 
-async function getOutfits() {
+async function getOutfits(userId) {
   let outfits = [];
 
   try {
-    outfits = await db.collection("outfits").find({}).toArray();
+    outfits = await db
+      .collection("outfits")
+      .find({ userId })
+      .sort({ createdAt: -1 })
+      .toArray();
+
     outfits.forEach(convertId);
   } catch (error) {
     console.error("Error loading outfits:", error);
@@ -248,11 +247,30 @@ async function getOutfits() {
   return outfits;
 }
 
-async function createOutfit(outfit) {
+async function getLatestOutfits(limit = 3, userId) {
+  let outfits = [];
+
+  try {
+    outfits = await db
+      .collection("outfits")
+      .find({ userId })
+      .sort({ createdAt: -1 })
+      .limit(limit)
+      .toArray();
+
+    outfits.forEach(convertId);
+  } catch (error) {
+    console.error("Error loading latest outfits:", error);
+  }
+
+  return outfits;
+}
+
+async function createOutfit(outfit, userId) {
   try {
     const outfits = db.collection("outfits");
 
-    const existingOutfits = await outfits.find({}).toArray();
+    const existingOutfits = await outfits.find({ userId }).toArray();
 
     const newIds = outfit.items.map((item) => item._id.toString()).sort();
 
@@ -261,9 +279,7 @@ async function createOutfit(outfit) {
         .map((item) => item._id.toString())
         .sort();
 
-      const isSame = JSON.stringify(existingIds) === JSON.stringify(newIds);
-
-      if (isSame) {
+      if (JSON.stringify(existingIds) === JSON.stringify(newIds)) {
         return {
           alreadyExists: true,
           existingName: existing.name,
@@ -272,6 +288,7 @@ async function createOutfit(outfit) {
     }
 
     await outfits.insertOne({
+      userId,
       name: outfit.name,
       color: outfit.color,
       style: outfit.style,
@@ -292,33 +309,15 @@ async function createOutfit(outfit) {
   }
 }
 
-async function deleteOutfit(id) {
+async function deleteOutfit(id, userId) {
   try {
     await db.collection("outfits").deleteOne({
       _id: new ObjectId(id),
+      userId,
     });
   } catch (error) {
     console.error("Error deleting outfit:", error);
   }
-}
-
-async function getLatestOutfits(limit = 3) {
-  let outfits = [];
-
-  try {
-    outfits = await db
-      .collection("outfits")
-      .find({})
-      .sort({ createdAt: -1 })
-      .limit(limit)
-      .toArray();
-
-    outfits.forEach(convertId);
-  } catch (error) {
-    console.error("Error loading latest outfits:", error);
-  }
-
-  return outfits;
 }
 
 async function createUser(user) {
@@ -337,16 +336,11 @@ async function createUser(user) {
 }
 
 async function getUserByEmail(email) {
-  const user = await db.collection("users").findOne({
-    email,
-  });
+  const user = await db.collection("users").findOne({ email });
 
-  if (!user) {
-    return null;
-  }
+  if (!user) return null;
 
   user._id = user._id.toString();
-
   return user;
 }
 
@@ -367,17 +361,13 @@ async function getUserBySession(token) {
     },
   });
 
-  if (!session) {
-    return null;
-  }
+  if (!session) return null;
 
   const user = await db.collection("users").findOne({
     _id: new ObjectId(session.userId),
   });
 
-  if (!user) {
-    return null;
-  }
+  if (!user) return null;
 
   return {
     _id: user._id.toString(),
@@ -387,22 +377,20 @@ async function getUserBySession(token) {
 }
 
 async function deleteSession(token) {
-  await db.collection("sessions").deleteOne({
-    token,
-  });
+  await db.collection("sessions").deleteOne({ token });
 }
 
 export default {
   getClothes,
   getClothingItem,
-  updateClothingItem,
   createClothingItem,
+  updateClothingItem,
   deleteClothingItem,
   generateOutfit,
   getOutfits,
+  getLatestOutfits,
   createOutfit,
   deleteOutfit,
-  getLatestOutfits,
   createUser,
   getUserByEmail,
   createSession,

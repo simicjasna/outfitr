@@ -1,0 +1,176 @@
+.landing-page {
+  min-height: 100vh;
+  padding: 36px 70px;
+  box-sizing: border-box;
+
+  background: linear-gradient(135deg, #ffffff 0%, #f8f6f3 100%);
+}
+
+.landing-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.landing-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.landing-logo img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+
+.landing-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.landing-links a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.landing-hero {
+  display: grid;
+  grid-template-columns: 1.25fr 0.8fr;
+  gap: 52px;
+  align-items: center;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #9b8472;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.landing-text h1 {
+  max-width: 680px;
+  margin: 0;
+  font-size: 64px;
+  line-height: 1.04;
+  color: var(--text);
+}
+
+.landing-text p {
+  max-width: 620px;
+  margin: 24px 0 34px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.landing-actions {
+  display: flex;
+  gap: 14px;
+}
+
+.secondary-button {
+  height: 46px;
+  padding: 0 28px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+
+  background: #ffffff;
+  color: var(--text);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.secondary-button:hover {
+  background: #f4f1ed;
+}
+
+.landing-card {
+  background: var(--primary);
+  color: #ffffff;
+
+  border-radius: 28px;
+  padding: 38px;
+  box-sizing: border-box;
+
+  box-shadow: 0 18px 40px rgba(67, 48, 48, 0.18);
+}
+
+.landing-card img {
+  width: 120px;
+  height: 120px;
+
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 12px;
+  box-sizing: border-box;
+
+  object-fit: contain;
+  margin-bottom: 34px;
+}
+
+.landing-card h2 {
+  margin: 0 0 24px;
+  font-size: 30px;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-list div {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  padding: 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.feature-list strong {
+  color: #f3dfd2;
+}
+
+.feature-list span {
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .landing-page {
+    padding: 28px;
+  }
+
+  .landing-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-text h1 {
+    font-size: 42px;
+  }
+}
+
+.landing-links .primary-button {
+  color: #ffffff;
+}
+
+.landing-links .primary-button:hover {
+  opacity: 0.92;
+}

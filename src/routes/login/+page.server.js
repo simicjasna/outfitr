@@ -62,6 +62,6 @@ export const actions = {
 
     cookies.set(sessionCookieName, sessionToken, sessionCookieOptions);
 
-    redirect(303, "/");
+    redirect(303, "/dashboard");
   },
 };

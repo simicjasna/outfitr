@@ -1,7 +1,9 @@
 import db from "$lib/server/db.js";
 import { redirect } from "@sveltejs/kit";
 
-export async function load({ url }) {
+export async function load({ url, locals }) {
+  const userId = locals.user._id;
+
   const category = url.searchParams.get("category") || "";
   const color = url.searchParams.get("color") || "";
   const style = url.searchParams.get("style") || "";
@@ -15,14 +17,14 @@ export async function load({ url }) {
   if (created) {
     feedback = {
       type: "success",
-      message: `${created} wurde erfolgreich hinzugefügt.`,
+      message: `"${created}" wurde erfolgreich hinzugefügt.`,
     };
   }
 
   if (removed) {
     feedback = {
       type: "danger",
-      message: `${removed} wurde ausgemistet.`,
+      message: `"${removed}" wurde ausgemistet.`,
     };
   }
 
@@ -34,11 +36,14 @@ export async function load({ url }) {
   }
 
   return {
-    clothes: await db.getClothes({
-      category,
-      color,
-      style,
-    }),
+    clothes: await db.getClothes(
+      {
+        category,
+        color,
+        style,
+      },
+      userId,
+    ),
     filters: {
       category,
       color,
@@ -49,13 +54,15 @@ export async function load({ url }) {
 }
 
 export const actions = {
-  remove: async ({ request }) => {
+  remove: async ({ request, locals }) => {
+    const userId = locals.user._id;
+
     const data = await request.formData();
 
     const id = data.get("id");
     const name = data.get("name");
 
-    await db.deleteClothingItem(id);
+    await db.deleteClothingItem(id, userId);
 
     redirect(303, `/wardrobe?removed=${encodeURIComponent(name)}`);
   },

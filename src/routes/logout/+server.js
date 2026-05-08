@@ -11,5 +11,5 @@ export async function GET({ cookies }) {
 
   cookies.delete(sessionCookieName, sessionCookieOptions);
 
-  redirect(303, "/login");
+  redirect(303, "/");
 }
