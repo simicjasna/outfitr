@@ -321,6 +321,77 @@ async function getLatestOutfits(limit = 3) {
   return outfits;
 }
 
+async function createUser(user) {
+  const result = await db.collection("users").insertOne({
+    name: user.name,
+    email: user.email,
+    passwordHash: user.passwordHash,
+    createdAt: new Date(),
+  });
+
+  return {
+    _id: result.insertedId.toString(),
+    name: user.name,
+    email: user.email,
+  };
+}
+
+async function getUserByEmail(email) {
+  const user = await db.collection("users").findOne({
+    email,
+  });
+
+  if (!user) {
+    return null;
+  }
+
+  user._id = user._id.toString();
+
+  return user;
+}
+
+async function createSession(session) {
+  await db.collection("sessions").insertOne({
+    token: session.token,
+    userId: session.userId,
+    createdAt: new Date(),
+    expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
+  });
+}
+
+async function getUserBySession(token) {
+  const session = await db.collection("sessions").findOne({
+    token,
+    expiresAt: {
+      $gt: new Date(),
+    },
+  });
+
+  if (!session) {
+    return null;
+  }
+
+  const user = await db.collection("users").findOne({
+    _id: new ObjectId(session.userId),
+  });
+
+  if (!user) {
+    return null;
+  }
+
+  return {
+    _id: user._id.toString(),
+    name: user.name,
+    email: user.email,
+  };
+}
+
+async function deleteSession(token) {
+  await db.collection("sessions").deleteOne({
+    token,
+  });
+}
+
 export default {
   getClothes,
   getClothingItem,
@@ -332,4 +403,9 @@ export default {
   createOutfit,
   deleteOutfit,
   getLatestOutfits,
+  createUser,
+  getUserByEmail,
+  createSession,
+  getUserBySession,
+  deleteSession,
 };

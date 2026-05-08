@@ -110,3 +110,31 @@ select {
   padding: 10px 12px;
   background: white;
 }
+
+.auth-layout {
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.user-box {
+  margin-top: auto;
+  padding: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.user-box p {
+  margin: 0 0 8px;
+  font-weight: bold;
+}
+
+.user-box a {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}

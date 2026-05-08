@@ -1,41 +1,41 @@
 <script>
   import "../app.css";
+  import { page } from "$app/state";
 
-  let { children } = $props();
+  let { data, children } = $props();
+
+  const authPages = ["/login", "/register"];
+  let isAuthPage = $derived(authPages.includes(page.url.pathname));
 </script>
 
-<div class="app">
-  <aside class="sidebar">
-    <div class="logo">
-      <a href="/">
-        <img src="/images/logo.png" alt="Outfitr Logo" />
-      </a>
-    </div>
-
-    <nav>
-      <a href="/">
-        <img src="/images/icon-logo-black.png" alt="Outfitr Logo" />
-        <span>Home</span>
-      </a>
-
-      <a href="/wardrobe">
-        <img src="/images/wardrobe.png" alt="Wardrobe" />
-        <span>Wardrobe</span>
-      </a>
-
-      <a href="/generator">
-        <img src="/images/fashion-design.png" alt="Generator" />
-        <span>Generator</span>
-      </a>
-
-      <a href="/outfits">
-        <img src="/images/heart.png" alt="Favoriten" />
-        <span>Outfits</span>
-      </a>
-    </nav>
-  </aside>
-
-  <main class="content">
+{#if isAuthPage}
+  <main class="auth-layout">
     {@render children()}
   </main>
-</div>
+{:else}
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="/images/logo.png" alt="Outfitr Logo" />
+      </div>
+
+      <nav>
+        <a href="/">Home</a>
+        <a href="/wardrobe">Wardrobe</a>
+        <a href="/generator">Generator</a>
+        <a href="/outfits">Outfits</a>
+      </nav>
+
+      {#if data.user}
+        <div class="user-box">
+          <p>{data.user.name}</p>
+          <a href="/logout">Logout</a>
+        </div>
+      {/if}
+    </aside>
+
+    <main class="content">
+      {@render children()}
+    </main>
+  </div>
+{/if}
