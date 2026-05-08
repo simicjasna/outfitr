@@ -1,13 +1,11 @@
 <script>
-	let { feedback } = $props();
+  import "./FeedbackMessage.css";
+
+  let { feedback } = $props();
 </script>
 
 {#if feedback}
-	<div
-		class:success-message={feedback.type === 'success'}
-		class:danger-message={feedback.type === 'danger'}
-		class:warning-message={feedback.type === 'warning'}
-	>
-		{feedback.message}
-	</div>
+  <div class={`feedback-message ${feedback.type}`}>
+    <span>{feedback.message}</span>
+  </div>
 {/if}

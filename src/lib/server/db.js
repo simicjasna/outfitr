@@ -76,7 +76,7 @@ async function createClothingItem(item) {
       category: item.category,
       color: item.color,
       style: item.style,
-      image: item.image || "/images/placeholder.png",
+      image: item.image,
     });
   } catch (error) {
     console.error("Error creating clothing item:", error);
