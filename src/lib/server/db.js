@@ -380,6 +380,47 @@ async function deleteSession(token) {
   await db.collection("sessions").deleteOne({ token });
 }
 
+async function getUserById(id) {
+  const user = await db.collection("users").findOne({
+    _id: new ObjectId(id),
+  });
+
+  if (!user) {
+    return null;
+  }
+
+  user._id = user._id.toString();
+
+  return user;
+}
+
+async function updateUserProfile(id, profile) {
+  await db.collection("users").updateOne(
+    {
+      _id: new ObjectId(id),
+    },
+    {
+      $set: {
+        name: profile.name,
+        resalePlatforms: profile.resalePlatforms,
+      },
+    },
+  );
+}
+
+async function updateUserPassword(id, passwordHash) {
+  await db.collection("users").updateOne(
+    {
+      _id: new ObjectId(id),
+    },
+    {
+      $set: {
+        passwordHash,
+      },
+    },
+  );
+}
+
 export default {
   getClothes,
   getClothingItem,
@@ -396,4 +437,7 @@ export default {
   createSession,
   getUserBySession,
   deleteSession,
+  getUserById,
+  updateUserProfile,
+  updateUserPassword,
 };
