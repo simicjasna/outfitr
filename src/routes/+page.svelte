@@ -8,11 +8,6 @@
       <img src="/images/logo.png" alt="Outfitr Logo" />
       <span>Outfitr</span>
     </div>
-
-    <div class="landing-links">
-      <a href="/login">Login</a>
-      <a class="primary-button" href="/register">Registrieren</a>
-    </div>
   </header>
 
   <main class="landing-hero">

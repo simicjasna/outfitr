@@ -8,7 +8,6 @@
 
 .landing-nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 80px;
 }
@@ -27,18 +26,6 @@
   width: 46px;
   height: 46px;
   object-fit: contain;
-}
-
-.landing-links {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.landing-links a {
-  text-decoration: none;
-  font-weight: 700;
-  color: var(--text);
 }
 
 .landing-hero {
@@ -165,12 +152,4 @@
   .landing-text h1 {
     font-size: 42px;
   }
-}
-
-.landing-links .primary-button {
-  color: #ffffff;
-}
-
-.landing-links .primary-button:hover {
-  opacity: 0.92;
 }

@@ -3,7 +3,7 @@
 
   let { data, form } = $props();
 
-  const profileValues = form?.values || data.profile;
+  let profileValues = $derived(form?.values || data.profile);
 </script>
 
 <section class="profile-page">
