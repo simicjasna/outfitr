@@ -6,6 +6,8 @@
   let { data, children } = $props();
 
   let darkMode = $state(false);
+  let dropdownOpen = $state(false);
+  let userMenuRef = $state();
 
   const publicPages = ["/", "/login", "/register"];
   let isPublicPage = $derived(publicPages.includes(page.url.pathname));
@@ -21,6 +23,18 @@
       darkMode = true;
       document.documentElement.classList.add("dark");
     }
+
+    function handleClickOutside(event) {
+      if (userMenuRef && !userMenuRef.contains(event.target)) {
+        dropdownOpen = false;
+      }
+    }
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
   });
 
   function toggleDarkMode() {
@@ -33,6 +47,16 @@
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
     }
+
+    dropdownOpen = false;
+  }
+
+  function toggleDropdown() {
+    dropdownOpen = !dropdownOpen;
+  }
+
+  function closeDropdown() {
+    dropdownOpen = false;
   }
 </script>
 
@@ -45,7 +69,8 @@
     <main class="public-layout">
       {@render children()}
     </main>
-  </div>{:else}
+  </div>
+{:else}
   <div class="app">
     <aside class="sidebar">
       <a class="logo" href="/dashboard">
@@ -65,23 +90,29 @@
 
     <main class="content">
       <header class="top-user-bar">
-        <details class="user-menu">
-          <summary class="user-menu-button">
+        <div class="user-menu" bind:this={userMenuRef}>
+          <button
+            type="button"
+            class="user-menu-button"
+            onclick={toggleDropdown}
+          >
             <img src="/images/user.png" alt="User" />
             <span>{data.user?.name}</span>
             <span class="dropdown-arrow">▾</span>
-          </summary>
+          </button>
 
-          <div class="user-dropdown">
-            <a href="/profile">Profil</a>
+          {#if dropdownOpen}
+            <div class="user-dropdown">
+              <a href="/profile" onclick={closeDropdown}> Profil </a>
 
-            <button type="button" onclick={toggleDarkMode}>
-              {darkMode ? "Light Mode" : "Dark Mode"}
-            </button>
+              <button type="button" onclick={toggleDarkMode}>
+                {darkMode ? "Light Mode" : "Dark Mode"}
+              </button>
 
-            <a href="/logout">Logout</a>
-          </div>
-        </details>
+              <a href="/logout" onclick={closeDropdown}> Logout </a>
+            </div>
+          {/if}
+        </div>
       </header>
 
       {@render children()}
