@@ -1,59 +1,65 @@
 <script>
-  import "./register.css";
+  import "../login/auth.css"
 
   let { form } = $props();
 </script>
 
 <section class="auth-page">
-  <div class="auth-card">
-    <div class="auth-header">
-      <p class="eyebrow">Outfitr Account</p>
-      <h1>Account erstellen</h1>
-      <p>
-        Erstelle deinen persönlichen Account, damit dein Kleiderschrank später
-        nur dir gehört.
-      </p>
-    </div>
+  <a class="auth-back" href="/">
+    <img src="/images/logo.png" alt="Outfitr Logo" />
+    <span>Outfitr</span>
+  </a>
 
-    <form method="POST" action="?/register" class="auth-form">
+  <div class="auth-card">
+    <p class="eyebrow">Neuer Account</p>
+
+    <h1>Registrieren</h1>
+
+    <p class="auth-description">
+      Erstelle deinen persönlichen Outfitr Account und starte deinen digitalen
+      Kleiderschrank.
+    </p>
+
+    {#if form?.error}
+      <div class="auth-error">
+        {form.error}
+      </div>
+    {/if}
+
+    <form method="POST" class="auth-form">
       <label>
         Name
-        <input
-          type="text"
-          name="name"
-          placeholder="z. B. Jasna"
-          value={form?.values?.name || ""}
-        />
+
+        <input type="text" name="name" placeholder="Dein Name" required />
       </label>
 
       <label>
         E-Mail
+
         <input
           type="email"
           name="email"
-          placeholder="dein@email.ch"
-          value={form?.values?.email || ""}
+          placeholder="email@adresse.com"
+          required
         />
       </label>
 
       <label>
         Passwort
+
         <input
           type="password"
           name="password"
           placeholder="Mindestens 6 Zeichen"
+          required
         />
       </label>
-
-      {#if form?.message}
-        <p class="auth-error">{form.message}</p>
-      {/if}
 
       <button type="submit"> Account erstellen </button>
     </form>
 
     <p class="auth-switch">
-      Du hast schon einen Account?
+      Bereits registriert?
       <a href="/login">Einloggen</a>
     </p>
   </div>

@@ -1,42 +1,52 @@
 <script>
-  import "./login.css";
+  import "./auth.css";
 
-  let { data, form } = $props();
+  let { form } = $props();
 </script>
 
 <section class="auth-page">
-  <div class="auth-card">
-    <div class="auth-header">
-      <p class="eyebrow">Willkommen zurück</p>
-      <h1>Einloggen</h1>
-      <p>Melde dich an, um deinen persönlichen Kleiderschrank zu verwenden.</p>
-    </div>
+  <a class="auth-back" href="/">
+    <img src="/images/logo.png" alt="Outfitr Logo" />
+    <span>Outfitr</span>
+  </a>
 
-    {#if data.registered}
-      <p class="auth-success">
-        Account für {data.registered} wurde erstellt. Bitte logge dich ein.
-      </p>
+  <div class="auth-card">
+    <p class="eyebrow">Willkommen zurück</p>
+
+    <h1>Einloggen</h1>
+
+    <p class="auth-description">
+      Melde dich an, um deinen persönlichen Kleiderschrank zu verwenden.
+    </p>
+
+    {#if form?.error}
+      <div class="auth-error">
+        {form.error}
+      </div>
     {/if}
 
-    <form method="POST" action="?/login" class="auth-form">
+    <form method="POST" class="auth-form">
       <label>
         E-Mail
+
         <input
           type="email"
           name="email"
-          placeholder="dein@email.ch"
-          value={form?.values?.email || ""}
+          placeholder="email@adresse.com"
+          required
         />
       </label>
 
       <label>
         Passwort
-        <input type="password" name="password" placeholder="Dein Passwort" />
-      </label>
 
-      {#if form?.message}
-        <p class="auth-error">{form.message}</p>
-      {/if}
+        <input
+          type="password"
+          name="password"
+          placeholder="Dein Passwort"
+          required
+        />
+      </label>
 
       <button type="submit"> Einloggen </button>
     </form>
