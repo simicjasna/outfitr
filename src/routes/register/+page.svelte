@@ -1,5 +1,5 @@
 <script>
-  import "../login/auth.css"
+  import "../login/auth.css";
 
   let { form } = $props();
 </script>
@@ -26,7 +26,7 @@
       </div>
     {/if}
 
-    <form method="POST" class="auth-form">
+    <form method="POST" action="?/register" class="auth-form">
       <label>
         Name
 

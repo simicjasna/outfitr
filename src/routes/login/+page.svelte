@@ -25,7 +25,7 @@
       </div>
     {/if}
 
-    <form method="POST" class="auth-form">
+    <form method="POST" action="?/login" class="auth-form">
       <label>
         E-Mail
 
