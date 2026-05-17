@@ -37,10 +37,15 @@
 </script>
 
 {#if isPublicPage}
-  <main class="public-layout">
-    {@render children()}
-  </main>
-{:else}
+  <div class="public-wrapper">
+    <button class="public-theme-toggle" type="button" onclick={toggleDarkMode}>
+      {darkMode ? "☀️ Light" : "🌙 Dark"}
+    </button>
+
+    <main class="public-layout">
+      {@render children()}
+    </main>
+  </div>{:else}
   <div class="app">
     <aside class="sidebar">
       <a class="logo" href="/dashboard">

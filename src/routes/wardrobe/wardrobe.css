@@ -5,21 +5,16 @@
   gap: 34px;
 }
 
-/* HERO */
-
 .wardrobe-hero {
-  background: linear-gradient(135deg, #ffffff 0%, #f8f6f3 100%);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--card) 100%);
   border: 1px solid var(--border);
   border-radius: 24px;
   padding: 38px 42px;
-  box-sizing: border-box;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 32px;
-
-  box-shadow: 0 10px 30px rgba(67, 48, 48, 0.04);
+  box-shadow: var(--soft-shadow);
 }
 
 .eyebrow {
@@ -35,6 +30,7 @@
   margin: 0;
   font-size: 42px;
   line-height: 1.1;
+  color: var(--text);
 }
 
 .wardrobe-hero p:last-child {
@@ -48,39 +44,34 @@
 .add-button {
   height: 46px;
   padding: 0 28px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-radius: 10px;
   text-decoration: none;
   white-space: nowrap;
 }
 
-/* FILTER */
-
 .filter-card {
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 20px;
   padding: 24px;
-  box-sizing: border-box;
-
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 24px;
+  flex-direction: column;
+  gap: 22px;
+  box-shadow: var(--soft-shadow);
 }
 
 .filter-card h2 {
   margin: 0;
   font-size: 22px;
+  color: var(--text);
 }
 
 .filter-bar {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 14px;
   flex-wrap: wrap;
 }
@@ -92,81 +83,102 @@
 .filter-bar .select-field select {
   width: 160px;
   height: 38px;
-
   border-radius: 20px;
   border: 1px solid var(--border);
-
   background: var(--card);
-
   padding: 0 16px;
-
   font-size: 14px;
   font-weight: 600;
-
   color: var(--text);
   cursor: pointer;
+}
+
+.color-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.color-chip {
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.color-chip:hover {
+  background: var(--card);
+}
+
+.color-chip.selected {
+  background: var(--primary);
+  color: #1f1b16;
+  border-color: var(--primary);
+}
+
+:root:not(.dark) .color-chip.selected {
+  color: #ffffff;
+}
+
+.color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
 .filter-button {
   height: 38px;
   padding: 0 20px;
-
   border: none;
   border-radius: 20px;
-
   background: var(--primary);
-  color: #ffffff;
-
+  color: #1f1b16;
   font-size: 14px;
-  font-weight: bold;
-
+  font-weight: 700;
   cursor: pointer;
 }
 
-.filter-button:hover {
-  opacity: 0.92;
+:root:not(.dark) .filter-button {
+  color: #ffffff;
 }
 
 .reset-filter {
   height: 38px;
   padding: 0 18px;
-
   border-radius: 20px;
   border: 1px solid var(--border);
-
-  background: #ffffff;
+  background: var(--surface);
   color: var(--text);
-
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  box-sizing: border-box;
   transition: 0.2s;
 }
 
 .reset-filter:hover {
-  background: #f4f1ed;
-}
-
-/* CONTENT HEADER */
-
-.wardrobe-content-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: var(--card);
 }
 
 .wardrobe-content-header h2 {
   margin: 0;
   font-size: 28px;
+  color: var(--text);
 }
-
-/* GRID */
 
 .clothing-grid {
   display: grid;
@@ -174,31 +186,24 @@
   gap: 24px;
 }
 
-/* CARD */
-
 .clothing-card {
   position: relative;
-
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 18px;
-
   padding: 16px;
-  box-sizing: border-box;
-
   transition: all 0.25s ease;
 }
 
 .clothing-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(67, 48, 48, 0.08);
+  box-shadow: var(--soft-shadow);
 }
 
 .card-actions {
   position: absolute;
   top: 12px;
   right: 12px;
-
   display: flex;
   gap: 8px;
   z-index: 2;
@@ -207,34 +212,48 @@
 .edit-button,
 .remove-button {
   all: unset;
-
-  width: 34px;
-  height: 34px;
-
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  border: 1px solid var(--border);
 
-  background: #ffffff;
+  background: #fffaf6;
+  border: 1px solid #e2c3af;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   cursor: pointer;
-  transition: 0.2s;
+  transition: all 0.2s ease;
+
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
 }
 
 .edit-button img,
 .remove-button img {
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
   object-fit: contain;
+  opacity: 0.9;
 }
 
 .edit-button:hover,
 .remove-button:hover {
-  background: #fbf1ef;
+  background: var(--primary);
+  border-color: var(--primary);
   transform: scale(1.08);
+}
+
+:root.dark .edit-button,
+:root.dark .remove-button {
+  background: #fffaf6;
+  border-color: #e2c3af;
+}
+
+:root.dark .edit-button:hover,
+:root.dark .remove-button:hover {
+  background: var(--primary);
+  border-color: var(--primary);
 }
 
 .remove-form {
@@ -244,13 +263,10 @@
 .clothing-image {
   width: 100%;
   height: 180px;
-
   object-fit: contain;
-
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
-
   margin-bottom: 14px;
 }
 
@@ -258,6 +274,7 @@
   margin: 0 0 6px;
   font-size: 18px;
   text-align: center;
+  color: var(--text);
 }
 
 .clothing-info p {
@@ -267,22 +284,19 @@
   text-align: center;
 }
 
-/* EMPTY */
-
 .empty-state {
-  background: #ffffff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 22px;
-
   padding: 60px 32px;
   margin-top: 20px;
-
   text-align: center;
 }
 
 .empty-state h2 {
   font-size: 24px;
   margin: 0 0 10px;
+  color: var(--text);
 }
 
 .empty-state p {
@@ -290,15 +304,12 @@
   margin-bottom: 24px;
 }
 
-/* RESPONSIVE */
-
 @media (max-width: 1200px) {
   .clothing-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .wardrobe-hero,
-  .filter-card {
+  .wardrobe-hero {
     align-items: flex-start;
     flex-direction: column;
   }

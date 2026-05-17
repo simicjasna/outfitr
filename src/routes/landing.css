@@ -153,3 +153,60 @@
     font-size: 42px;
   }
 }
+
+/* DARK MODE */
+
+:root.dark .landing-page {
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(226, 199, 182, 0.08),
+      transparent 30%
+    ),
+    linear-gradient(135deg, #121010 0%, #181313 100%);
+}
+
+:root.dark .landing-logo {
+  color: var(--primary);
+}
+
+:root.dark .landing-text h1 {
+  color: var(--text);
+}
+
+:root.dark .landing-text p {
+  color: var(--muted);
+}
+
+:root.dark .secondary-button {
+  background: var(--card);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+:root.dark .secondary-button:hover {
+  background: var(--surface);
+}
+
+:root.dark .landing-card {
+  background: linear-gradient(145deg, #2a2020 0%, #352727 100%);
+
+  color: var(--text);
+
+  border: 1px solid var(--border);
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.34);
+}
+
+:root.dark .landing-card img {
+  background: #fffaf6;
+}
+
+:root.dark .feature-list div {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+:root.dark .feature-list strong {
+  color: var(--primary);
+}
