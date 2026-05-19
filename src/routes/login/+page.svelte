@@ -19,12 +19,11 @@
       Melde dich an, um deinen persönlichen Kleiderschrank zu verwenden.
     </p>
 
-    {#if form?.error}
+    {#if form?.message}
       <div class="auth-error">
-        {form.error}
+        {form.message}
       </div>
     {/if}
-
     <form method="POST" action="?/login" class="auth-form">
       <label>
         E-Mail

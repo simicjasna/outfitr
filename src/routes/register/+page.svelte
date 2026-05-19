@@ -20,9 +20,9 @@
       Kleiderschrank.
     </p>
 
-    {#if form?.error}
+    {#if form?.message}
       <div class="auth-error">
-        {form.error}
+        {form.message}
       </div>
     {/if}
 
