@@ -63,7 +63,11 @@
 {#if isPublicPage}
   <div class="public-wrapper">
     <button class="public-theme-toggle" type="button" onclick={toggleDarkMode}>
-      {darkMode ? "☀️ Light" : "🌙 Dark"}
+      <img
+        src={darkMode ? "/images/light.png" : "/images/dark.png"}
+        alt={darkMode ? "Light Mode" : "Dark Mode"}
+      />
+      <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
     </button>
 
     <main class="public-layout">
@@ -98,7 +102,11 @@
           >
             <img src="/images/user.png" alt="User" />
             <span>{data.user?.name}</span>
-            <span class="dropdown-arrow">▾</span>
+            <img
+              class="dropdown-arrow-icon"
+              src="/images/chevron-down.png"
+              alt="dropdown-arrow-icon"
+            />
           </button>
 
           {#if dropdownOpen}

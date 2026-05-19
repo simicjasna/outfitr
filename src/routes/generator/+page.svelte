@@ -82,7 +82,7 @@
               <h2>Dein Outfit</h2>
             </div>
 
-            <span class="match-pill"> ✨ Passend zu deinem Stil </span>
+            <span class="match-pill">Passend zu deinem Stil </span>
           </div>
 
           <div class="outfit-result">
