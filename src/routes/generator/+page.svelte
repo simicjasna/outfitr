@@ -29,7 +29,8 @@
 
       <p>
         Wähle einen Stil und optional eine Farbe. Outfitr sucht dir danach eine
-        passende Kombination aus deinem Kleiderschrank.
+        passende Kombination aus deinem Kleiderschrank. Passende Accessoires
+        werden automatisch ergänzt.
       </p>
     </div>
   </div>
@@ -81,7 +82,7 @@
               <h2>Dein Outfit</h2>
             </div>
 
-            <span class="match-pill">Passend zu deinem Stil</span>
+            <span class="match-pill"> ✨ Passend zu deinem Stil </span>
           </div>
 
           <div class="outfit-result">
@@ -94,10 +95,10 @@
 
                   <p>
                     {item.category}
-                    •
-                    {item.color}
-                    •
-                    {item.style}
+                    {#if item.accessoryType}
+                      • {item.accessoryType}
+                    {/if}
+                    • {item.color} • {item.style}
                   </p>
                 </div>
               </div>

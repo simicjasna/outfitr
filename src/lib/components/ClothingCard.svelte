@@ -26,6 +26,13 @@
 
   <div class="clothing-info">
     <h2>{item.name}</h2>
-    <p>{item.category} • {item.color} • {item.style}</p>
+
+    <p>
+      {item.category}
+      {#if item.accessoryType}
+        • {item.accessoryType}
+      {/if}
+      • {item.color} • {item.style}
+    </p>
   </div>
 </div>

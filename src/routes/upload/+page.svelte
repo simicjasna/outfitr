@@ -3,12 +3,18 @@
 
   import SelectField from "$lib/components/SelectField.svelte";
 
-  import { categories, colors, styles } from "$lib/constants/options.js";
+  import {
+    categories,
+    colors,
+    styles,
+    accessoryTypes,
+  } from "$lib/constants/options.js";
 
   let { form } = $props();
 
   let fileName = $state("");
   let imagePreview = $state("");
+  let selectedCategory = $state(form?.values?.category || "");
 
   function hasError(field) {
     return form?.missingFields?.includes(field);
@@ -42,8 +48,8 @@
     <h1>Neues Kleidungsstück hinzufügen</h1>
 
     <p>
-      Erfasse ein Kleidungsstück mit Bild, Kategorie, Farbe und Stil. Danach
-      erscheint es automatisch in deinem Kleiderschrank.
+      Erfasse ein Kleidungsstück oder Accessoire mit Bild, Kategorie, Farbe und
+      Stil. Danach erscheint es automatisch in deinem Kleiderschrank.
     </p>
   </div>
 
@@ -82,6 +88,10 @@
             </p>
 
             <span class="upload-hint"> PNG oder JPG auswählen </span>
+
+            {#if hasError("image")}
+              <span class="upload-error-text"> Bitte wähle ein Bild aus. </span>
+            {/if}
           {/if}
         </label>
 
@@ -112,14 +122,28 @@
           />
         </label>
 
-        <SelectField
-          label="Kategorie *"
-          name="category"
-          options={categories}
-          value={form?.values?.category || ""}
-          placeholder="Kategorie auswählen"
-          error={hasError("category")}
-        />
+        <div class:error-field={hasError("category")} class="select-field">
+          <label for="category">Kategorie *</label>
+
+          <select id="category" name="category" bind:value={selectedCategory}>
+            <option value="">Kategorie auswählen</option>
+
+            {#each categories as category}
+              <option value={category}>{category}</option>
+            {/each}
+          </select>
+        </div>
+
+        {#if selectedCategory === "Accessoire"}
+          <SelectField
+            label="Accessoire Typ *"
+            name="accessoryType"
+            options={accessoryTypes}
+            value={form?.values?.accessoryType || ""}
+            placeholder="Typ auswählen"
+            error={hasError("accessoryType")}
+          />
+        {/if}
 
         <SelectField
           label="Farbe *"

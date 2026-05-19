@@ -53,7 +53,13 @@
     {#each outfit.items as item}
       <div class="preview-card">
         <img src={item.image} alt={item.name} />
-        <span>{item.category}</span>
+
+        <span>
+          {item.category}
+          {#if item.accessoryType}
+            • {item.accessoryType}
+          {/if}
+        </span>
       </div>
     {/each}
   </div>

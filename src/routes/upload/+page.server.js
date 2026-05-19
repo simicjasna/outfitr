@@ -11,6 +11,7 @@ export const actions = {
 
     const name = data.get("name")?.toString().trim();
     const category = data.get("category")?.toString();
+    const accessoryType = data.get("accessoryType")?.toString();
     const color = data.get("color")?.toString();
     const style = data.get("style")?.toString();
     const image = data.get("image");
@@ -20,6 +21,9 @@ export const actions = {
     if (!image || image.size === 0) missingFields.push("image");
     if (!name) missingFields.push("name");
     if (!category) missingFields.push("category");
+    if (category === "Accessoire" && !accessoryType) {
+      missingFields.push("accessoryType");
+    }
     if (!color) missingFields.push("color");
     if (!style) missingFields.push("style");
 
@@ -30,6 +34,7 @@ export const actions = {
         values: {
           name,
           category,
+          accessoryType,
           color,
           style,
         },
@@ -49,6 +54,7 @@ export const actions = {
       {
         name,
         category,
+        accessoryType,
         color,
         style,
         image: `/uploads/${fileName}`,

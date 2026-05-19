@@ -3,9 +3,16 @@
 
   import SelectField from "$lib/components/SelectField.svelte";
 
-  import { categories, colors, styles } from "$lib/constants/options.js";
+  import {
+    categories,
+    colors,
+    styles,
+    accessoryTypes,
+  } from "$lib/constants/options.js";
 
   let { data, form } = $props();
+
+  let selectedCategory = $state(data.item.category || "");
 </script>
 
 <section class="edit-page">
@@ -28,13 +35,27 @@
         />
       </label>
 
-      <SelectField
-        label="Kategorie"
-        name="category"
-        options={categories}
-        value={data.item.category}
-        placeholder="Kategorie auswählen"
-      />
+      <div class="select-field">
+        <label for="category">Kategorie</label>
+
+        <select id="category" name="category" bind:value={selectedCategory}>
+          <option value="">Kategorie auswählen</option>
+
+          {#each categories as category}
+            <option value={category}>{category}</option>
+          {/each}
+        </select>
+      </div>
+
+      {#if selectedCategory === "Accessoire"}
+        <SelectField
+          label="Accessoire Typ"
+          name="accessoryType"
+          options={accessoryTypes}
+          value={data.item.accessoryType || ""}
+          placeholder="Typ auswählen"
+        />
+      {/if}
 
       <SelectField
         label="Farbe"

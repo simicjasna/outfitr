@@ -65,6 +65,7 @@ async function createClothingItem(item, userId) {
       userId,
       name: item.name,
       category: item.category,
+      accessoryType: item.category === "Accessoire" ? item.accessoryType : "",
       color: item.color,
       style: item.style,
       image: item.image || "/images/placeholder.png",
@@ -86,6 +87,8 @@ async function updateClothingItem(id, item, userId) {
         $set: {
           name: item.name,
           category: item.category,
+          accessoryType:
+            item.category === "Accessoire" ? item.accessoryType : "",
           color: item.color,
           style: item.style,
         },
@@ -117,9 +120,7 @@ function getColorHarmonyScore(colors, preferredColor) {
 
   const uniqueColors = [...new Set(colors.filter(Boolean))];
 
-  if (preferredColor && colors.includes(preferredColor)) {
-    score += 4;
-  }
+  if (preferredColor && colors.includes(preferredColor)) score += 4;
 
   if (uniqueColors.length === 1) score += 4;
   if (uniqueColors.length === 2) score += 3;
@@ -162,6 +163,52 @@ function getCombinations(shirts, pants, shoes) {
   return combinations;
 }
 
+function getAccessoryScore(accessory, filters) {
+  let score = 0;
+
+  if (accessory.style === filters.style) score += 5;
+  if (filters.color && accessory.color === filters.color) score += 3;
+
+  if (
+    ["Schwarz", "Weiss", "Beige", "Braun", "Grau"].includes(accessory.color)
+  ) {
+    score += 2;
+  }
+
+  return score;
+}
+
+function getMatchingAccessories(clothes, filters) {
+  const accessories = clothes.filter((item) => {
+    return (
+      item.category === "Accessoire" &&
+      item.accessoryType &&
+      item.style === filters.style
+    );
+  });
+
+  const bestAccessoryByType = new Map();
+
+  for (const accessory of accessories) {
+    const type = accessory.accessoryType;
+    const existing = bestAccessoryByType.get(type);
+
+    if (!existing) {
+      bestAccessoryByType.set(type, accessory);
+      continue;
+    }
+
+    if (
+      getAccessoryScore(accessory, filters) >
+      getAccessoryScore(existing, filters)
+    ) {
+      bestAccessoryByType.set(type, accessory);
+    }
+  }
+
+  return [...bestAccessoryByType.values()];
+}
+
 async function generateOutfit(filters = {}, userId) {
   try {
     if (!filters.style) {
@@ -172,6 +219,7 @@ async function generateOutfit(filters = {}, userId) {
     }
 
     const clothes = await getClothes({}, userId);
+
     const matchingClothes = clothes.filter(
       (item) => item.style === filters.style,
     );
@@ -204,6 +252,7 @@ async function generateOutfit(filters = {}, userId) {
     }
 
     const selectedCombination = pickRandom(bestCombinations);
+    const accessories = getMatchingAccessories(clothes, filters);
 
     const outfitName = filters.color
       ? `${filters.style} ${filters.color} Outfit`
@@ -216,7 +265,7 @@ async function generateOutfit(filters = {}, userId) {
         color: filters.color,
         style: filters.style,
         score: bestScore,
-        items: selectedCombination,
+        items: [...selectedCombination, ...accessories],
       },
     };
   } catch (error) {
@@ -344,6 +393,44 @@ async function getUserByEmail(email) {
   return user;
 }
 
+async function getUserById(id) {
+  const user = await db.collection("users").findOne({
+    _id: new ObjectId(id),
+  });
+
+  if (!user) return null;
+
+  user._id = user._id.toString();
+  return user;
+}
+
+async function updateUserProfile(id, profile) {
+  await db.collection("users").updateOne(
+    {
+      _id: new ObjectId(id),
+    },
+    {
+      $set: {
+        name: profile.name,
+        resalePlatforms: profile.resalePlatforms,
+      },
+    },
+  );
+}
+
+async function updateUserPassword(id, passwordHash) {
+  await db.collection("users").updateOne(
+    {
+      _id: new ObjectId(id),
+    },
+    {
+      $set: {
+        passwordHash,
+      },
+    },
+  );
+}
+
 async function createSession(session) {
   await db.collection("sessions").insertOne({
     token: session.token,
@@ -380,47 +467,6 @@ async function deleteSession(token) {
   await db.collection("sessions").deleteOne({ token });
 }
 
-async function getUserById(id) {
-  const user = await db.collection("users").findOne({
-    _id: new ObjectId(id),
-  });
-
-  if (!user) {
-    return null;
-  }
-
-  user._id = user._id.toString();
-
-  return user;
-}
-
-async function updateUserProfile(id, profile) {
-  await db.collection("users").updateOne(
-    {
-      _id: new ObjectId(id),
-    },
-    {
-      $set: {
-        name: profile.name,
-        resalePlatforms: profile.resalePlatforms,
-      },
-    },
-  );
-}
-
-async function updateUserPassword(id, passwordHash) {
-  await db.collection("users").updateOne(
-    {
-      _id: new ObjectId(id),
-    },
-    {
-      $set: {
-        passwordHash,
-      },
-    },
-  );
-}
-
 export default {
   getClothes,
   getClothingItem,
@@ -434,10 +480,10 @@ export default {
   deleteOutfit,
   createUser,
   getUserByEmail,
-  createSession,
-  getUserBySession,
-  deleteSession,
   getUserById,
   updateUserProfile,
   updateUserPassword,
+  createSession,
+  getUserBySession,
+  deleteSession,
 };

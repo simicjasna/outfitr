@@ -23,6 +23,7 @@ export const actions = {
 
     const name = data.get("name")?.toString().trim();
     const category = data.get("category")?.toString();
+    const accessoryType = data.get("accessoryType")?.toString();
     const color = data.get("color")?.toString();
     const style = data.get("style")?.toString();
 
@@ -32,11 +33,18 @@ export const actions = {
       });
     }
 
+    if (category === "Accessoire" && !accessoryType) {
+      return fail(400, {
+        message: "Bitte wähle einen Accessoire Typ aus.",
+      });
+    }
+
     await db.updateClothingItem(
       params.id,
       {
         name,
         category,
+        accessoryType,
         color,
         style,
       },
