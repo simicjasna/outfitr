@@ -1,7 +1,5 @@
 import db from "$lib/server/db.js";
 import { fail, redirect } from "@sveltejs/kit";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
 
 export const actions = {
   create: async ({ request, locals }) => {
@@ -41,14 +39,8 @@ export const actions = {
       });
     }
 
-    const uploadDir = path.join(process.cwd(), "static", "uploads");
-    await mkdir(uploadDir, { recursive: true });
-
-    const fileName = `${Date.now()}-${image.name}`;
-    const uploadPath = path.join(uploadDir, fileName);
-
     const buffer = Buffer.from(await image.arrayBuffer());
-    await writeFile(uploadPath, buffer);
+    const base64Image = `data:${image.type};base64,${buffer.toString("base64")}`;
 
     await db.createClothingItem(
       {
@@ -57,11 +49,10 @@ export const actions = {
         accessoryType,
         color,
         style,
-        image: `/uploads/${fileName}`,
+        image: base64Image,
       },
       userId,
     );
-
     redirect(303, `/wardrobe?created=${encodeURIComponent(name)}`);
   },
 };
