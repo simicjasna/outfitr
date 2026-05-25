@@ -24,6 +24,10 @@
   font-size: 14px;
 }
 
+.hero-mini-stats.four-stats {
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .hero-section {
   display: grid;
   grid-template-columns: 1.4fr 0.9fr;

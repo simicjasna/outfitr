@@ -34,6 +34,9 @@ export async function load({ locals }) {
   const shirts = clothes.filter((item) => item.category === "Shirt").length;
   const pants = clothes.filter((item) => item.category === "Hose").length;
   const shoes = clothes.filter((item) => item.category === "Schuhe").length;
+  const accessories = clothes.filter(
+    (item) => item.category === "Accessoire",
+  ).length;
 
   const possibleCombinations = shirts * pants * shoes;
   const mostUsedStyle = getMostUsedStyle(clothes);
@@ -46,6 +49,7 @@ export async function load({ locals }) {
       shirts,
       pants,
       shoes,
+      accessories,
       mostUsedStyle,
     },
     latestOutfits,

@@ -51,7 +51,7 @@
         </p>
       </div>
 
-      <div class="hero-mini-stats">
+      <div class="hero-mini-stats four-stats">
         <div>
           <strong>{data.stats.shirts}</strong>
           <span>Shirts</span>
@@ -65,6 +65,11 @@
         <div>
           <strong>{data.stats.shoes}</strong>
           <span>Schuhe</span>
+        </div>
+
+        <div>
+          <strong>{data.stats.accessories}</strong>
+          <span>Accessoires</span>
         </div>
       </div>
     </div>
