@@ -24,8 +24,6 @@
     const file = event.target.files[0];
 
     if (!file) {
-      fileName = "";
-      imagePreview = "";
       return;
     }
 
