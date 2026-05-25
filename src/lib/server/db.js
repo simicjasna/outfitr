@@ -343,6 +343,7 @@ async function createOutfit(outfit, userId) {
       style: outfit.style,
       score: outfit.score,
       items: outfit.items,
+      isFavorite: false,
       createdAt: new Date(),
     });
 
@@ -467,6 +468,59 @@ async function deleteSession(token) {
   await db.collection("sessions").deleteOne({ token });
 }
 
+async function getFavoriteOutfits(userId) {
+  let outfits = [];
+
+  try {
+    outfits = await db
+      .collection("outfits")
+      .find({
+        userId,
+        isFavorite: true,
+      })
+      .sort({ createdAt: -1 })
+      .toArray();
+
+    outfits.forEach(convertId);
+  } catch (error) {
+    console.error("Error loading favorite outfits:", error);
+  }
+
+  return outfits;
+}
+
+async function toggleOutfitFavorite(id, userId) {
+  try {
+    const outfit = await db.collection("outfits").findOne({
+      _id: new ObjectId(id),
+      userId,
+    });
+
+    if (!outfit) {
+      return null;
+    }
+
+    const newValue = !outfit.isFavorite;
+
+    await db.collection("outfits").updateOne(
+      {
+        _id: new ObjectId(id),
+        userId,
+      },
+      {
+        $set: {
+          isFavorite: newValue,
+        },
+      },
+    );
+
+    return newValue;
+  } catch (error) {
+    console.error("Error toggling outfit favorite:", error);
+    return null;
+  }
+}
+
 export default {
   getClothes,
   getClothingItem,
@@ -486,4 +540,6 @@ export default {
   createSession,
   getUserBySession,
   deleteSession,
+  getFavoriteOutfits,
+  toggleOutfitFavorite,
 };

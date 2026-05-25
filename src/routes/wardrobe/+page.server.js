@@ -17,21 +17,21 @@ export async function load({ url, locals }) {
   if (created) {
     feedback = {
       type: "success",
-      message: `"${created}" wurde erfolgreich hinzugefügt.`,
+      message: `${created} wurde erfolgreich hinzugefügt.`,
     };
   }
 
   if (removed) {
     feedback = {
       type: "danger",
-      message: `"${removed}" wurde ausgemistet.`,
+      message: `${removed} wurde ausgemistet.`,
     };
   }
 
   if (edited) {
     feedback = {
       type: "success",
-      message: `"${edited}" wurde erfolgreich aktualisiert.`,
+      message: `${edited} wurde erfolgreich aktualisiert.`,
     };
   }
 

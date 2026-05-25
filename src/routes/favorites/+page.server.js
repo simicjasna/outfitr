@@ -1,31 +1,10 @@
 import db from "$lib/server/db.js";
 
-export async function load({ url, locals }) {
+export async function load({ locals }) {
   const userId = locals.user._id;
 
-  let feedback = null;
-
-  const saved = url.searchParams.get("saved");
-  const duplicate = url.searchParams.get("duplicate");
-  const existing = url.searchParams.get("existing");
-
-  if (saved) {
-    feedback = {
-      type: "success",
-      message: `${saved} wurde in deinen Outfits gespeichert.`,
-    };
-  }
-
-  if (duplicate) {
-    feedback = {
-      type: "warning",
-      message: `${duplicate} wurde bereits gespeichert und ist dasselbe wie ${existing}.`,
-    };
-  }
-
   return {
-    outfits: await db.getOutfits(userId),
-    feedback,
+    outfits: await db.getFavoriteOutfits(userId),
   };
 }
 

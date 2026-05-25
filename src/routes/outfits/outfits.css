@@ -1,162 +1,152 @@
 .outfits-page {
   width: 100%;
+  max-width: 1600px;
+
+  margin: 0 auto;
+
   display: flex;
   flex-direction: column;
   gap: 34px;
 }
 
-/* HERO */
-
 .outfits-hero {
-  background: linear-gradient(135deg, #ffffff 0%, #f8f6f3 100%);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--card) 100%);
   border: 1px solid var(--border);
   border-radius: 24px;
+
   padding: 38px 42px;
-  box-sizing: border-box;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 32px;
 
-  box-shadow: 0 10px 30px rgba(67, 48, 48, 0.04);
+  box-shadow: var(--soft-shadow);
 }
 
 .eyebrow {
   margin: 0 0 10px;
+
   font-size: 13px;
   font-weight: 700;
+
   color: #9b8472;
+
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .outfits-hero h1 {
   margin: 0;
+
   font-size: 42px;
   line-height: 1.1;
+
+  color: var(--text);
 }
 
 .outfits-hero p:last-child {
-  max-width: 640px;
+  max-width: 680px;
+
   margin: 16px 0 0;
+
   color: var(--muted);
+
   font-size: 16px;
   line-height: 1.6;
 }
 
-.hero-button {
-  height: 46px;
-  padding: 0 28px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 10px;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-/* CONTENT HEADER */
-
-.outfits-content-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.outfits-content-header h2 {
-  margin: 0;
-  font-size: 28px;
-}
-
-/* GRID */
-
 .outfits-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 28px;
 }
-
-/* OUTFIT CARD */
 
 .outfit-item {
   position: relative;
 
   background: var(--card);
+
   border: 1px solid var(--border);
-  border-radius: 18px;
+  border-radius: 22px;
 
-  padding: 22px;
-  box-sizing: border-box;
+  padding: 26px;
 
-  transition: all 0.25s ease;
+  box-shadow: var(--soft-shadow);
+
+  transition: 0.25s;
 }
 
 .outfit-item:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(67, 48, 48, 0.08);
 }
 
-.removed-card {
-  opacity: 0.65;
-}
-
-.heart-form {
+.outfit-actions {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 2;
+
+  top: 18px;
+  right: 18px;
+
+  display: flex;
+  gap: 8px;
 }
 
-.heart-button {
+.heart-button,
+.delete-outfit-button {
   all: unset;
 
   width: 38px;
   height: 38px;
 
   border-radius: 50%;
-  border: 1px solid var(--border);
 
-  background: #ffffff;
+  background: #fffaf6;
+  border: 1px solid #e2c3af;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   cursor: pointer;
+
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+
   transition: 0.2s;
 }
 
-.heart-button img {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-}
-
-.heart-button:hover {
-  background: #fbf1ef;
+.heart-button:hover,
+.delete-outfit-button:hover {
+  background: var(--primary);
   transform: scale(1.08);
 }
 
-.heart-button.empty-heart {
-  background: #ffffff;
-  border-color: #e4b8b0;
+.heart-button img,
+.delete-outfit-button img {
+  width: 17px;
+  height: 17px;
+
+  object-fit: contain;
+}
+
+.empty-heart {
+  opacity: 0.75;
 }
 
 .outfit-item h2 {
-  margin: 4px 46px 6px 0;
+  margin: 8px 90px 6px 0;
+
   font-size: 20px;
+
+  color: var(--text);
 }
 
-.outfit-item p {
-  margin: 0 46px 22px 0;
+.outfit-item > p {
+  margin: 0 0 24px;
+
   color: var(--muted);
+
   font-size: 14px;
 }
-
-/* PREVIEW */
 
 .outfit-preview {
   display: grid;
@@ -165,72 +155,69 @@
 }
 
 .preview-card {
-  background: #ffffff;
+  background: var(--surface);
+
   border: 1px solid var(--border);
   border-radius: 14px;
+
   padding: 10px;
-  box-sizing: border-box;
+
   text-align: center;
 }
 
 .preview-card img {
   width: 100%;
-  height: 120px;
+  height: 110px;
+
   object-fit: contain;
+
+  background: var(--surface);
+
+  border-radius: 10px;
+
   margin-bottom: 8px;
 }
 
 .preview-card span {
   font-size: 12px;
+  font-weight: 700;
+
   color: var(--muted);
-  font-weight: 600;
 }
 
-/* EMPTY */
-
 .empty-state {
-  background: #ffffff;
+  background: var(--card);
+
   border: 1px solid var(--border);
   border-radius: 24px;
 
-  padding: 60px 32px;
+  padding: 48px;
+
   text-align: center;
-}
 
-.empty-icon {
-  width: 72px;
-  height: 72px;
+  box-shadow: var(--soft-shadow);
 
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--card);
+  max-width: 720px;
 
-  margin: 0 auto 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.empty-icon img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
+  margin: 0 auto;
 }
 
 .empty-state h2 {
-  font-size: 24px;
-  margin: 0 0 10px;
+  margin: 0 0 14px;
+
+  font-size: 34px;
+
+  color: var(--text);
 }
 
 .empty-state p {
-  color: var(--muted);
-  margin: 0 auto 24px;
-  max-width: 460px;
-  line-height: 1.5;
-}
+  margin: 0 0 28px;
 
-/* RESPONSIVE */
+  color: var(--muted);
+
+  font-size: 17px;
+  line-height: 1.6;
+}
 
 @media (max-width: 1100px) {
   .outfits-grid {
@@ -238,8 +225,8 @@
   }
 
   .outfits-hero {
-    align-items: flex-start;
     flex-direction: column;
+    align-items: flex-start;
   }
 }
 
@@ -250,5 +237,9 @@
 
   .outfits-hero h1 {
     font-size: 34px;
+  }
+
+  .outfit-preview {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

@@ -63,10 +63,7 @@
 {#if isPublicPage}
   <div class="public-wrapper">
     <button class="public-theme-toggle" type="button" onclick={toggleDarkMode}>
-      <img
-        src={darkMode ? "/images/light.png" : "/images/dark.png"}
-        alt={darkMode ? "Light Mode" : "Dark Mode"}
-      />
+      <img src={darkMode ? "/images/light.png" : "/images/dark.png"} alt="" />
       <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
     </button>
 
@@ -89,6 +86,9 @@
           >Generator</a
         >
         <a class:active-nav={isActive("/outfits")} href="/outfits">Outfits</a>
+        <a class:active-nav={isActive("/favorites")} href="/favorites"
+          >Favoriten</a
+        >
       </nav>
     </aside>
 
@@ -105,19 +105,23 @@
             <img
               class="dropdown-arrow-icon"
               src="/images/chevron-down.png"
-              alt="dropdown-arrow-icon"
+              alt=""
             />
           </button>
 
           {#if dropdownOpen}
             <div class="user-dropdown">
-              <a href="/profile" onclick={closeDropdown}> Profil </a>
+              <a href="/profile" onclick={closeDropdown}>Profil</a>
 
               <button type="button" onclick={toggleDarkMode}>
-                {darkMode ? "Light Mode" : "Dark Mode"}
+                <img
+                  src={darkMode ? "/images/light.png" : "/images/dark.png"}
+                  alt=""
+                />
+                <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
               </button>
 
-              <a href="/logout" onclick={closeDropdown}> Logout </a>
+              <a href="/logout" onclick={closeDropdown}>Logout</a>
             </div>
           {/if}
         </div>
