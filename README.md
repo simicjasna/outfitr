@@ -115,92 +115,84 @@ In der Sketch-Phase wurden verschiedene Lösungsansätze für die Navigation, di
 
 #### Skizzen
 
-##### Variante 1: Top-Navigation
+##### Navigation
 
 ![Sketch Navigation Varianten](doc/images/navigation-varianten.png)
+_Vergleich verschiedener Navigationskonzepte für Outfitr_
 
-_Vergleich verschiedener Navigationskonzepte_
+Für die Navigation wurden drei unterschiedliche Ansätze betrachtet.
 
-Die erste Variante sah eine klassische Top-Navigation vor. Die Hauptbereiche Home, Wardrobe, Generator und Outfits wären horizontal im oberen Seitenbereich angeordnet worden.
+**Variante A – Top-Navigation**
 
-**Eigenschaften:**
-
-- Bekanntes Navigationsmuster
+- Klassische horizontale Navigation im oberen Seitenbereich
+- Bekanntes Bedienkonzept
 - Einfache Umsetzung
 - Begrenzte Erweiterbarkeit bei zusätzlichen Funktionen
 
----
+**Variante B – Sidebar-Navigation**
 
-##### Variante 2: Sidebar-Navigation
+- Vertikale Navigation auf der linken Seite
+- Permanente Sichtbarkeit aller Hauptbereiche
+- Gute Übersicht bei mehreren Funktionen
+- Geeignet für zukünftige Erweiterungen
 
-Die zweite Variante verwendete eine vertikale Sidebar auf der linken Seite.
+**Variante C – Kombinierte Navigation**
 
-**Eigenschaften:**
-
-- Permanente Sichtbarkeit der Navigation
-- Bessere Übersicht bei mehreren Funktionen
-- Mehr Platz für zukünftige Erweiterungen
-
----
-
-##### Variante 3: Kombinierte Navigation
-
-Die dritte Variante kombinierte eine Top-Navigation mit zusätzlichen Navigationsbereichen innerhalb der Seite.
-
-**Eigenschaften:**
-
-- Viele Navigationsmöglichkeiten
+- Kombination aus Top-Navigation und zusätzlicher Seiten-Navigation
 - Hohe Flexibilität
-- Gefahr einer unübersichtlichen Benutzeroberfläche
+- Viele Navigationsmöglichkeiten
+- Gefahr einer überladenen Benutzeroberfläche
 
 ---
 
-##### Varianten der Outfit-Speicherung
+##### Outfit-Speicherung
 
 ![Sketch Outfit Speicherlogik](doc/images/outfit-speicherlogik.png)
-
 _Vergleich verschiedener Speicherkonzepte_
 
-Für die Speicherung von Outfits wurden zwei Varianten betrachtet.
+Für die Verwaltung gespeicherter Outfits wurden zwei Varianten untersucht.
 
-**Variante A – Nur gespeicherte Outfits**
+**Variante A – Nur Outfits**
 
 - Generierte Outfits werden direkt gespeichert
 - Alle gespeicherten Kombinationen befinden sich in derselben Übersicht
+- Einfache Struktur
 
 **Variante B – Outfits und Favoriten**
 
-- Generierte Outfits werden zunächst gespeichert
-- Besonders beliebte Outfits können zusätzlich als Favoriten markiert werden
-- Trennung zwischen gespeicherten Outfits und Lieblings-Outfits
+- Outfits werden zunächst gespeichert
+- Besonders gelungene Kombinationen können zusätzlich als Favoriten markiert werden
+- Klare Trennung zwischen gespeicherten Outfits und Lieblings-Outfits
 
 ---
 
-##### Varianten des Generator-Layouts
+##### Generator-Layout
 
 ![Sketch Generator Layout](doc/images/generator-layouts.png)
 
-_Vergleich verschiedener Layoutvarianten des Generators_
+_Vergleich verschiedener Layoutvarianten des Outfit-Generators_
 
-Für die Darstellung des Outfit-Generators wurden drei Layoutvarianten untersucht.
+Für die Darstellung des Generators wurden drei unterschiedliche Layouts betrachtet.
 
 **Variante A – Vertikaler Aufbau**
 
 - Filter, Button und Ergebnis untereinander angeordnet
 - Einfache Struktur
-- Lange Scrollwege
+- Lange Scrollwege auf grösseren Seiten
 
 **Variante B – Zweispaltiges Layout**
 
 - Filter links
 - Ergebnis rechts
-- Gleichzeitige Sichtbarkeit von Eingabe und Resultat
+- Eingabe und Resultat gleichzeitig sichtbar
+- Gute Nutzung des verfügbaren Platzes
 
 **Variante C – Schritt-für-Schritt-Prozess**
 
-- Nutzer wird durch einzelne Schritte geführt
+- Nutzer:innen werden schrittweise durch die Auswahl geführt
 - Stärkere Benutzerführung
 - Zusätzliche Klicks erforderlich
+- Für wenige Filter eher aufwendig
 
 ---
 
