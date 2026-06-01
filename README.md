@@ -23,22 +23,26 @@ Digitale Lösungen im Bereich Kleiderverwaltung fokussieren sich häufig haupts�
 
 Das Projekt „Outfitr“ verfolgt deshalb das Ziel, eine moderne und benutzerfreundliche Webapplikation zu entwickeln, welche Nutzerinnen und Nutzer bei der Verwaltung ihres digitalen Kleiderschranks sowie bei der schnellen Erstellung passender Outfit-Kombinationen unterstützt.
 
-- **Problem:**  
-  Viele Menschen haben Schwierigkeiten, passende Outfits aus ihrer vorhandenen Kleidung zusammenzustellen. Eine grosse Auswahl an Kleidungsstücken führt häufig zu Entscheidungsstress, Unsicherheit und ineffizienter Nutzung der vorhandenen Kleidung. Zusätzlich fehlt oft eine übersichtliche digitale Organisation des eigenen Kleiderschranks.
+#### Problem:
 
-- **Ziele:**
-  - Digitale Verwaltung des eigenen Kleiderschranks ermöglichen
-  - Übersicht über vorhandene Kleidung schaffen
-  - Schnelle Outfit-Kombinationen generieren
-  - Benutzerfreundliche und moderne Bedienung bieten
-  - Lieblings-Outfits speichern und organisieren
-  - Die Outfit-Auswahl im Alltag vereinfachen
+Viele Menschen haben Schwierigkeiten, passende Outfits aus ihrer vorhandenen Kleidung zusammenzustellen. Eine grosse Auswahl an Kleidungsstücken führt häufig zu Entscheidungsstress, Unsicherheit und ineffizienter Nutzung der vorhandenen Kleidung. Zusätzlich fehlt oft eine übersichtliche digitale Organisation des eigenen Kleiderschranks.
 
-- **Primäre Zielgruppe:**  
-  Die primäre Zielgruppe besteht aus Studierenden, jungen Erwachsenen sowie berufstätigen Personen mit wenig Zeit, die ihren Kleidungsstil einfacher organisieren und schneller passende Outfit-Kombinationen finden möchten.
+#### Ziele:
 
-- **Weitere Stakeholder:**  
-  Weitere Stakeholder sind potenzielle zukünftige Nutzerinnen und Nutzer der Anwendung sowie Personen mit Interesse an digitalen Lifestyle- und Organisationslösungen.
+- Digitale Verwaltung des eigenen Kleiderschranks ermöglichen
+- Übersicht über vorhandene Kleidung schaffen
+- Schnelle Outfit-Kombinationen generieren
+- Benutzerfreundliche und moderne Bedienung bieten
+- Lieblings-Outfits speichern und organisieren
+- Die Outfit-Auswahl im Alltag vereinfachen
+
+#### Primäre Zielgruppe:
+
+Die primäre Zielgruppe besteht aus Studierenden, jungen Erwachsenen sowie berufstätigen Personen mit wenig Zeit, die ihren Kleidungsstil einfacher organisieren und schneller passende Outfit-Kombinationen finden möchten.
+
+#### Weitere Stakeholder:
+
+Weitere Stakeholder sind potenzielle zukünftige Nutzerinnen und Nutzer der Anwendung sowie Personen mit Interesse an digitalen Lifestyle- und Organisationslösungen.
 
 ## 2. Lösungsidee
 
@@ -48,25 +52,28 @@ Die Anwendung ermöglicht es, Kleidungsstücke mit Informationen wie Kategorie, 
 
 Ein besonderer Fokus lag auf einer einfachen Bedienung, einer übersichtlichen Navigation sowie einem modernen und minimalistischen Design. Die Anwendung wurde bewusst so gestaltet, dass wichtige Funktionen schnell erreichbar sind und Benutzerinnen und Benutzer möglichst wenig Aufwand bei der Verwaltung ihrer Kleidung haben.
 
-- **Kernfunktionalität:**
-  - Registrierung und Login mit Benutzeraccount
-  - Verwaltung eines digitalen Kleiderschranks
-  - Hochladen und Bearbeiten von Kleidungsstücken
-  - Filterung nach Kategorien, Farben und Stilrichtungen
-  - Outfit-Generator zur Erstellung passender Kombinationen
-  - Speicherung generierter Outfits
-  - Favoriten-System für Lieblings-Outfits
-  - Unterstützung von Accessoires
-  - Dark Mode für unterschiedliche Nutzungsumgebungen
+#### Kernfunktionalität:
 
-- **Annahmen:**
-  - Nutzerinnen und Nutzer möchten schneller passende Outfits finden
-  - Eine digitale Organisation erleichtert den Überblick über vorhandene Kleidung
-  - Personalisierte Outfit-Vorschläge erhöhen den Nutzen der Anwendung
-  - Ein modernes und minimalistisches Design verbessert die Benutzererfahrung
+- Registrierung und Login mit Benutzeraccount
+- Verwaltung eines digitalen Kleiderschranks
+- Hochladen und Bearbeiten von Kleidungsstücken
+- Filterung nach Kategorien, Farben und Stilrichtungen
+- Outfit-Generator zur Erstellung passender Kombinationen
+- Speicherung generierter Outfits
+- Favoriten-System für Lieblings-Outfits
+- Unterstützung von Accessoires
+- Dark Mode für unterschiedliche Nutzungsumgebungen
 
-- **Abgrenzung:**  
-  Die Anwendung stellt keinen vollständigen KI-Stylisten dar und bietet keine professionelle Modeberatung. Ebenfalls nicht Bestandteil des Projekts sind Social-Funktionen, Shopping-Integrationen, mobile Apps oder automatische Bilderkennung von Kleidung.
+#### Annahmen:
+
+- Nutzerinnen und Nutzer möchten schneller passende Outfits finden
+- Eine digitale Organisation erleichtert den Überblick über vorhandene Kleidung
+- Personalisierte Outfit-Vorschläge erhöhen den Nutzen der Anwendung
+- Ein modernes und minimalistisches Design verbessert die Benutzererfahrung
+
+#### Abgrenzung:
+
+Die Anwendung stellt keinen vollständigen KI-Stylisten dar und bietet keine professionelle Modeberatung. Ebenfalls nicht Bestandteil des Projekts sind Social-Funktionen, Shopping-Integrationen, mobile Apps oder automatische Bilderkennung von Kleidung.
 
 ## 3. Vorgehen & Artefakte
 
@@ -76,7 +83,7 @@ Die Entwicklung von Outfitr erfolgte iterativ anhand der im Unterricht behandelt
 
 ### 3.1 Understand & Define
 
-## Zielgruppenverständnis
+#### Zielgruppenverständnis
 
 Zu Beginn des Projekts wurde untersucht, welche Probleme Personen im Alltag mit ihrer Kleidung und Outfitwahl haben. Dabei zeigte sich insbesondere, dass viele Nutzer:innen:
 
@@ -89,7 +96,7 @@ Die Zielgruppe besteht primär aus modeinteressierten Personen zwischen 18 und 3
 
 Zusätzlich wurden bestehende Lösungen analysiert. Viele vorhandene Apps fokussieren sich entweder stark auf Social Media oder bieten nur einfache Kleiderschrankfunktionen ohne intelligente Outfit-Kombinationen.
 
-## Wesentliche Erkenntnisse
+#### Wesentliche Erkenntnisse
 
 - Nutzer:innen wünschen eine einfache und übersichtliche Bedienung
 - Die Outfit-Erstellung soll schnell und intuitiv funktionieren
@@ -102,64 +109,155 @@ Zusätzlich wurden bestehende Lösungen analysiert. Viele vorhandene Apps fokuss
 
 ### 3.2 Sketch
 
-## Variantenüberblick
+#### Variantenüberblick
 
-In der Sketch-Phase wurden verschiedene Ideen für Navigation, Layout und Seitenstruktur entwickelt. Dabei wurden unterschiedliche Varianten für:
+In der Sketch-Phase wurden verschiedene Lösungsansätze für die Navigation, die Outfit-Speicherung und den Outfit-Generator entwickelt. Ziel war es, unterschiedliche Möglichkeiten zu vergleichen und deren Vor- und Nachteile sichtbar zu machen, bevor eine konkrete Lösung ausgewählt wurde.
 
-- Dashboard-Aufbau
-- Navigation
-- Outfit-Generator
-- Karten-Design
-- Filterfunktionen
+#### Skizzen
 
-skizziert und verglichen.
+##### Variante 1: Top-Navigation
 
-Ein Fokus lag auf einer möglichst klaren Benutzerführung und einer modernen Fashion-Ästhetik.
+![Sketch Navigation Varianten](doc/images/navigation-varianten.png)
 
-## Skizzen
+_Vergleich verschiedener Navigationskonzepte_
 
-Die ersten Ideen wurden zunächst als einfache Wireframes und anschliessend als klickbarer Figma-Prototyp umgesetzt. Dabei wurden unterschiedliche Varianten für die Platzierung von Navigationselementen, Filtern und Outfitkarten getestet.
+Die erste Variante sah eine klassische Top-Navigation vor. Die Hauptbereiche Home, Wardrobe, Generator und Outfits wären horizontal im oberen Seitenbereich angeordnet worden.
 
-Das erste klickbare Mockup wurde in Figma erstellt und diente zur frühen Visualisierung der Benutzeroberfläche sowie der Navigationsstruktur.
+**Eigenschaften:**
 
-Figma-Prototyp:  
-https://www.figma.com/proto/oPUdm8AdTCGR2CFPVoNsk1/Untitled
+- Bekanntes Navigationsmuster
+- Einfache Umsetzung
+- Begrenzte Erweiterbarkeit bei zusätzlichen Funktionen
+
+---
+
+##### Variante 2: Sidebar-Navigation
+
+Die zweite Variante verwendete eine vertikale Sidebar auf der linken Seite.
+
+**Eigenschaften:**
+
+- Permanente Sichtbarkeit der Navigation
+- Bessere Übersicht bei mehreren Funktionen
+- Mehr Platz für zukünftige Erweiterungen
+
+---
+
+##### Variante 3: Kombinierte Navigation
+
+Die dritte Variante kombinierte eine Top-Navigation mit zusätzlichen Navigationsbereichen innerhalb der Seite.
+
+**Eigenschaften:**
+
+- Viele Navigationsmöglichkeiten
+- Hohe Flexibilität
+- Gefahr einer unübersichtlichen Benutzeroberfläche
+
+---
+
+##### Varianten der Outfit-Speicherung
+
+![Sketch Outfit Speicherlogik](doc/images/outfit-speicherlogik.png)
+
+_Vergleich verschiedener Speicherkonzepte_
+
+Für die Speicherung von Outfits wurden zwei Varianten betrachtet.
+
+**Variante A – Nur gespeicherte Outfits**
+
+- Generierte Outfits werden direkt gespeichert
+- Alle gespeicherten Kombinationen befinden sich in derselben Übersicht
+
+**Variante B – Outfits und Favoriten**
+
+- Generierte Outfits werden zunächst gespeichert
+- Besonders beliebte Outfits können zusätzlich als Favoriten markiert werden
+- Trennung zwischen gespeicherten Outfits und Lieblings-Outfits
+
+---
+
+##### Varianten des Generator-Layouts
+
+![Sketch Generator Layout](doc/images/generator-layouts.png)
+
+_Vergleich verschiedener Layoutvarianten des Generators_
+
+Für die Darstellung des Outfit-Generators wurden drei Layoutvarianten untersucht.
+
+**Variante A – Vertikaler Aufbau**
+
+- Filter, Button und Ergebnis untereinander angeordnet
+- Einfache Struktur
+- Lange Scrollwege
+
+**Variante B – Zweispaltiges Layout**
+
+- Filter links
+- Ergebnis rechts
+- Gleichzeitige Sichtbarkeit von Eingabe und Resultat
+
+**Variante C – Schritt-für-Schritt-Prozess**
+
+- Nutzer wird durch einzelne Schritte geführt
+- Stärkere Benutzerführung
+- Zusätzliche Klicks erforderlich
 
 ---
 
 ### 3.3 Decide
 
-## Gewählte Variante & Begründung
+#### Gewählte Variante & Begründung
 
-Nach dem Vergleich verschiedener Layouts wurde eine Sidebar-Navigation mit klar getrennten Bereichen gewählt. Diese Variante überzeugte insbesondere durch:
+Nach dem Vergleich der verschiedenen Lösungsansätze wurde eine Sidebar-Navigation als zentrales Navigationskonzept gewählt. Im Gegensatz zu einer klassischen Top-Navigation bleiben alle Hauptfunktionen jederzeit sichtbar und können auch bei zukünftigen Erweiterungen problemlos ergänzt werden.
 
-- einfache Orientierung
-- gute Erweiterbarkeit
-- moderne Optik
-- klare Trennung der Funktionen
+Für den Outfit-Generator wurde ein zweispaltiges Layout ausgewählt. Die Filter befinden sich auf der linken Seite, während das generierte Outfit rechts angezeigt wird. Dadurch können Eingaben und Ergebnisse gleichzeitig betrachtet werden, ohne dass gescrollt werden muss.
 
-Zusätzlich wurde ein minimalistisches UI mit grossen Karten und viel Weissraum gewählt, um die Bedienung möglichst angenehm und übersichtlich zu gestalten.
+Während der Entwicklung wurde zudem die ursprüngliche Speicherlogik überarbeitet. Anfangs wurden alle generierten Outfits direkt gespeichert. Nach ersten Usability-Überlegungen zeigte sich jedoch, dass Nutzer:innen zwischen gespeicherten Outfits und tatsächlichen Lieblings-Outfits unterscheiden möchten. Deshalb wurde eine zusätzliche Favoritenfunktion eingeführt. Outfits werden nun zunächst gespeichert und können anschliessend separat als Favoriten markiert werden.
 
-## End-to-End-Ablauf
+Die wichtigsten Entscheidungskriterien waren:
 
-Der Hauptworkflow der Anwendung besteht aus folgenden Schritten:
+- Übersichtlichkeit der Benutzeroberfläche
+- Einfache und intuitive Bedienung
+- Skalierbarkeit für zukünftige Erweiterungen
+- Klare Trennung von Funktionen
+- Konsistenz über alle Seiten hinweg
+
+#### End-to-End-Ablauf
+
+Die folgende User Journey zeigt den vollständigen Hauptworkflow der Anwendung vom ersten Login bis zur Speicherung eines Lieblings-Outfits.
+
+![End-to-End-Ablauf Outfitr](doc/images/userjourney.png)
+
+_End-to-End-Ablauf von Outfitr_
+
+Der typische Ablauf eines Nutzers besteht aus folgenden Schritten:
 
 1. Registrierung oder Login
-2. Kleidungsstücke hochladen
-3. Kleidung filtern und verwalten
-4. Outfit generieren
-5. Outfit speichern
-6. Outfit als Favorit markieren
-7. Favoriten separat verwalten
+2. Hinzufügen von Kleidungsstücken zum digitalen Kleiderschrank
+3. Verwaltung der vorhandenen Kleidung in der Wardrobe
+4. Generierung eines passenden Outfits anhand ausgewählter Kriterien
+5. Speicherung des generierten Outfits
+6. Markierung besonders gelungener Kombinationen als Favorit
+7. Verwaltung der Lieblings-Outfits im separaten Favoritenbereich
 
-Die Benutzerführung wurde bewusst einfach gehalten, damit zentrale Funktionen schnell erreichbar sind.
+Das Ziel dieses Ablaufs besteht darin, mit möglichst wenigen Schritten passende Outfit-Kombinationen zu erstellen und dauerhaft verfügbar zu machen.
 
-## Mockup
+#### Mockup
 
-Das finale Mockup wurde in Figma erstellt und diente als Grundlage für die technische Umsetzung.
+Vor der technischen Umsetzung wurde ein interaktives Mockup in Figma erstellt. Dieses diente als Grundlage für die spätere Entwicklung des Prototyps und half dabei, Navigation, Seitenstruktur und Benutzerfluss frühzeitig zu validieren.
 
-Figma-Link:  
+**Figma-Prototyp:**
+
 https://www.figma.com/proto/oPUdm8AdTCGR2CFPVoNsk1/Untitled
+
+Folgende Bereiche wurden bereits im Mockup konzipiert:
+
+- Dashboard/Home
+- Wardrobe (digitaler Kleiderschrank)
+- Outfit Generator
+- Gespeicherte Outfits
+
+Anschliessend wurden die einzelnen Ansichten iterativ weiterentwickelt und als funktionaler Prototyp in SvelteKit umgesetzt.
 
 ---
 
