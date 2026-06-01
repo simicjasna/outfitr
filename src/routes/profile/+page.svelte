@@ -69,7 +69,7 @@
             type="text"
             name="vinted"
             value={profileValues.vinted}
-            placeholder="z. B. jasna_style"
+            placeholder="z. B. name_style"
           />
         </label>
 
