@@ -259,38 +259,115 @@ Anschliessend wurden die einzelnen Ansichten iterativ weiterentwickelt und als f
 
 ### Informationsarchitektur
 
-Die Anwendung wurde in mehrere Hauptbereiche unterteilt:
+Die Anwendung wurde in mehrere Hauptbereiche unterteilt, die den Benutzer durch den gesamten Prozess der Outfit-Erstellung begleiten.
+
+Die primäre Navigation erfolgt über eine dauerhaft sichtbare Sidebar auf der linken Seite. Dadurch können Nutzer:innen jederzeit zwischen den wichtigsten Bereichen der Anwendung wechseln.
+
+Die Sidebar umfasst folgende Bereiche:
 
 - Home / Dashboard
 - Wardrobe
 - Generator
 - Outfits
 - Favoriten
-- Profil/Login
 
-Die Navigation erfolgt über eine Sidebar, wodurch alle wichtigen Bereiche jederzeit erreichbar sind.
+Zusätzlich verfügt die Anwendung über ein Profilmenü im oberen rechten Bereich. Dieses dient als sekundäre Navigation für benutzerspezifische Funktionen.
 
-### User Interface Design
+Über das Profilmenü können folgende Funktionen aufgerufen werden:
 
-Das Design von Outfitr orientiert sich an modernen Fashion- und Lifestyle-Webseiten. Ziel war eine minimalistische und hochwertige Benutzeroberfläche.
+- Profil
+- Dark Mode / Light Mode
+- Logout
 
-Verwendet wurden:
+Durch die Trennung zwischen Hauptnavigation und Profilfunktionen bleibt die Benutzeroberfläche übersichtlich und die wichtigsten Aufgaben stehen jederzeit im Vordergrund.
 
-- grosse Kartenlayouts
-- klare Typografie
-- dezente Schatten und Rundungen
-- reduzierte Farbpalette
-- konsistente Buttons und Eingabefelder
-
-Für die Anwendung wurden sowohl ein Light Mode als auch ein Dark Mode umgesetzt.
+Die Struktur orientiert sich an den zentralen Nutzungsschritten der Anwendung: Kleidung verwalten, Outfits generieren, Outfits speichern und Favoriten organisieren.
 
 ---
 
-## Farbpalette
+### User Interface Design
+
+Das Design von Outfitr orientiert sich an modernen Fashion- und Lifestyle-Webseiten. Ziel war es, eine minimalistische und hochwertige Benutzeroberfläche zu gestalten, die den Fokus auf die Kleidung und die Outfit-Kombinationen legt.
+
+Besonderer Wert wurde auf Übersichtlichkeit, Wiedererkennbarkeit und eine intuitive Bedienung gelegt. Die Benutzeroberfläche soll auch bei einer grossen Anzahl von Kleidungsstücken einfach verständlich bleiben und Nutzer:innen bei der Zusammenstellung von Outfits unterstützen.
+
+Folgende Gestaltungsprinzipien wurden umgesetzt:
+
+- grosse Kartenlayouts für Kleidungsstücke und Outfits
+- klare und gut lesbare Typografie
+- dezente Schatten und Rundungen
+- reduzierte Farbpalette
+- konsistente Buttons und Eingabefelder
+- Light Mode und Dark Mode
+- einheitliche Icons zur Unterstützung der Navigation
+
+Die wichtigsten Ansichten der Anwendung werden in den folgenden Screenshots dargestellt.
+
+#### Dashboard
+
+![Dashboard](doc/images/dashboard.png)
+
+_Abbildung X: Dashboard von Outfitr_
+
+Das Dashboard dient als zentrale Einstiegsseite der Anwendung. Nutzer:innen erhalten einen Überblick über ihren digitalen Kleiderschrank, gespeicherte Outfits sowie mögliche Outfit-Kombinationen. Zusätzlich ermöglichen Schnellzugriffe den direkten Wechsel zu den wichtigsten Funktionen.
+
+---
+
+#### Wardrobe
+
+![Wardrobe](doc/images/wardrobe.png)
+
+_Abbildung X: Wardrobe-Ansicht_
+
+Die Wardrobe bildet den digitalen Kleiderschrank der Anwendung. Kleidungsstücke werden in Kartenform dargestellt und können gefiltert, bearbeitet oder gelöscht werden. Durch die visuelle Darstellung bleibt der Überblick über die vorhandene Kleidung erhalten.
+
+---
+
+#### Outfit Generator
+
+![Generator](doc/images/generator.png)
+
+_Abbildung X: Outfit Generator_
+
+Der Outfit Generator stellt die Kernfunktion der Anwendung dar. Nutzer:innen können Stil, Anlass und Farbe auswählen und erhalten auf Basis der vorhandenen Kleidungsstücke automatisch eine passende Outfit-Kombination.
+
+---
+
+#### Gespeicherte Outfits
+
+![Outfits](doc/images/outfits.png)
+
+_Abbildung X: Übersicht gespeicherter Outfits_
+
+In diesem Bereich werden alle gespeicherten Outfit-Kombinationen angezeigt. Nutzer:innen können ihre generierten Outfits erneut betrachten, verwalten oder als Favorit markieren.
+
+---
+
+#### Favoriten
+
+![Favoriten](doc/images/favoriten.png)
+
+_Abbildung X: Favoritenbereich_
+
+Der Favoritenbereich enthält ausschliesslich die vom Benutzer markierten Lieblings-Outfits. Dadurch entsteht eine klare Trennung zwischen gespeicherten Outfits und besonders bevorzugten Kombinationen.
+
+---
+
+#### Profilmenü
+
+![Profil](doc/images/profil.png)
+
+_Abbildung X: Profilmenü und Benutzereinstellungen_
+
+Über das Profilmenü im oberen rechten Bereich können benutzerspezifische Funktionen aufgerufen werden. Dazu gehören die Profilansicht, die Umschaltung zwischen Light Mode und Dark Mode sowie die Abmeldung aus der Anwendung. Das Dropdown-Menü wurde bewusst kompakt gestaltet, damit häufig genutzte Funktionen jederzeit erreichbar bleiben, ohne zusätzlichen Platz in der Hauptnavigation zu beanspruchen.
+
+---
+
+### Farbkonzept
 
 Die Farbpalette basiert auf neutralen Beige-, Braun- und Off-White-Tönen, um einen modernen und eleganten Fashion-Look zu erzeugen. Für den Light Mode und Dark Mode wurden bewusst ähnliche Farbtöne verwendet, damit die visuelle Identität der Anwendung konsistent bleibt.
 
-### Light Mode
+#### Light Mode
 
 | Zweck              | HEX     |
 | ------------------ | ------- |
@@ -301,13 +378,13 @@ Die Farbpalette basiert auf neutralen Beige-, Braun- und Off-White-Tönen, um ei
 | Zusatzfarbe        | #6F6A64 |
 | Dunkle Akzentfarbe | #1F1B16 |
 
-![Light Mode Farbpalette](doc/images/farbpalette-ligth.jpeg)
+![Light Mode Farbpalette](doc/images/farbpalette-light.jpeg)
 
-Abbildung X: Farbpalette des Light Modes
+_Abbildung X: Farbpalette des Light Modes_
 
 ---
 
-### Dark Mode
+#### Dark Mode
 
 | Zweck             | HEX     |
 | ----------------- | ------- |
@@ -322,20 +399,21 @@ Abbildung X: Farbpalette des Light Modes
 
 ![Dark Mode Farbpalette](doc/images/farbpalette-dark.jpeg)
 
-Abbildung X: Farbpalette des Dark Modes
+_Abbildung X: Farbpalette des Dark Modes_
 
 ---
 
 ### Designentscheidungen
 
-Wichtige Designentscheidungen:
+Während der Entwicklung wurden mehrere Designentscheidungen getroffen, um die Benutzerfreundlichkeit und Übersichtlichkeit der Anwendung zu erhöhen.
 
-- Sidebar statt Top-Navigation für bessere Übersicht
-- grosse Karten für bessere visuelle Darstellung
-- Dark Mode für moderne Benutzererfahrung
-- Trennung zwischen Outfits und Favoriten
-- Icons statt Textsymbole für bessere Verständlichkeit
-- responsive Gestaltung für verschiedene Bildschirmgrössen
+- Sidebar-Navigation statt Top-Navigation für bessere Orientierung und Skalierbarkeit.
+- Kartenbasierte Darstellung von Kleidungsstücken und Outfits für eine visuell ansprechende Präsentation.
+- Umsetzung eines Light Modes und Dark Modes zur Unterstützung unterschiedlicher Nutzerpräferenzen.
+- Verwendung einer reduzierten Farbpalette, um einen modernen Fashion-Look zu erzeugen.
+- Einsatz von Icons anstelle von Textsymbolen für eine intuitivere Bedienung.
+
+Nach ersten Überlegungen zur Benutzerführung wurde ausserdem die ursprüngliche Struktur der Outfit-Speicherung angepasst. Anfangs wurden alle generierten Outfits direkt gespeichert und gemeinsam angezeigt. Um die Orientierung zu verbessern, wurde später eine separate Favoritenfunktion eingeführt. Nutzer:innen können Outfits nun speichern und besonders gelungene Kombinationen zusätzlich als Favoriten markieren. Dadurch entsteht eine klarere Trennung zwischen gespeicherten Outfits und tatsächlichen Lieblings-Outfits.
 
 ---
 
