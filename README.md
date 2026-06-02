@@ -257,7 +257,7 @@ Anschliessend wurden die einzelnen Ansichten iterativ weiterentwickelt und als f
 
 #### 3.4.1 Entwurf (Design)
 
-### Informationsarchitektur
+#### Informationsarchitektur
 
 Die Anwendung wurde in mehrere Hauptbereiche unterteilt, die den Benutzer durch den gesamten Prozess der Outfit-Erstellung begleiten.
 
@@ -285,7 +285,7 @@ Die Struktur orientiert sich an den zentralen Nutzungsschritten der Anwendung: K
 
 ---
 
-### User Interface Design
+#### User Interface Design
 
 Das Design von Outfitr orientiert sich an modernen Fashion- und Lifestyle-Webseiten. Ziel war es, eine minimalistische und hochwertige Benutzeroberfläche zu gestalten, die den Fokus auf die Kleidung und die Outfit-Kombinationen legt.
 
@@ -303,6 +303,42 @@ Folgende Gestaltungsprinzipien wurden umgesetzt:
 
 Die wichtigsten Ansichten der Anwendung werden in den folgenden Screenshots dargestellt.
 
+#### Landing Page
+
+![Landing Page](doc/images/landing-page.png)
+
+_Abbildung X: Landing Page von Outfitr_
+
+Die Landing Page bildet den Einstiegspunkt der Anwendung. Sie vermittelt den Zweck von Outfitr und erklärt die wichtigsten Funktionen bereits vor der Registrierung. Dadurch erhalten Besucher:innen einen ersten Überblick über den Nutzen der Anwendung und können entscheiden, ob sie einen Account erstellen möchten.
+
+Die Seite enthält eine kurze Einführung in die Kernfunktionen von Outfitr sowie direkte Schaltflächen zur Registrierung und Anmeldung. Zusätzlich kann bereits auf der Landing Page zwischen Light Mode und Dark Mode gewechselt werden.
+
+---
+
+#### Registrierung
+
+![Registrierung](doc/images/register.png)
+
+_Abbildung X: Registrierungsformular_
+
+Neue Nutzer:innen können über die Registrierungsseite einen persönlichen Account erstellen. Für die Registrierung werden Name, E-Mail-Adresse und Passwort erfasst.
+
+Die Eingabemaske wurde bewusst einfach gehalten, um den Registrierungsprozess möglichst unkompliziert zu gestalten. Nach erfolgreicher Registrierung erhalten Nutzer:innen Zugriff auf ihren persönlichen digitalen Kleiderschrank.
+
+---
+
+#### Login
+
+![Login](doc/images/login.png)
+
+_Abbildung X: Login-Seite_
+
+Bereits registrierte Nutzer:innen können sich über die Login-Seite anmelden. Nach erfolgreicher Authentifizierung gelangen sie direkt in ihre persönliche Anwendung.
+
+Durch die Trennung zwischen öffentlichem Bereich und geschütztem Benutzerbereich bleiben persönliche Kleidungsstücke, Outfits und Favoriten ausschliesslich für den jeweiligen Benutzer sichtbar.
+
+---
+
 #### Dashboard
 
 ![Dashboard](doc/images/dashboard.png)
@@ -317,9 +353,29 @@ Das Dashboard dient als zentrale Einstiegsseite der Anwendung. Nutzer:innen erha
 
 ![Wardrobe](doc/images/wardrobe.png)
 
-_Abbildung X: Wardrobe-Ansicht_
+_Abbildung X: Wardrobe-Ansicht mit vorhandenen Kleidungsstücken_
 
-Die Wardrobe bildet den digitalen Kleiderschrank der Anwendung. Kleidungsstücke werden in Kartenform dargestellt und können gefiltert, bearbeitet oder gelöscht werden. Durch die visuelle Darstellung bleibt der Überblick über die vorhandene Kleidung erhalten.
+Die Wardrobe bildet den digitalen Kleiderschrank der Anwendung und stellt einen zentralen Bestandteil von Outfitr dar. Alle gespeicherten Kleidungsstücke werden in einer übersichtlichen Kartenansicht dargestellt. Nutzer:innen können ihre Kleidung filtern, bearbeiten oder löschen und behalten dadurch jederzeit den Überblick über ihren Bestand.
+
+Die Karten enthalten die wichtigsten Informationen zu einem Kleidungsstück, wie beispielsweise Kategorie, Farbe, Stil oder Anlass. Durch die visuelle Darstellung mit Bildern wird die Wiedererkennung erleichtert und die Verwaltung des Kleiderschranks intuitiver gestaltet.
+
+![Kleidungsstück hinzufügen](doc/images/add-clothing.png)
+
+_Abbildung X: Formular zum Hinzufügen eines neuen Kleidungsstücks_
+
+Neue Kleidungsstücke können über die Schaltfläche **„Kleidungsstück hinzufügen“** im oberen Bereich der Seite erfasst werden. Anschliessend öffnet sich ein Formular, über das alle relevanten Informationen hinterlegt werden können.
+
+Dabei können unter anderem folgende Angaben erfasst werden:
+
+- Bild des Kleidungsstücks
+- Kategorie
+- Farbe
+- Stil
+- optionale Accessoires
+
+Die gespeicherten Informationen bilden die Grundlage für die spätere Outfit-Generierung. Je vollständiger die hinterlegten Daten sind, desto passender können die vorgeschlagenen Outfit-Kombinationen erstellt werden.
+
+Durch die Kombination aus visueller Darstellung, Filtermöglichkeiten und einfacher Datenerfassung dient die Wardrobe als zentrale Datenbasis der gesamten Anwendung.
 
 ---
 
@@ -363,7 +419,7 @@ _Abbildung X: Profilmenü und Benutzereinstellungen_
 
 ---
 
-### Farbkonzept
+#### Farbkonzept
 
 Die Farbpalette basiert auf neutralen Beige-, Braun- und Off-White-Tönen, um einen modernen und eleganten Fashion-Look zu erzeugen. Für den Light Mode und Dark Mode wurden bewusst ähnliche Farbtöne verwendet, damit die visuelle Identität der Anwendung konsistent bleibt.
 
