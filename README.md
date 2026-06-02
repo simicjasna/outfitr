@@ -477,76 +477,183 @@ Nach ersten Überlegungen zur Benutzerführung wurde ausserdem die ursprünglich
 
 ### Technologie-Stack
 
-Für die Umsetzung wurden folgende Technologien verwendet:
+Für die Umsetzung von Outfitr wurden moderne Webtechnologien verwendet. Ziel war die Entwicklung einer vollständig webbasierten Anwendung, die auf unterschiedlichen Geräten genutzt werden kann.
 
-- SvelteKit
-- JavaScript
-- HTML / CSS
-- Supabase
-- Netlify
+Verwendete Technologien:
+
+- SvelteKit als Frontend- und Applikationsframework
+- JavaScript für die Anwendungslogik
+- HTML und CSS für die Benutzeroberfläche
+- MongoDB Atlas als Cloud-Datenbank
+- MongoDB Node.js Driver für den Datenzugriff
+- Netlify für Hosting und Deployment
+- GitHub für Versionsverwaltung und Quellcodeverwaltung
+
+---
 
 ### Tooling
+
+Während der Entwicklung kamen verschiedene Werkzeuge zum Einsatz.
 
 Verwendete Tools:
 
 - Visual Studio Code
 - GitHub
-- Netlify
 - Figma
-- Supabase
+- MongoDB Compass
+- MongoDB Atlas
+- Netlify
 - Chrome DevTools
+
+MongoDB Compass wurde für die Verwaltung und Analyse der Datenbankinhalte verwendet. Über MongoDB Atlas wurde die Datenbank in der Cloud bereitgestellt und mit der Anwendung verbunden.
+
+---
 
 ### Struktur & Komponenten
 
-Die Anwendung wurde komponentenbasiert aufgebaut.
+Die Anwendung wurde komponentenbasiert aufgebaut, um eine gute Wiederverwendbarkeit und Wartbarkeit sicherzustellen.
 
-Wichtige Seiten und Komponenten:
+Wichtige Seiten:
 
+- Landing Page
+- Registrierung
+- Login
 - Dashboard
 - Wardrobe
-- Outfit Generator
-- Outfit Cards
+- Generator
+- Outfits
 - Favoriten
-- Login / Registrierung
+
+Wichtige Komponenten:
+
 - Sidebar Navigation
 - User Dropdown
 - Dark Mode Toggle
+- Outfit Cards
+- Clothing Cards
+- Upload Formulare
+- Filter-Komponenten
 
-Die Struktur wurde so gewählt, dass Komponenten mehrfach verwendet werden können.
+Die Navigation zwischen den einzelnen Bereichen erfolgt über das Routing-System von SvelteKit.
+
+---
 
 ### Daten & Schnittstellen
 
-Die Daten werden in Supabase gespeichert.
+Für die Speicherung der Anwendungsdaten wird MongoDB Atlas verwendet. Die Verbindung zur Datenbank erfolgt über eine geschützte Datenbank-URI, welche über Umgebungsvariablen konfiguriert wird.
 
-Dabei werden unter anderem gespeichert:
+Die Anwendung verwendet die Datenbank **outfitr** mit vier zentralen Collections.
 
-- Benutzerkonten
-- Kleidungsstücke
-- Outfit-Kombinationen
-- Favoriten
-- Bildpfade
+#### Datenbankstruktur
 
-Bilder werden über Supabase Storage verwaltet.
+```text
+outfitr
+├── users
+├── sessions
+├── clothes
+└── outfits
+```
 
-Die Kommunikation erfolgt über die Supabase-API.
+---
+
+#### Collection: users
+
+Die Collection `users` speichert die registrierten Benutzerkonten.
+
+| Attribut     | Beschreibung                  |
+| ------------ | ----------------------------- |
+| \_id         | Eindeutige Benutzer-ID        |
+| name         | Name des Benutzers            |
+| email        | E-Mail-Adresse                |
+| passwordHash | Verschlüsselter Passwort-Hash |
+| createdAt    | Erstellungsdatum              |
+
+Passwörter werden nicht im Klartext gespeichert, sondern mithilfe eines Hash-Verfahrens verschlüsselt abgelegt.
+
+---
+
+#### Collection: sessions
+
+Die Collection `sessions` verwaltet aktive Benutzer-Sitzungen.
+
+| Attribut  | Beschreibung                |
+| --------- | --------------------------- |
+| \_id      | Eindeutige Session-ID       |
+| token     | Session-Token               |
+| userId    | Referenz auf den Benutzer   |
+| createdAt | Zeitpunkt der Erstellung    |
+| expiresAt | Ablaufzeitpunkt der Session |
+
+Durch die Session-Verwaltung können Benutzer angemeldet bleiben, ohne sich bei jedem Seitenaufruf erneut authentifizieren zu müssen.
+
+---
+
+#### Collection: clothes
+
+Die Collection `clothes` enthält sämtliche Kleidungsstücke der Benutzer.
+
+| Attribut      | Beschreibung                                      |
+| ------------- | ------------------------------------------------- |
+| \_id          | Eindeutige Kleidungsstück-ID                      |
+| userId        | Referenz auf den Besitzer                         |
+| name          | Bezeichnung des Kleidungsstücks                   |
+| category      | Kategorie (z. B. Shirt, Hose, Schuhe, Accessoire) |
+| accessoryType | Typ des Accessoires                               |
+| color         | Farbe                                             |
+| style         | Stilrichtung                                      |
+| image         | Bild des Kleidungsstücks                          |
+| createdAt     | Erstellungsdatum                                  |
+
+Die Bilder werden aktuell als Base64-kodierte Zeichenketten direkt innerhalb der Datenbank gespeichert. Dadurch können die Bilder ohne zusätzlichen Storage-Service zusammen mit den übrigen Kleidungsdaten verwaltet werden.
+
+---
+
+#### Collection: outfits
+
+Die Collection `outfits` speichert generierte und vom Benutzer gesicherte Outfit-Kombinationen.
+
+| Attribut  | Beschreibung                  |
+| --------- | ----------------------------- |
+| \_id      | Eindeutige Outfit-ID          |
+| userId    | Referenz auf den Besitzer     |
+| name      | Name des Outfits              |
+| style     | Stilrichtung des Outfits      |
+| score     | Bewertungswert des Generators |
+| items     | Enthaltene Kleidungsstücke    |
+| createdAt | Erstellungsdatum              |
+
+Ein Outfit besteht aus mehreren Kleidungsstücken, welche innerhalb des Attributs `items` gespeichert werden.
+
+---
 
 ### Deployment
 
-Die Anwendung wurde über Netlify deployed.
+Die Anwendung wurde über Netlify veröffentlicht und kann direkt über den Browser genutzt werden.
 
-Deployment-URL:  
+**Deployment-URL:**
+
 https://outfitr-app.netlify.app/
+
+**GitHub Repository:**
+
+https://github.com/simicjasna/outfitr
+
+---
 
 ### Besondere Entscheidungen
 
-Während der Umsetzung wurden mehrere Vereinfachungen vorgenommen:
+Während der Umsetzung wurden mehrere technische Entscheidungen getroffen.
 
-- Fokus auf Kernfunktionen statt vollständiger Produktumfang
-- lokale Zustandsverwaltung statt komplexes State-Management
-- einfache Outfitlogik statt KI-basierter Empfehlung
-- Accessoires als optionale Ergänzung statt Pflichtbestandteil
+- Verwendung von MongoDB Atlas als Cloud-Datenbank für eine flexible und skalierbare Datenspeicherung.
+- Speicherung der Bilder direkt als Base64-Daten innerhalb der Datenbank anstelle eines separaten Storage-Services.
+- Umsetzung der Authentifizierung über eigene Benutzer- und Session-Collections.
+- Einsatz von SvelteKit für eine moderne und performante Webanwendung.
+- Umsetzung eines Light Modes und Dark Modes über zentrale Theme-Einstellungen.
+- Verwendung einer regelbasierten Outfit-Generierung anstelle eines KI-basierten Empfehlungssystems.
+- Trennung zwischen gespeicherten Outfits und Favoriten zur Verbesserung der Benutzerführung.
+- Fokus auf die Kernfunktionen eines MVP, um den Projektumfang realistisch zu halten.
 
-Diese Entscheidungen ermöglichten eine stabile und übersichtliche Umsetzung innerhalb des Projektumfangs.
+Diese Entscheidungen ermöglichten eine stabile und übersichtliche Umsetzung innerhalb des verfügbaren Zeitrahmens.
 
 ---
 
