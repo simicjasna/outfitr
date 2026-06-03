@@ -659,73 +659,228 @@ Diese Entscheidungen ermöglichten eine stabile und übersichtliche Umsetzung in
 
 ### 3.5 Validate
 
-## URL der getesteten Version
+#### URL der getesteten Version
+
+Die Evaluation wurde auf der öffentlich deployten Version von Outfitr durchgeführt.
+
+**Deployment-URL:**
 
 https://outfitr-app.netlify.app/
 
-## Ziele der Prüfung
+Da die Anwendung während der Entwicklung kontinuierlich weiterentwickelt wurde, entspricht die aktuell verfügbare Version nicht mehr vollständig dem Stand zum Zeitpunkt der Evaluation.
+
+Aus diesem Grund werden in dieser Dokumentation Screenshots der getesteten Version verwendet, sofern während der Evaluation Fehler oder Usability-Probleme identifiziert wurden. Diese Screenshots dienen der Nachvollziehbarkeit der Testergebnisse und dokumentieren den Zustand der Anwendung zum Zeitpunkt der Durchführung der Tests.
+
+Alle übrigen Abbildungen zeigen den aktuellen Stand der Anwendung. Identifizierte Fehler wurden nach der Evaluation analysiert und im weiteren Projektverlauf behoben.
+
+---
+
+#### Ziele der Prüfung
 
 Mit der Evaluation sollten insbesondere folgende Fragen beantwortet werden:
 
-- Ist die Navigation verständlich?
-- Können Nutzer:innen intuitiv Outfits generieren?
-- Ist die Trennung zwischen Outfits und Favoriten nachvollziehbar?
+- Ist die Navigation verständlich und intuitiv nutzbar?
+- Können Nutzer:innen Kleidungsstücke problemlos hinzufügen, bearbeiten und löschen?
+- Ist die Outfit-Generierung nachvollziehbar?
+- Werden gespeicherte Outfits und Favoriten klar unterschieden?
+- Bleibt ein Outfit gespeichert, wenn es aus den Favoriten entfernt wird?
 - Werden wichtige Funktionen schnell gefunden?
-- Ist das Design übersichtlich und angenehm?
-- Funktioniert der Dark Mode verständlich?
+- Ist die Anwendung insgesamt benutzerfreundlich gestaltet?
+- Werden Fehlermeldungen und Rückmeldungen verständlich dargestellt?
+- Werden ungültige Eingaben korrekt behandelt?
+- Funktioniert der Dark Mode verständlich und mit ausreichendem Kontrast?
 
-## Vorgehen
+---
 
-Die Tests wurden moderiert durchgeführt.
+#### Vorgehen
 
-Die Testpersonen erhielten konkrete Aufgaben und wurden während der Nutzung beobachtet. Zusätzlich wurden Rückfragen gestellt und Beobachtungen dokumentiert.
+Die Evaluation wurde als moderierter Usability-Test durchgeführt.
 
-Die Tests fanden lokal auf einem Notebook statt.
+Die Testpersonen erhielten konkrete Aufgaben und wurden während der Nutzung beobachtet. Dabei wurden Schwierigkeiten, Fehlermeldungen sowie Verbesserungsvorschläge dokumentiert.
 
-## Stichprobe
+Die Tests fanden lokal auf einem Notebook mit Google Chrome statt. Nach Abschluss der Aufgaben wurden die Testpersonen zusätzlich nach ihrem allgemeinen Eindruck und möglichen Verbesserungsvorschlägen befragt.
 
-Die Tests wurden mit mehreren Personen aus dem privaten Umfeld durchgeführt.
+---
 
-Die Testpersonen waren zwischen 20 und 30 Jahre alt und verfügten über unterschiedliche technische Kenntnisse.
+#### Stichprobe
 
-## Aufgaben / Szenarien
+| Merkmal                   | Beschreibung                                                                                                                                      |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Anzahl Testpersonen       | 2                                                                                                                                                 |
+| Alter                     | 20–30 Jahre                                                                                                                                       |
+| Profil                    | Studierende mit allgemeiner Erfahrung im Umgang mit Webanwendungen                                                                                |
+| Testumgebung              | Notebook (Google Chrome)                                                                                                                          |
+| Testart                   | Moderierter Usability-Test                                                                                                                        |
+| Vorbereiteter Testaccount | Ja                                                                                                                                                |
+| Testdaten                 | Der Testaccount wurde bereits mit Kleidungsstücken, Outfits und Accessoires befüllt, damit realistische Nutzungsszenarien getestet werden konnten |
 
-Die Testpersonen mussten unter anderem folgende Aufgaben lösen:
+##### Testaccount
 
-1. Registrierung und Login durchführen
-2. Neues Kleidungsstück hinzufügen
-3. Kleidung filtern
-4. Outfit generieren
-5. Outfit speichern
-6. Outfit als Favorit markieren
-7. Favoriten wiederfinden
-8. Dark Mode aktivieren
+Für die Evaluation wurde ein vorbereiteter Testaccount verwendet.
 
-## Kennzahlen & Beobachtungen
+| Feld     | Wert                                                       |
+| -------- | ---------------------------------------------------------- |
+| E-Mail   | lisa-test@gmail.com                                        |
+| Passwort | 123456                                                     |
+| Inhalt   | Mehrere Kleidungsstücke, Outfits und Accessoires vorhanden |
 
-Beobachtete Erkenntnisse:
+---
 
-- Navigation wurde schnell verstanden
-- Dashboard wurde positiv bewertet
-- Die Outfit-Seite war anfangs teilweise verwirrend
-- Favoriten wurden zunächst nicht klar erkannt
-- Der Dark Mode hatte anfangs Kontrastprobleme
-- Die Upload-Funktion wurde als einfach bewertet
+#### Aufgaben / Szenarien
 
-## Zusammenfassung der Resultate
+| Nr. | Aufgabe                                                                                           | Erwartetes Verhalten / Ziel                                                       |
+| --- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| A1  | Öffne die Landing Page von Outfitr.                                                               | Zweck der Anwendung ist verständlich.                                             |
+| A2  | Wechsle auf der Landing Page zwischen Light Mode und Dark Mode.                                   | Darstellung wechselt korrekt und bleibt lesbar.                                   |
+| A3  | Registriere ein neues Benutzerkonto.                                                              | Benutzerkonto wird erfolgreich erstellt.                                          |
+| A4  | Registriere ein Benutzerkonto mit einem zu kurzen Passwort.                                       | Eine verständliche Fehlermeldung wird angezeigt.                                  |
+| A5  | Registriere ein Benutzerkonto mit fehlenden Pflichtangaben.                                       | Benutzer wird auf die fehlenden Eingaben hingewiesen.                             |
+| A6  | Melde dich mit einem bestehenden Benutzerkonto an.                                                | Login funktioniert korrekt.                                                       |
+| A7  | Melde dich mit falschen Zugangsdaten an.                                                          | Eine verständliche Fehlermeldung wird angezeigt.                                  |
+| A8  | Öffne das Profilmenü oben rechts.                                                                 | Profilmenü öffnet sich und zeigt die verfügbaren Optionen.                        |
+| A9  | Schliesse das Profilmenü durch Auswahl einer Option oder durch Klick ausserhalb des Menüs.        | Dropdown schliesst sich korrekt.                                                  |
+| A10 | Navigiere zwischen Dashboard, Wardrobe, Generator und Outfits.                                    | Die Navigation wird ohne Unterstützung verstanden.                                |
+| A11 | Füge ein neues Kleidungsstück inklusive Bild hinzu.                                               | Kleidungsstück wird erfolgreich gespeichert.                                      |
+| A12 | Füge ein Kleidungsstück ohne Pflichtangaben hinzu.                                                | Formular verhindert das Speichern und zeigt Hinweise.                             |
+| A13 | Überprüfe das neu erstellte Kleidungsstück im Kleiderschrank.                                     | Kleidungsstück erscheint korrekt in der Wardrobe.                                 |
+| A14 | Filtere die Wardrobe nach Kategorie, Farbe oder Stil.                                             | Passende Kleidungsstücke werden angezeigt.                                        |
+| A15 | Setze die Filter in der Wardrobe zurück.                                                          | Alle Kleidungsstücke werden wieder angezeigt.                                     |
+| A16 | Bearbeite ein bestehendes Kleidungsstück.                                                         | Änderungen werden gespeichert und korrekt angezeigt.                              |
+| A17 | Lösche ein bestehendes Kleidungsstück.                                                            | Kleidungsstück wird entfernt.                                                     |
+| A18 | Generiere ein Outfit mit genügend vorhandenen Kleidungsstücken.                                   | Outfit wird erfolgreich erstellt.                                                 |
+| A19 | Versuche ein Outfit zu generieren, obwohl nicht genügend passende Kleidungsstücke vorhanden sind. | Verständliche Fehlermeldung wird angezeigt.                                       |
+| A20 | Generiere ein Outfit mit optionalen Accessoires.                                                  | Accessoires werden berücksichtigt, sofern vorhanden.                              |
+| A21 | Speichere ein generiertes Outfit.                                                                 | Outfit erscheint in der Outfit-Übersicht.                                         |
+| A22 | Versuche ein bereits gespeichertes Outfit erneut zu speichern.                                    | Anwendung informiert darüber, dass das Outfit bereits gespeichert wurde.          |
+| A23 | Öffne die gespeicherten Outfits.                                                                  | Gespeicherte Outfits werden angezeigt.                                            |
+| A24 | Prüfe, ob ein zuvor gespeichertes Outfit wiedergefunden werden kann.                              | Outfit ist weiterhin vorhanden und abrufbar.                                      |
+| A25 | Lösche ein gespeichertes Outfit.                                                                  | Outfit wird entfernt.                                                             |
+| A26 | Prüfe die Dashboard-Zahlen für Kleidungsstücke, gespeicherte Outfits und mögliche Kombinationen.  | Zahlen stimmen mit den vorhandenen Daten überein.                                 |
+| A27 | Aktiviere den Dark Mode innerhalb der Anwendung.                                                  | Alle Seiten bleiben gut lesbar.                                                   |
+| A28 | Ändere die Profildaten und speichere die Änderungen.                                              | Änderungen werden korrekt übernommen und angezeigt.                               |
+| A29 | Ändere das Passwort im Profilbereich.                                                             | Neues Passwort wird gespeichert und kann für den nächsten Login verwendet werden. |
+| A30 | Melde dich aus der Anwendung ab.                                                                  | Benutzer wird ausgeloggt und gelangt zurück zur Landing-Page.                     |
 
-Die Evaluation zeigte, dass die grundlegenden Funktionen verständlich und benutzerfreundlich umgesetzt wurden. Besonders positiv bewertet wurden das moderne Design und die einfache Navigation. Gleichzeitig wurde sichtbar, dass die Struktur der Outfitverwaltung verbessert werden musste.
+---
 
-## Abgeleitete Verbesserungen
+#### Kennzahlen & Beobachtungen
 
-Folgende Verbesserungen wurden priorisiert:
+##### Erfolgsquote
 
-1. Trennung zwischen Outfits und Favoriten
-2. Verbesserung des Dark-Mode-Kontrasts
-3. Sichtbarere Icons und Buttons
-4. Optimierung der Dropdown-Navigation
-5. Verbesserte Rückmeldungen bei Aktionen
-6. Ergänzung optionaler Accessoires
+| Bereich                                      | Erfolgsquote |
+| -------------------------------------------- | ------------ |
+| Landing Page verstehen                       | 2 / 2        |
+| Registrierung                                | 2 / 2        |
+| Passwortvalidierung                          | 2 / 2        |
+| Login                                        | 2 / 2        |
+| Fehlereingaben                               | 2 / 2        |
+| Profilmenü verwenden                         | 2 / 2        |
+| Navigation                                   | 2 / 2        |
+| Wardrobe filtern                             | 2 / 2        |
+| Outfit generieren                            | 2 / 2        |
+| Fehlermeldung bei fehlenden Kleidungsstücken | 2 / 2        |
+| Dark Mode verwenden                          | 2 / 2        |
+| Kleidungsstück hinzufügen                    | 0 / 2        |
+| Outfit speichern                             | 2 / 2        |
+
+---
+
+##### Identifizierte Issues
+
+| ID  | Beobachtung                                                                                                                                                    | Testperson | Priorität |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------- |
+| U1  | Unterschied zwischen gespeicherten Outfits und Favoriten war nicht eindeutig verständlich.                                                                     | TP-01      | Hoch      |
+| U2  | Beim Erstellen eines neuen Kleidungsstücks trat auf der deployten Version ein HTTP-500-Fehler auf. Dadurch konnte das Kleidungsstück nicht gespeichert werden. | TP-02      | Sehr hoch |
+| U3  | Beim Hochladen eines Bildes verschwindet die Vorschau, wenn der Dateidialog erneut geöffnet und anschliessend abgebrochen wird.                                | TP-02      | Mittel    |
+| U4  | Im Dashboard fehlte die Anzeige der Anzahl gespeicherter Accessoires.                                                                                          | TP-02      | Niedrig   |
+
+---
+
+##### Dokumentierte Issues
+
+**Issue U1 – Unklare Trennung zwischen gespeicherten Outfits und Favoriten**
+
+Während der Evaluation wurde deutlich, dass die ursprüngliche Outfit-Verwaltung nicht eindeutig zwischen gespeicherten Outfits und Lieblings-Outfits unterschied. Zum Testzeitpunkt gab es nur den Bereich **Outfits**. Eine separate Favoriten-Seite war noch nicht vorhanden.
+
+![Ursprüngliche Outfit-Ansicht ohne separate Favoriten-Seite](doc/images/testing-outfits-before-favorites.png)
+
+_Abbildung X: Ursprüngliche Outfit-Ansicht ohne separate Favoriten-Funktion_
+
+---
+
+**Issue U2 – HTTP-500-Fehler beim Erstellen eines Kleidungsstücks**
+
+Während der Evaluation trat auf der deployten Netlify-Version ein HTTP-500-Fehler beim Erstellen neuer Kleidungsstücke auf. Dadurch konnte der Upload-Prozess nicht erfolgreich abgeschlossen werden.
+
+![Fehler beim Erstellen von Kleidungsstücken](doc/images/testing-upload-error.png)
+
+_Abbildung X: Während der Evaluation identifizierter HTTP-500-Fehler beim Speichern eines Kleidungsstücks_
+
+---
+
+**Issue U3 – Bildvorschau verschwindet beim Abbrechen des Dateidialogs**
+
+Beim Hochladen eines Bildes wurde beobachtet, dass die bereits ausgewählte Bildvorschau verschwand, wenn der Dateidialog erneut geöffnet und anschliessend abgebrochen wurde. Für Nutzer:innen ist dies irritierend, da der Eindruck entstehen kann, dass das Bild nicht mehr ausgewählt wurde.
+
+![Bildvorschau vor Abbruch des Dateidialogs](doc/images/testing-cancel-image-upload.png)
+
+_Abbildung X: Bildauswahl während des Upload-Prozesses_
+
+![Bildvorschau nach Abbruch des Dateidialogs](doc/images/no-image-selected.png)
+
+_Abbildung X: Bildauswahl während des Upload-Prozesses_
+
+---
+
+**Issue U4 – Accessoires wurden im Dashboard nicht angezeigt**
+
+Im Dashboard wurden Kleidungsstücke wie Shirts, Hosen und Schuhe angezeigt. Accessoires wurden jedoch nicht separat gezählt, obwohl diese in der Anwendung als optionale Ergänzung für Outfits vorgesehen sind. Dadurch war nicht vollständig sichtbar, welche Kleidungsarten bereits im digitalen Kleiderschrank vorhanden sind.
+
+![Dashboard ohne Anzeige der Accessoires](doc/images/testing-dashboard-no-accessories.png)
+
+_Abbildung X: Dashboard ohne separate Anzeige der gespeicherten Accessoires_
+
+---
+
+##### Positive Beobachtungen
+
+Folgende Aspekte wurden von beiden Testpersonen positiv bewertet:
+
+- Die Landing Page erklärt den Zweck der Anwendung verständlich.
+- Die Sidebar-Navigation wurde sofort verstanden.
+- Die Benutzeroberfläche wurde als modern und hochwertig wahrgenommen.
+- Die Outfit-Generierung war intuitiv nutzbar.
+- Die visuelle Darstellung der Kleidungsstücke wurde positiv bewertet.
+- Die Dashboard-Seite vermittelte einen guten Überblick.
+- Die Upload-Funktion wurde grundsätzlich als einfach verständlich beschrieben.
+- Der Dark Mode wurde als angenehme Ergänzung wahrgenommen.
+- Fehlermeldungen bei ungültigen Eingaben wurden verständlich dargestellt.
+- Die Fehlermeldung bei fehlenden Kleidungsstücken für die Outfit-Generierung wurde korrekt angezeigt.
+
+---
+
+#### Zusammenfassung der Resultate
+
+Die Evaluation zeigte, dass das Grundkonzept von Outfitr verständlich und benutzerfreundlich umgesetzt wurde. Besonders positiv bewertet wurden die Navigation, die visuelle Gestaltung sowie die einfache Bedienung des Outfit-Generators.
+
+Gleichzeitig wurden mehrere Verbesserungspotenziale identifiziert. Neben einem technischen Problem beim Erstellen neuer Kleidungsstücke zeigte sich insbesondere, dass die Verwaltung gespeicherter Outfits für Nutzer:innen nicht eindeutig verständlich war. Zudem wurden kleinere Usability-Probleme bei der Bildauswahl sowie im Dashboard festgestellt.
+
+Die zusätzlichen Tests zu Passwortvalidierung, fehlerhaften Eingaben, Profilmenü, Filterung und Dark Mode zeigten, dass die meisten Kernfunktionen der Anwendung zuverlässig und verständlich funktionieren.
+
+---
+
+#### Abgeleitete Verbesserungen
+
+| Priorität | Verbesserung                                                       | Status    |
+| --------- | ------------------------------------------------------------------ | --------- |
+| Hoch      | Klare Trennung zwischen gespeicherten Outfits und Favoriten        | Umgesetzt |
+| Hoch      | Behebung des HTTP-500-Fehlers beim Erstellen von Kleidungsstücken  | Umgesetzt |
+| Mittel    | Beibehaltung der Bildvorschau nach Abbruch des Upload-Dialogs      | Umgesetzt |
+| Niedrig   | Anzeige der Anzahl gespeicherter Accessoires im Dashboard ergänzen | Umgesetzt |
+
+Die wichtigste Erkenntnis der Evaluation war die Notwendigkeit einer klareren Trennung zwischen gespeicherten Outfits und Lieblings-Outfits. Diese Verbesserung wurde nach der Evaluation umgesetzt und wird in Kapitel 4 dokumentiert.
+
+Zusätzlich wurde der identifizierte HTTP-500-Fehler priorisiert behoben, da dieser eine zentrale Funktion der Anwendung beeinträchtigte. Die verbleibenden Verbesserungsvorschläge betreffen hauptsächlich Komfort- und Usability-Aspekte und können in zukünftigen Versionen umgesetzt werden.
 
 ## 4. Erweiterungen
 
