@@ -886,58 +886,127 @@ Zusätzlich wurde der identifizierte HTTP-500-Fehler priorisiert behoben, da die
 
 ### 4.1 Dark Mode
 
-- **Beschreibung & Nutzen:**  
-  Für Outfitr wurde zusätzlich zum normalen Light Mode ein vollständiger Dark Mode umgesetzt. Nutzer:innen können zwischen den beiden Modi wechseln. Dadurch wird die Anwendung moderner, angenehmer für die Augen und individueller nutzbar.
+#### Beschreibung & Nutzen
 
-- **Wo umgesetzt:**
-  - **Frontend:** CSS-Anpassungen für Light- und Dark-Mode in mehreren Seiten und Komponenten
-  - **Frontend:** Dark-Mode-Toggle im User-Menü integriert
-  - **State Management:** Speicherung des gewählten Themes im Browser mittels Local Storage
+Für Outfitr wurde zusätzlich zum standardmässigen Light Mode ein vollständiger Dark Mode umgesetzt. Nutzer:innen können jederzeit zwischen beiden Darstellungsvarianten wechseln und die Anwendung an ihre persönlichen Vorlieben anpassen.
 
-- **Referenz:**
-  - Beschreibung des Designs in Kapitel 3.4.1
-  - Farbpaletten des Light- und Dark-Modes in Kapitel 3.4.1
+Die Erweiterung verbessert insbesondere die Nutzung bei schlechten Lichtverhältnissen und sorgt für eine modernere Benutzererfahrung. Gleichzeitig bietet sie den Nutzer:innen mehr Flexibilität bei der Darstellung der Anwendung.
 
-- **Aus Evaluation abgeleitet?:**  
-  Ja. Während der Evaluation wurden Kontrastprobleme und Schwierigkeiten bei der Lesbarkeit im Dark Mode festgestellt und anschliessend verbessert.
+Die Umsetzung erfolgte bewusst über den ursprünglichen Projektumfang hinaus, da viele moderne Webanwendungen und E-Commerce-Plattformen mittlerweile einen Dark Mode anbieten. Diese Funktion wurde daher als sinnvoller Mehrwert für Outfitr integriert.
+
+---
+
+#### Wo umgesetzt
+
+##### Frontend
+
+- Entwicklung eines vollständigen Dark-Mode-Designs für alle Seiten der Anwendung
+- Anpassung von Farben, Hintergründen, Formularen, Karten, Buttons und Navigationselementen
+- Umsetzung eines Theme-Toggles auf der Landing Page
+- Integration einer Theme-Umschaltung im Profil-Dropdown innerhalb der Anwendung
+
+##### State Management
+
+- Speicherung des gewählten Themes im Browser mittels Local Storage
+- Automatische Wiederherstellung des zuletzt gewählten Themes beim erneuten Öffnen der Anwendung
+
+##### User Interface
+
+- Unterstützung von Light Mode und Dark Mode auf allen zentralen Seiten
+- Konsistente Farbgestaltung über Landing Page, Dashboard, Wardrobe, Generator und Outfits hinweg
+
+---
+
+#### Referenz
+
+##### Landing Page – Light Mode
+
+![Landing Page Light Mode](doc/images/landing-light.png)
+
+_Abbildung X: Landing Page im Light Mode_
+
+##### Landing Page – Dark Mode
+
+![Landing Page Dark Mode](doc/images/landing-dark.png)
+
+_Abbildung X: Landing Page im Dark Mode_
+
+##### Dashboard – Light Mode
+
+![Dashboard Light Mode](doc/images/dashboard-light.png)
+
+_Abbildung X: Dashboard im Light Mode_
+
+##### Dashboard – Dark Mode
+
+![Dashboard Dark Mode](doc/images/dashboard-dark.png)
+
+_Abbildung X: Dashboard im Dark Mode_
+
+Zusätzlich beschrieben in:
+
+- Kapitel 3.4.1 Entwurf (Design)
+- Kapitel 3.4.2 Umsetzung (Technik)
+
+---
+
+#### Aus Evaluation abgeleitet?
+
+Nein. Der Dark Mode wurde bereits während der Entwicklung als zusätzliche Funktion geplant und umgesetzt. Die Erweiterung entstand aus eigenen Designüberlegungen sowie durch die Analyse moderner Webanwendungen und wurde nicht aufgrund von Erkenntnissen aus der Evaluation implementiert.
 
 ---
 
 ### 4.2 Favoriten-System
 
 - **Beschreibung & Nutzen:**  
-  Die Anwendung wurde um ein separates Favoriten-System erweitert. Nutzer:innen können gespeicherte Outfits zusätzlich als Favoriten markieren. Dadurch werden Lieblings-Outfits klar von normalen gespeicherten Outfits getrennt.
+  Die Anwendung wurde um ein separates Favoriten-System erweitert. Nutzer:innen können gespeicherte Outfits zusätzlich als Favoriten markieren. Dadurch werden Lieblings-Outfits klar von normalen gespeicherten Outfits getrennt und können schneller wiedergefunden werden.
+
+  Zusätzlich wurde die Favoriten-Funktion bewusst so umgesetzt, dass ein Outfit beim Entfernen aus den Favoriten nicht aus der Outfit-Verwaltung verschwindet. Wird das Herz-Symbol deaktiviert, bleibt das Outfit weiterhin in der Übersicht der gespeicherten Outfits sichtbar. Dadurch können Nutzer:innen versehentlich entfernte Favoriten jederzeit wieder als Favorit markieren, ohne das Outfit erneut erstellen zu müssen.
 
 - **Wo umgesetzt:**
-  - **Frontend:** Herz-Icon in der Outfit-Verwaltung
-  - **Frontend:** Eigene Favoriten-Seite mit separater Darstellung
-  - **Datenverwaltung:** Speicherung des Favoriten-Status bei Outfits
+  - **Frontend:** Herz-Icon zur Markierung von Favoriten in der Outfit-Verwaltung
+  - **Frontend:** Eigene Favoriten-Seite mit separater Darstellung der Lieblings-Outfits
+  - **Frontend:** Dynamische Aktualisierung des Favoriten-Status in der Benutzeroberfläche
+  - **Datenbank:** Speicherung des Favoriten-Status (`isFavorite`) innerhalb der Outfit-Dokumente in MongoDB
+  - **Backend:** Separate Server-Action zum Hinzufügen und Entfernen von Favoriten
 
 - **Referenz:**
-  - Beschreibung der Informationsarchitektur in Kapitel 3.4.1
-  - Evaluationserkenntnisse in Kapitel 3.5
+  - Kapitel 3.4.1 Informationsarchitektur
+  - Kapitel 3.5 Evaluation
 
 - **Aus Evaluation abgeleitet?:**  
-  Ja. Testpersonen fanden die ursprüngliche Outfit-Seite teilweise verwirrend, weshalb Favoriten separat organisiert wurden.
+  Ja. Während der Evaluation wurde festgestellt, dass die ursprüngliche Outfit-Verwaltung nicht eindeutig zwischen gespeicherten Outfits und Lieblings-Outfits unterschied. Testpersonen äusserten den Wunsch nach einer klareren Trennung. Als Reaktion darauf wurde eine separate Favoriten-Seite eingeführt und die Favoriten-Verwaltung erweitert.
 
 ---
 
 ### 4.3 Accessoires als optionale Ergänzung
 
 - **Beschreibung & Nutzen:**  
-  Der Outfit-Generator wurde erweitert, sodass zusätzlich optionale Accessoires wie Schmuck, Gürtel oder Sonnenbrillen berücksichtigt werden können. Accessoires sind kein Pflichtbestandteil eines Outfits, können jedoch passende Kombinationen ergänzen.
+  Der Outfit-Generator wurde um die Kategorie **Accessoire** erweitert. Neben klassischen Kleidungsstücken wie Shirts, Hosen und Schuhen können Nutzer:innen nun zusätzliche Elemente wie Gürtel, Ketten, Taschen, Sonnenbrillen, Uhren, Mützen, Schals oder Ohrringe verwalten.
+
+  Accessoires sind bewusst als optionale Ergänzung umgesetzt worden und stellen keinen Pflichtbestandteil eines Outfits dar. Dadurch bleiben die generierten Outfits flexibel, können aber bei vorhandenen Accessoires realistischer und vollständiger dargestellt werden.
+
+  Zusätzlich wurde beim Hinzufügen eines neuen Accessoires ein weiteres Formularelement eingeführt. Nach der Auswahl der Kategorie **Accessoire** erscheint automatisch ein zusätzliches Auswahlfeld, über welches der genaue Accessoire-Typ definiert werden kann. Dadurch können verschiedene Accessoires strukturiert gespeichert, ausgewertet und später gezielt in Outfits integriert werden.
 
 - **Wo umgesetzt:**
-  - **Frontend:** Erweiterung der Kategorien und Darstellung
-  - **Logik:** Anpassung der Outfit-Generierung für optionale Accessoires
-  - **Datenstruktur:** Speicherung zusätzlicher Kleidungsarten
+  - **Frontend:** Neue Kategorie „Accessoire“ in der Kleidungsverwaltung
+  - **Frontend:** Dynamische Anzeige eines zusätzlichen Formularfeldes zur Auswahl des Accessoire-Typs
+  - **Frontend:** Darstellung von Accessoires innerhalb generierter Outfits
+  - **Frontend:** Berücksichtigung von Accessoires in den Dashboard-Statistiken
+  - **Backend:** Erweiterung der Outfit-Logik zur optionalen Einbindung passender Accessoires
+  - **Datenbank:** Erweiterung der MongoDB-Dokumente um das Attribut `accessoryType`
 
 - **Referenz:**
-  - Outfit-Generator in Kapitel 3.4.1
-  - Workflow-Beschreibung in Kapitel 3.3
+  - Kapitel 3.3 End-to-End-Ablauf
+  - Kapitel 3.4.1 Benutzeroberfläche und Informationsarchitektur
+  - Abbildung X: Auswahl eines Accessoire-Typs beim Hinzufügen eines neuen Kleidungsstücks
 
 - **Aus Evaluation abgeleitet?:**  
-  Teilweise. Die Erweiterung entstand aus dem Wunsch, Outfits realistischer und vollständiger darzustellen.
+  Nein. Die Erweiterung entstand während der Weiterentwicklung der Anwendung. Bei der Analyse bestehender Mode- und Shopping-Plattformen zeigte sich, dass Accessoires einen wichtigen Bestandteil vollständiger Outfits darstellen. Die Funktion wurde deshalb ergänzt, um die erzeugten Outfit-Kombinationen realistischer und näher an realen Styling-Situationen abzubilden.
+
+![Auswahl des Accessoire-Typs beim Hinzufügen eines neuen Kleidungsstücks](doc/images/accessoire-typ-auswahl.png)
+
+_Abbildung X: Nach Auswahl der Kategorie „Accessoire“ wird automatisch ein zusätzliches Formularfeld eingeblendet, über welches der genaue Accessoire-Typ definiert werden kann. Dadurch können verschiedene Arten von Accessoires strukturiert gespeichert und später bei der Outfit-Generierung berücksichtigt werden._
 
 ---
 
