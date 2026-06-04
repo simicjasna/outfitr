@@ -1010,40 +1010,197 @@ _Abbildung X: Nach Auswahl der Kategorie „Accessoire“ wird automatisch ein z
 
 ---
 
-### 4.4 Verbesserte Benutzerführung
+### 4.4 Benutzerprofil und Kontoverwaltung
 
-- **Beschreibung & Nutzen:**  
-  Mehrere kleinere Verbesserungen wurden umgesetzt, um die Benutzerführung verständlicher zu machen. Dazu gehören sichtbare Icons, bessere Kontraste, Dropdown-Verbesserungen und zusätzliche Rückmeldungen bei Aktionen.
+#### Beschreibung & Nutzen
 
-- **Wo umgesetzt:**
-  - **Frontend:** Optimierung von Buttons, Icons und Dropdown-Menüs
-  - **Frontend:** Verbesserte Fehlermeldungen und visuelle Rückmeldungen
-  - **Design:** Anpassung der Kontraste im Dark Mode
+Outfitr wurde um ein vollständiges Benutzerprofil mit Kontoverwaltung erweitert. Nutzer:innen können ein eigenes Benutzerkonto erstellen, sich anmelden, ihre Profildaten verwalten sowie ihr Passwort ändern.
 
-- **Referenz:**
-  - Evaluationsergebnisse in Kapitel 3.5
-  - Designentscheidungen in Kapitel 3.4.1
+Durch die Benutzerverwaltung können persönliche Kleidungsstücke, Outfits und Favoriten dauerhaft gespeichert werden. Die Anwendung bietet dadurch eine individuellere Nutzung als ein rein statischer Prototyp.
 
-- **Aus Evaluation abgeleitet?:**  
-  Ja. Mehrere dieser Anpassungen entstanden direkt aus Beobachtungen während der Tests.
+Zusätzlich erhöht die Passwortänderung die Kontrolle über das eigene Benutzerkonto und verbessert die Benutzerfreundlichkeit der Anwendung.
 
 ---
 
-### 4.5 Deployment der Anwendung
+#### Wo umgesetzt
 
-- **Beschreibung & Nutzen:**  
-  Die Anwendung wurde öffentlich über Netlify deployed. Dadurch konnte der Prototyp realistisch getestet und auf verschiedenen Geräten verwendet werden.
+##### Frontend
 
-- **Wo umgesetzt:**
-  - **Deployment:** Netlify
-  - **Versionsverwaltung:** GitHub Repository mit automatischem Build-Prozess
+- Registrierungsseite zur Erstellung neuer Benutzerkonten
+- Login-Seite für die Authentifizierung bestehender Nutzer:innen
+- Profilseite zur Verwaltung persönlicher Daten
+- Formular zur Änderung des Passworts
+- Logout-Funktion innerhalb des Profilmenüs
 
-- **Referenz:**
-  - Deployment-Link in Kapitel 3.4.2
-  - Validierung in Kapitel 3.5
+##### Backend
 
-- **Aus Evaluation abgeleitet?:**  
-  Nein. Das Deployment war notwendig, um die Anwendung online verfügbar zu machen.
+- Benutzerverwaltung über Server Actions
+- Passwortvalidierung bei Registrierung und Passwortänderung
+- Session-Management für angemeldete Nutzer:innen
+
+##### Datenbank
+
+- Speicherung von Benutzerdaten in MongoDB
+- Verknüpfung von Kleidungsstücken, Outfits und Favoriten mit dem jeweiligen Benutzerkonto
+
+---
+
+#### Referenz
+
+- Kapitel 3.4.2 Umsetzung
+- Kapitel 3.5 Evaluation (Login-, Registrierungs- und Passworttests)
+
+---
+
+#### Aus Evaluation abgeleitet?
+
+Nein. Die Benutzerverwaltung wurde bereits während der Entwicklung als zusätzliche Funktion geplant, um eine realistische Nutzung der Anwendung mit individuellen Benutzerkonten zu ermöglichen.
+
+---
+
+### 4.5 Dashboard mit Live-Statistiken
+
+#### Beschreibung & Nutzen
+
+Das Dashboard wurde um verschiedene dynamische Statistiken erweitert, die den Inhalt des persönlichen Kleiderschranks automatisch auswerten.
+
+Nutzer:innen erhalten dadurch einen schnellen Überblick über ihre gespeicherten Kleidungsstücke, Outfits und möglichen Outfit-Kombinationen. Zusätzlich werden Informationen über die Verteilung der verschiedenen Kleidungskategorien angezeigt.
+
+Die Erweiterung unterstützt die Nutzer:innen dabei, ihren digitalen Kleiderschrank besser zu verstehen und ungenutzte Potenziale zu erkennen.
+
+---
+
+#### Wo umgesetzt
+
+##### Frontend
+
+- Dashboard mit mehreren Statistik-Karten
+- Visuelle Darstellung der wichtigsten Kennzahlen
+- Automatische Aktualisierung nach Änderungen im Kleiderschrank
+
+##### Backend
+
+- Berechnung der Statistiken auf Basis der gespeicherten Daten
+- Dynamische Ermittlung möglicher Outfit-Kombinationen
+
+##### Datenbank
+
+- Auswertung der gespeicherten Kleidungsstücke und Outfits
+- Berücksichtigung von Shirts, Hosen, Schuhen und Accessoires
+
+---
+
+#### Referenz
+
+- Kapitel 3.4.1 Benutzeroberfläche
+- Kapitel 3.4.2 Umsetzung
+
+##### Dashboard mit Live-Statistiken
+
+![Dashboard Statistiken](doc/images/dashboard-statistics.png)
+
+_Abbildung X: Dynamische Auswertung des digitalen Kleiderschranks mit Anzahl Kleidungsstücke, Accessoires, gespeicherten Outfits und möglichen Outfit-Kombinationen._
+
+---
+
+#### Aus Evaluation abgeleitet?
+
+Nein. Die Erweiterung wurde implementiert, um den Nutzer:innen zusätzliche Informationen über ihren digitalen Kleiderschrank bereitzustellen und die Anwendung interaktiver zu gestalten.
+
+---
+
+### 4.6 Dynamische Outfit-Generierung und Duplikat-Erkennung
+
+#### Beschreibung & Nutzen
+
+Eine zentrale Erweiterung von Outfitr ist die dynamische Outfit-Generierung. Die Anwendung erstellt Outfits nicht aus vordefinierten Beispielen, sondern generiert diese auf Basis der tatsächlich gespeicherten Kleidungsstücke eines Nutzers bzw. einer Nutzerin.
+
+Dadurch entstehen individuelle Outfit-Kombinationen, die direkt auf dem persönlichen digitalen Kleiderschrank basieren. Die Funktion bietet einen konkreten Mehrwert gegenüber einer statischen Anzeige von Kleidungsstücken und bildet die Kernfunktion der Anwendung.
+
+Zusätzlich wurde eine Duplikat-Erkennung implementiert. Bereits gespeicherte Outfit-Kombinationen können nicht mehrfach gespeichert werden. Dadurch bleibt die Outfit-Verwaltung übersichtlich und redundante Einträge werden vermieden.
+
+---
+
+#### Funktionsweise der Outfit-Generierung
+
+Die Outfit-Generierung basiert auf einer regelbasierten Logik.
+
+Für die Erstellung eines Outfits werden die gespeicherten Kleidungsstücke des aktuell angemeldeten Benutzers analysiert.
+
+Dabei gelten folgende Regeln:
+
+- Mindestens ein Shirt muss vorhanden sein.
+- Mindestens eine Hose muss vorhanden sein.
+- Mindestens ein Paar Schuhe muss vorhanden sein.
+- Accessoires sind optional und werden nur berücksichtigt, wenn passende vorhanden sind.
+
+Die Anwendung erstellt mögliche Kombinationen aus den vorhandenen Kategorien und berechnet daraus die verfügbaren Outfit-Kombinationen.
+
+Beispiel:
+
+- 5 Shirts
+- 5 Hosen
+- 3 Schuhe
+
+Ergeben:
+
+5 × 5 × 3 = 75 mögliche Outfit-Kombinationen
+
+Sind zusätzlich Accessoires vorhanden, können diese dem Outfit ergänzend hinzugefügt werden.
+
+Falls eine der benötigten Hauptkategorien fehlt, wird kein Outfit generiert und die Nutzer:innen erhalten eine verständliche Fehlermeldung.
+
+---
+
+#### Wo umgesetzt
+
+##### Frontend
+
+- Generator-Seite zur Erstellung neuer Outfit-Kombinationen
+- Anzeige der generierten Outfit-Vorschläge
+- Rückmeldungen bei erfolgreichem Speichern
+- Fehlermeldungen bei fehlenden Kleidungsstücken
+- Meldung bei bereits gespeicherten Outfits
+
+##### Backend
+
+- Logik zur Auswahl passender Kleidungsstücke
+- Prüfung der erforderlichen Kategorien
+- Berechnung möglicher Outfit-Kombinationen
+- Duplikat-Prüfung vor dem Speichern
+
+##### Datenbank
+
+- Speicherung generierter Outfits in MongoDB
+- Vergleich bestehender Outfit-Dokumente zur Vermeidung von Duplikaten
+
+---
+
+#### Referenz
+
+- Kapitel 3.3 End-to-End-Ablauf
+- Kapitel 3.4.2 Umsetzung
+- Kapitel 3.5 Evaluation
+
+##### Outfit-Generierung
+
+![Outfit Generator](doc/images/generated-outfit.png)
+
+_Abbildung X: Dynamisch generiertes Outfit basierend auf den gespeicherten Kleidungsstücken des Benutzers._
+
+##### Duplikat-Erkennung
+
+![Duplikat Erkennung](doc/images/outfit-duplicate.png)
+
+_Abbildung X: Meldung beim Versuch, ein bereits gespeichertes Outfit erneut zu speichern._
+
+---
+
+#### Aus Evaluation abgeleitet?
+
+Nein. Die Outfit-Generierung stellt die zentrale Kernfunktion von Outfitr dar und wurde bereits zu Beginn der Entwicklung geplant. Die spätere Duplikat-Erkennung wurde ergänzend implementiert, um die Benutzerfreundlichkeit zu verbessern und doppelte Outfit-Einträge zu vermeiden.
+
+---
 
 ## 5. Projektorganisation
 
