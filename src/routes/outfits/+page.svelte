@@ -43,7 +43,7 @@
   {#if data.outfits.length > 0}
     <div class="outfits-grid">
       {#each data.outfits as outfit}
-        <OutfitCard {outfit} onDeleted={handleDeleted} />
+        <OutfitCard {outfit} onDeleted={handleDeleted} showDelete={true} />
       {/each}
     </div>
   {:else}

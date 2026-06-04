@@ -1,5 +1,5 @@
 <script>
-  let { outfit, showDelete = true, onDeleted = () => {} } = $props();
+  let { outfit, onDeleted = null, showDelete = true } = $props();
 
   let isFavorite = $state(outfit.isFavorite || false);
   let hidden = $state(false);
@@ -31,7 +31,10 @@
 
     if (response.ok) {
       hidden = true;
-      onDeleted(outfit.name);
+
+      if (onDeleted) {
+        onDeleted(outfit.name);
+      }
     }
   }
 </script>

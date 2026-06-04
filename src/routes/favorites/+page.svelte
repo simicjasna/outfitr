@@ -4,6 +4,8 @@
   import OutfitCard from "$lib/components/OutfitCard.svelte";
 
   let { data } = $props();
+
+  let favoriteOutfits = $derived(data.outfits ?? []);
 </script>
 
 <section class="outfits-page">
@@ -18,26 +20,23 @@
         hast.
       </p>
     </div>
-
-    <a class="primary-button" href="/outfits"> Alle Outfits ansehen </a>
   </div>
 
-  {#if data.outfits.length > 0}
-    <div class="outfits-grid">
-      {#each data.outfits as outfit}
-        <OutfitCard {outfit} />
-      {/each}
-    </div>
-  {:else}
-    <div class="empty-state">
+  {#if favoriteOutfits.length === 0}
+    <section class="empty-card">
+      <div class="empty-icon">♥</div>
       <h2>Noch keine Favoriten</h2>
-
       <p>
         Gehe zu deinen gespeicherten Outfits und markiere deine Lieblingslooks
         mit dem Herz.
       </p>
-
-      <a class="primary-button" href="/outfits"> Zu den Outfits </a>
-    </div>
+      <a class="primary-button" href="/outfits">Zu den Outfits</a>
+    </section>
+  {:else}
+    <section class="outfits-grid">
+      {#each favoriteOutfits as outfit}
+        <OutfitCard {outfit} showDelete={false} />
+      {/each}
+    </section>
   {/if}
 </section>
