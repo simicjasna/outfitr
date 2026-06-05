@@ -83,27 +83,81 @@ Die Entwicklung von Outfitr erfolgte iterativ anhand der im Unterricht behandelt
 
 ### 3.1 Understand & Define
 
+Zu Beginn des Projekts wurde untersucht, welche Herausforderungen Personen bei der Verwaltung ihrer Kleidung und der täglichen Outfitwahl haben. Dabei zeigte sich insbesondere, dass viele Nutzer:innen den Überblick über ihren Kleiderschrank verlieren und vorhandene Kleidungsstücke nicht optimal nutzen.
+
+Häufig werden passende Outfit-Kombinationen spontan zusammengestellt, wodurch viel Zeit verloren geht. Gleichzeitig bleiben bestimmte Kleidungsstücke ungenutzt, da Nutzer:innen vergessen, dass sie diese besitzen oder nicht wissen, wie sie diese kombinieren können.
+
+Im Rahmen der Problemraumanalyse wurden bestehende Lösungen betrachtet und typische Bedürfnisse potenzieller Nutzer:innen analysiert. Dabei zeigte sich, dass viele Anwendungen entweder stark auf Social-Media-Funktionen fokussiert sind oder lediglich eine einfache Verwaltung von Kleidungsstücken ermöglichen. Eine Kombination aus digitalem Kleiderschrank und automatischer Outfit-Generierung wird hingegen nur selten angeboten.
+
 #### Zielgruppenverständnis
 
-Zu Beginn des Projekts wurde untersucht, welche Probleme Personen im Alltag mit ihrer Kleidung und Outfitwahl haben. Dabei zeigte sich insbesondere, dass viele Nutzer:innen:
+Die primäre Zielgruppe besteht aus modeinteressierten Personen zwischen 18 und 35 Jahren, die ihren Kleiderschrank digital organisieren und schneller passende Outfit-Kombinationen finden möchten.
 
-- den Überblick über ihre Kleidung verlieren
-- Outfit-Kombinationen spontan schwierig finden
-- selten getragene Kleidung vergessen
-- ihre Kleidung nicht strukturiert organisieren können
+##### Persona 1
 
-Die Zielgruppe besteht primär aus modeinteressierten Personen zwischen 18 und 35 Jahren, die ihren Kleiderschrank digital verwalten möchten und Inspiration für Outfit-Kombinationen suchen.
+**Name:** Lisa, 24 Jahre  
+**Beruf:** Studentin und Teilzeitangestellte  
+**Technische Erfahrung:** Hoch
 
-Zusätzlich wurden bestehende Lösungen analysiert. Viele vorhandene Apps fokussieren sich entweder stark auf Social Media oder bieten nur einfache Kleiderschrankfunktionen ohne intelligente Outfit-Kombinationen.
+**Ziele:**
+
+- Überblick über ihre Kleidung behalten
+- Zeit bei der Outfit-Auswahl sparen
+- Neue Outfit-Kombinationen entdecken
+- Lieblings-Outfits speichern
+
+**Probleme:**
+
+- Viele Kleidungsstücke werden selten getragen
+- Passende Kombinationen sind nicht immer offensichtlich
+- Der Kleiderschrank wirkt unübersichtlich
+- Outfits werden häufig spontan zusammengestellt
+
+**Bedürfnisse:**
+
+- Digitale Verwaltung ihrer Kleidung
+- Automatische Outfit-Vorschläge
+- Einfache Bedienung
+- Moderne und übersichtliche Benutzeroberfläche
+
+##### Persona 2
+
+**Name:** Marco, 29 Jahre  
+**Beruf:** Marketing Manager  
+**Technische Erfahrung:** Mittel
+
+**Ziele:**
+
+- Morgens schneller passende Outfits finden
+- Kleidung strukturierter organisieren
+- Doppelte Käufe vermeiden
+- Lieblingskombinationen wiederverwenden
+
+**Probleme:**
+
+- Wenig Zeit für die Outfit-Auswahl
+- Überblick über vorhandene Kleidung fehlt
+- Vergisst selten getragene Kleidungsstücke
+- Schwierigkeiten bei der Kombination verschiedener Kleidungsstücke
+
+**Bedürfnisse:**
+
+- Schnelle Outfit-Empfehlungen
+- Übersicht über vorhandene Kleidung
+- Speicherung von Favoriten
+- Einfache Navigation ohne lange Einarbeitung
 
 #### Wesentliche Erkenntnisse
 
-- Nutzer:innen wünschen eine einfache und übersichtliche Bedienung
-- Die Outfit-Erstellung soll schnell und intuitiv funktionieren
-- Ein modernes und minimalistisches Design erhöht die Benutzerfreundlichkeit
-- Die Verwaltung von Kleidung muss visuell verständlich sein
-- Favoriten und gespeicherte Outfits sollen getrennt organisiert werden
-- Dark Mode wurde von mehreren Testpersonen als wichtig wahrgenommen
+- Nutzer:innen wünschen eine einfache und übersichtliche Bedienung.
+- Die Outfit-Erstellung soll schnell und intuitiv funktionieren.
+- Viele Personen verlieren den Überblick über ihre vorhandene Kleidung.
+- Selten getragene Kleidungsstücke geraten häufig in Vergessenheit.
+- Die Verwaltung von Kleidung muss visuell verständlich sein.
+- Favoriten und gespeicherte Outfits sollen getrennt organisiert werden.
+- Automatische Outfit-Vorschläge bieten einen zusätzlichen Mehrwert.
+- Ein modernes und minimalistisches Design erhöht die Benutzerfreundlichkeit.
+- Personalisierte Benutzerkonten ermöglichen eine individuelle Nutzung der Anwendung.
 
 ---
 
