@@ -302,7 +302,14 @@ async function getLatestOutfits(limit = 3, userId) {
   try {
     outfits = await db
       .collection("outfits")
-      .find({ userId })
+      .find(
+        { userId },
+        {
+          projection: {
+            "items.image": 0,
+          },
+        },
+      )
       .sort({ createdAt: -1 })
       .limit(limit)
       .toArray();
@@ -521,6 +528,40 @@ async function toggleOutfitFavorite(id, userId) {
   }
 }
 
+async function getClothesWithoutImages(userId) {
+  let clothes = [];
+
+  try {
+    clothes = await db
+      .collection("clothes")
+      .find(
+        { userId },
+        {
+          projection: {
+            image: 0,
+          },
+        },
+      )
+      .sort({ createdAt: -1 })
+      .toArray();
+
+    clothes.forEach(convertId);
+  } catch (error) {
+    console.error("Error loading clothes without images:", error);
+  }
+
+  return clothes;
+}
+
+async function getOutfitsCount(userId) {
+  try {
+    return await db.collection("outfits").countDocuments({ userId });
+  } catch (error) {
+    console.error("Error counting outfits:", error);
+    return 0;
+  }
+}
+
 export default {
   getClothes,
   getClothingItem,
@@ -542,4 +583,6 @@ export default {
   deleteSession,
   getFavoriteOutfits,
   toggleOutfitFavorite,
+  getClothesWithoutImages,
+  getOutfitsCount,
 };

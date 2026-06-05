@@ -14,13 +14,55 @@
 
   let fileName = $state("");
   let imagePreview = $state("");
+  let compressedImage = $state("");
   let selectedCategory = $state(form?.values?.category || "");
 
   function hasError(field) {
     return form?.missingFields?.includes(field);
   }
 
-  function handleFileChange(event) {
+  function resizeImage(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        const img = new Image();
+
+        img.onload = () => {
+          const maxWidth = 700;
+          const maxHeight = 700;
+
+          let { width, height } = img;
+
+          if (width > height && width > maxWidth) {
+            height = Math.round((height * maxWidth) / width);
+            width = maxWidth;
+          } else if (height >= width && height > maxHeight) {
+            width = Math.round((width * maxHeight) / height);
+            height = maxHeight;
+          }
+
+          const canvas = document.createElement("canvas");
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+
+          const resizedDataUrl = canvas.toDataURL("image/jpeg", 0.75);
+          resolve(resizedDataUrl);
+        };
+
+        img.onerror = reject;
+        img.src = reader.result;
+      };
+
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function handleFileChange(event) {
     const file = event.target.files[0];
 
     if (!file) {
@@ -29,13 +71,14 @@
 
     fileName = file.name;
 
-    const reader = new FileReader();
+    try {
+      const resizedImage = await resizeImage(file);
 
-    reader.onload = () => {
-      imagePreview = reader.result;
-    };
-
-    reader.readAsDataURL(file);
+      imagePreview = resizedImage;
+      compressedImage = resizedImage;
+    } catch (error) {
+      console.error("Error resizing image:", error);
+    }
   }
 </script>
 
@@ -57,6 +100,8 @@
     action="?/create"
     enctype="multipart/form-data"
   >
+    <input type="hidden" name="compressedImage" value={compressedImage} />
+
     <div class="form-card">
       <div class="upload-box">
         <label

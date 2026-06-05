@@ -30,8 +30,8 @@ export async function load({ locals }) {
   const userId = locals.user._id;
 
   const user = await db.getUserById(userId);
-  const clothes = await db.getClothes({}, userId);
-  const outfits = await db.getOutfits(userId);
+  const clothes = await db.getClothesWithoutImages(userId);
+  const outfitsCount = await db.getOutfitsCount(userId);
 
   return {
     profile: {
@@ -43,7 +43,7 @@ export async function load({ locals }) {
     },
     stats: {
       clothesCount: clothes.length,
-      outfitsCount: outfits.length,
+      outfitsCount,
       mostUsedStyle: getMostUsedStyle(clothes),
     },
   };

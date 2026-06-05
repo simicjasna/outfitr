@@ -151,11 +151,9 @@
               <span class="heart-badge">♥</span>
             </div>
 
-            <div class="latest-preview">
-              {#each outfit.items as item}
-                <img src={item.image} alt={item.name} />
-              {/each}
-            </div>
+            <p class="latest-summary">
+              {outfit.items?.length ?? 0} Kleidungsstücke gespeichert
+            </p>
           </div>
         {/each}
       </div>

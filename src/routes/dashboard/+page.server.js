@@ -27,8 +27,8 @@ function getMostUsedStyle(clothes) {
 export async function load({ locals }) {
   const userId = locals.user._id;
 
-  const clothes = await db.getClothes({}, userId);
-  const outfits = await db.getOutfits(userId);
+  const clothes = await db.getClothesWithoutImages(userId);
+  const outfitsCount = await db.getOutfitsCount(userId);
   const latestOutfits = await db.getLatestOutfits(3, userId);
 
   const shirts = clothes.filter((item) => item.category === "Shirt").length;
@@ -44,7 +44,7 @@ export async function load({ locals }) {
   return {
     stats: {
       clothesCount: clothes.length,
-      outfitsCount: outfits.length,
+      outfitsCount,
       possibleCombinations,
       shirts,
       pants,

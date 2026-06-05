@@ -79,16 +79,23 @@
       </a>
 
       <nav>
-        <a class:active-nav={isActive("/dashboard")} href="/dashboard">Home</a>
-        <a class:active-nav={isActive("/wardrobe")} href="/wardrobe">Wardrobe</a
+        <a class:active-nav={isActive("/dashboard")} href="/dashboard">
+          Home
+        </a>
+        <a class:active-nav={isActive("/wardrobe")} href="/wardrobe">
+          Wardrobe
+        </a>
+        <a
+          class:active-nav={isActive("/generator")}
+          href="/generator"
+          data-sveltekit-preload-data="hover"
         >
-        <a class:active-nav={isActive("/generator")} href="/generator"
-          >Generator</a
-        >
-        <a class:active-nav={isActive("/outfits")} href="/outfits">Outfits</a>
-        <a class:active-nav={isActive("/favorites")} href="/favorites"
-          >Favoriten</a
-        >
+          Generator
+        </a>
+        <a class:active-nav={isActive("/outfits")} href="/outfits"> Outfits </a>
+        <a class:active-nav={isActive("/favorites")} href="/favorites">
+          Favoriten
+        </a>
       </nav>
     </aside>
 
@@ -111,7 +118,7 @@
 
           {#if dropdownOpen}
             <div class="user-dropdown">
-              <a href="/profile" onclick={closeDropdown}>Profil</a>
+              <a href="/profile" onclick={closeDropdown}> Profil </a>
 
               <button type="button" onclick={toggleDarkMode}>
                 <img
