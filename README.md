@@ -1068,6 +1068,15 @@ Nutzer:innen erhalten dadurch einen schnellen Überblick über ihre gespeicherte
 
 Die Erweiterung unterstützt die Nutzer:innen dabei, ihren digitalen Kleiderschrank besser zu verstehen und ungenutzte Potenziale zu erkennen.
 
+Die folgenden Kennzahlen werden automatisch berechnet und dargestellt:
+
+- Anzahl Shirts
+- Anzahl Hosen
+- Anzahl Schuhe
+- Anzahl Accessoires
+- Anzahl gespeicherter Outfits
+- Anzahl möglicher Outfit-Kombinationen
+
 ---
 
 #### Wo umgesetzt
@@ -1180,7 +1189,6 @@ Falls eine der benötigten Hauptkategorien fehlt, wird kein Outfit generiert und
 
 - Kapitel 3.3 End-to-End-Ablauf
 - Kapitel 3.4.2 Umsetzung
-- Kapitel 3.5 Evaluation
 
 ##### Outfit-Generierung
 
@@ -1202,88 +1210,137 @@ Nein. Die Outfit-Generierung stellt die zentrale Kernfunktion von Outfitr dar un
 
 ---
 
-## 5. Projektorganisation
+# 5. Projektorganisation
 
-### 5.1 Repository & Struktur
+## 5.1 Repository & Struktur
 
-Für die Entwicklung wurde GitHub als zentrales Repository verwendet. Der gesamte Quellcode, die Versionsverwaltung sowie das Deployment basieren auf diesem Repository.
+Für die Entwicklung von Outfitr wurde GitHub als zentrales Repository verwendet. Der gesamte Quellcode, die Projektdokumentation sowie die Versionsverwaltung befinden sich in diesem Repository.
 
-GitHub Repository:  
+**GitHub Repository:**  
 https://github.com/simicjasna/outfitr
 
-Die Projektstruktur wurde modular aufgebaut, damit Komponenten übersichtlich organisiert und wiederverwendet werden können.
+Die Projektstruktur wurde modular aufgebaut. Ziel war es, Seiten, wiederverwendbare Komponenten, serverseitige Logik, statische Dateien und Dokumentationsmaterial klar voneinander zu trennen. Dadurch bleibt das Projekt übersichtlich und spätere Erweiterungen können einfacher umgesetzt werden.
 
 ### Projektstruktur
 
 ```text
 outfitr/
 │
+├── .vscode/                    # Editor- und Workspace-Einstellungen
+│
+├── doc/
+│   └── images/                 # Screenshots und Abbildungen für die Projektdokumentation
+│
 ├── src/
-│   ├── lib/                 # Wiederverwendbare Komponenten & Utilities
-│   ├── routes/              # Alle Seiten und SvelteKit-Routen
-│   ├── app.html             # HTML-Template
-│   └── app.css              # Globale Styles
+│   ├── lib/                    # Wiederverwendbare Bestandteile der Anwendung
+│   │   ├── assets/             # Assets innerhalb der Anwendung
+│   │   ├── components/         # Wiederverwendbare UI-Komponenten
+│   │   ├── constants/          # Zentrale Konstanten
+│   │   ├── server/             # Serverseitige Logik
+│   │   └── index.ts
+│   │
+│   ├── routes/                 # Seiten und SvelteKit-Routen
+│   │   ├── dashboard/
+│   │   ├── favorites/
+│   │   ├── generator/
+│   │   ├── login/
+│   │   ├── logout/
+│   │   ├── outfits/
+│   │   ├── profile/
+│   │   ├── register/
+│   │   ├── upload/
+│   │   ├── wardrobe/
+│   │   ├── +layout.server.js
+│   │   ├── +layout.svelte
+│   │   ├── +page.server.js
+│   │   ├── +page.svelte
+│   │   ├── home.css
+│   │   └── landing.css
+│   │
+│   ├── app.css
+│   ├── app.d.ts
+│   ├── app.html
+│   └── hooks.server.js
 │
-├── static/                  # Bilder, Icons und statische Dateien
+├── static/                     # Bilder, Icons und statische Dateien
 │
-├── supabase/                # Datenbank- und Storage-Konfiguration
-│
-├── package.json             # Projektabhängigkeiten
-├── svelte.config.js         # SvelteKit-Konfiguration
-├── vite.config.js           # Vite-Konfiguration
-└── README.md                # Projektdokumentation
+├── .gitignore
+├── .npmrc
+├── README.md
+├── netlify.toml
+├── package-lock.json
+├── package.json
+├── svelte.config.js
+├── tsconfig.json
+└── vite.config.ts
 ```
 
-Die Struktur wurde bewusst einfach und übersichtlich gehalten, damit Erweiterungen leichter umgesetzt werden können.
+Die wichtigsten Anwendungsbereiche befinden sich im Ordner `src/routes`. Jede Hauptfunktion der Anwendung wurde als eigene Route umgesetzt. Wiederverwendbare Komponenten und Hilfsfunktionen wurden im Ordner `src/lib` organisiert. Screenshots und Dokumentationsbilder befinden sich separat im Ordner `doc/images`.
 
 ---
 
-### 5.2 Issue-Management
+## 5.2 Issue-Management
 
-Die Entwicklung erfolgte iterativ und schrittweise. Grössere Aufgaben wurden in kleinere Teilaufgaben aufgeteilt und nacheinander umgesetzt.
+Für dieses Projekt wurde kein separates Issue-Tracking-System verwendet.
 
-Während der Entwicklung wurden insbesondere folgende Bereiche kontinuierlich verbessert:
+Die Planung und Priorisierung der Arbeiten erfolgte iterativ während der Entwicklung. Neue Anforderungen entstanden sowohl aus eigenen Ideen als auch aus Erkenntnissen während der Evaluation.
 
-- Navigation
-- Outfit-Logik
-- Dark Mode
-- Favoriten-System
-- Benutzerführung
-- Responsive Design
-- Upload-Workflow
-- Kontrast und Lesbarkeit im Dark Mode
+Identifizierte Probleme und Verbesserungsvorschläge wurden direkt umgesetzt oder für spätere Entwicklungsphasen dokumentiert. Beispiele hierfür sind:
 
-Usability-Probleme aus den Tests wurden dokumentiert und anschliessend priorisiert verbessert.
+- Einführung eines separaten Favoriten-Systems
+- Erweiterung um Accessoires
+- Verbesserung der Upload-Funktion
+- Behebung des HTTP-500-Fehlers beim Erstellen von Kleidungsstücken
+- Ergänzung der Dashboard-Statistiken
+- Verbesserung der Benutzerführung innerhalb der Anwendung
 
-Zusätzlich wurden Probleme direkt während der Entwicklung getestet und korrigiert, beispielsweise:
-
-- fehlerhafte Navigation
-- Probleme beim Bild-Upload
-- unübersichtliche Buttons
-- fehlende Fehlermeldungen
-- unklare Benutzerführung bei Outfits und Favoriten
+Durch die überschaubare Projektgrösse konnte auf ein formales Issue-Management verzichtet werden.
 
 ---
 
-### 5.3 Commit-Praxis
+## 5.3 Commit-Praxis
 
-Für die Versionsverwaltung wurde Git verwendet. Änderungen wurden regelmässig mit sprechenden Commit-Nachrichten dokumentiert.
+Für die Versionsverwaltung wurde Git verwendet. Sämtliche Änderungen wurden regelmässig in kleinen, nachvollziehbaren Commits gespeichert.
 
-Beispiele für verwendete Commit-Arten:
+Die Commit-Nachrichten folgen einem einheitlichen Schema:
 
-- `add dark mode`
-- `fix upload issue`
-- `improve dashboard layout`
-- `add favorites page`
-- `update outfit generator`
-- `improve wardrobe usability`
+```text
+typ(Bereich): kurze Beschreibung
+```
 
-Durch die regelmässigen Commits konnten Änderungen nachvollziehbar dokumentiert und Fehler einfacher zurückverfolgt werden.
+Beispiele aus dem Projekt:
 
-Zusätzlich wurde GitHub mit Netlify verbunden, wodurch neue Versionen der Anwendung direkt deployed werden konnten.
+https://github.com/simicjasna/outfitr/commits/main/
 
-Deployment URL:  
-https://outfitr-app.netlify.app/
+```text
+feat(User Login): add user account functionality
+feat(Deployment): setup netlify deployment
+feat(Accessory): add option to add Accessoires
+feat(Favorites): add new fav logic
+
+fix(Login): fix 404
+fix(Upload): not losing selected image
+fix(Home): display Accessoires
+
+refactor(Menu): close dropdown after clicking
+refactor(Dark Mode): add functionality to landingpage and modify dashboard display
+
+polish(Favorites): remove delete action
+polish(Documentation): finalize chapter 4
+```
+
+Die verwendeten Commit-Typen haben folgende Bedeutung:
+
+| Typ        | Bedeutung                                |
+| ---------- | ---------------------------------------- |
+| `feat`     | Neue Funktion oder Erweiterung           |
+| `fix`      | Fehlerbehebung                           |
+| `refactor` | Überarbeitung bestehender Funktionalität |
+| `polish`   | Visuelle oder qualitative Verbesserung   |
+
+Durch diese Struktur bleibt die Entwicklungshistorie übersichtlich und nachvollziehbar. Änderungen können schnell identifiziert und bestimmten Funktionsbereichen zugeordnet werden.
+
+---
 
 ## 6. KI-Deklaration
 
