@@ -884,6 +884,8 @@ Zusätzlich wurde der identifizierte HTTP-500-Fehler priorisiert behoben, da die
 
 ## 4. Erweiterungen
 
+Die folgenden Erweiterungen wurden zusätzlich zum definierten Mindestumfang umgesetzt. Sie dienen der Verbesserung der Benutzerfreundlichkeit, der Funktionalität sowie der technischen Qualität des Prototyps.
+
 ### 4.1 Dark Mode
 
 #### Beschreibung & Nutzen
