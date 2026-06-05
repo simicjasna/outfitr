@@ -1342,9 +1342,9 @@ Durch diese Struktur bleibt die Entwicklungshistorie übersichtlich und nachvoll
 
 ---
 
-## 6. KI-Deklaration
+# 6. KI-Deklaration
 
-### 6.1 KI-Tools
+## 6.1 KI-Tools
 
 ### Eingesetzte Tools
 
@@ -1356,112 +1356,137 @@ Durch diese Struktur bleibt die Entwicklungshistorie übersichtlich und nachvoll
 
 ### Zweck & Umfang
 
-Die KI-Tools wurden während des Projekts unterstützend eingesetzt, insbesondere bei technischen Problemen, der Strukturierung der Dokumentation sowie bei UI- und CSS-Anpassungen.
+Die KI-Tools wurden während des Projekts unterstützend eingesetzt, insbesondere bei technischen Fragestellungen, Debugging, CSS-Anpassungen sowie bei der sprachlichen Überarbeitung der Dokumentation.
 
-Folgende Bereiche wurden mit KI-Unterstützung umgesetzt:
+Folgende Bereiche wurden mit KI-Unterstützung bearbeitet:
 
 - Unterstützung bei der Entwicklung mit SvelteKit
 - CSS-Optimierungen für Light- und Dark-Mode
-- Verbesserung von Kontrast, Responsiveness und Benutzerführung
-- Unterstützung bei der Fehleranalyse und beim Debugging
+- Unterstützung bei der Fehlersuche und Fehleranalyse
 - Vorschläge für Komponentenstruktur und Routing
-- Unterstützung bei der Dokumentation und Formulierung einzelner Kapitel
-- Unterstützung bei der Vorbereitung der Usability-Evaluation
+- Unterstützung bei Refactorings bestehender Funktionen
+- Unterstützung bei der Formulierung und Strukturierung der Projektdokumentation
+- Unterstützung bei technischen Beschreibungen und Erklärungen
 
 Teilweise KI-unterstützt entstanden insbesondere:
 
 - Dark-Mode-Implementierung
 - Dropdown- und Navigationslogik
-- Outfit- und Favoritenstruktur
 - Upload- und Formularlogik
-- Teile der Dokumentationsstruktur
 - CSS-Optimierungen und Layout-Anpassungen
+- Technische Dokumentation und Kapitelstruktur
 
 ### Eigene Leistung (Abgrenzung)
 
-Die gesamte Projektidee, das Konzept sowie die funktionale Umsetzung wurden eigenständig entwickelt.
+Die Projektidee, die Konzeption sowie die gesamte funktionale Umsetzung der Anwendung wurden eigenständig entwickelt.
 
 Eigenständig erarbeitet wurden insbesondere:
 
-- Die Idee der Anwendung „Outfitr“
-- Die Konzeption der Features
-- Die gesamte Benutzerführung
-- Die Gestaltung des Interface Designs
-- Die Farbpalette und Designentscheidungen
-- Die Struktur der Anwendung
-- Die Datenmodellierung
-- Die Auswahl und Integration der Technologien
+- Die Idee und Zielsetzung der Anwendung Outfitr
+- Die gesamte Anforderungsanalyse
+- Die Informationsarchitektur
+- Die Benutzerführung (User Flow)
+- Die Navigationsstruktur
+- Das Designkonzept und die Farbgestaltung
+- Die Datenmodellierung in MongoDB
+- Die Entwicklung und Verknüpfung der einzelnen Seiten
 - Die Umsetzung der Kernfunktionen
-- Das Testing und die Evaluation
-- Die finale Überarbeitung aller Inhalte
+- Die Outfit-Generierungslogik
+- Das Favoriten-System
+- Die Accessoire-Erweiterung
+- Das Dashboard mit Statistiken
+- Die Benutzerverwaltung
+- Die Planung, Durchführung und Auswertung der Evaluation
+- Die Erstellung der Testfälle
+- Die Analyse der Evaluationsergebnisse
+- Die finale Überarbeitung sämtlicher Dokumentationsinhalte
 
-KI-generierte Vorschläge wurden nie ungeprüft übernommen. Sämtliche Vorschläge wurden getestet, angepasst und an die Anforderungen des Projekts angepasst.
+KI-generierte Vorschläge wurden nicht ungeprüft übernommen. Sämtliche Vorschläge wurden getestet, angepasst und in die bestehende Architektur integriert.
 
 ---
 
-### 6.2 Prompt-Vorgehen
+## 6.2 Prompt-Vorgehen
 
-Der Einsatz von KI erfolgte iterativ und problemorientiert. Typischerweise wurde zuerst das bestehende Problem oder der aktuelle Code beschrieben und anschliessend gezielt nach Lösungsvorschlägen gefragt.
+Der Einsatz von KI erfolgte iterativ und problemorientiert. Typischerweise wurde zunächst das bestehende Problem, die gewünschte Funktion oder ein konkreter Codeabschnitt beschrieben. Anschliessend wurden gezielt Lösungsvorschläge angefordert.
 
-Das Vorgehen bestand meistens aus folgenden Schritten:
+Das Vorgehen bestand meist aus folgenden Schritten:
 
 1. Beschreibung des Problems oder der gewünschten Funktion
-2. Bereitstellen von bestehendem Code oder Screenshots
-3. Generierung von Lösungsvorschlägen durch KI
-4. Testen der vorgeschlagenen Lösung im Projekt
+2. Bereitstellung von bestehendem Code oder Screenshots
+3. Generierung möglicher Lösungsansätze durch KI
+4. Testen der vorgeschlagenen Lösung innerhalb des Projekts
 5. Anpassung und Überarbeitung der Resultate
+6. Integration der finalen Lösung in die Anwendung
 
-Beispiele für typische Aufgabenstellungen:
+Beispiele für typische Fragestellungen:
 
-- Verbesserung des Dark Modes
 - Debugging von SvelteKit-Fehlern
+- Umsetzung des Dark Modes
 - Optimierung von CSS und Responsiveness
-- Verbesserung der Benutzerführung
-- Unterstützung bei der Dokumentationsstruktur
+- Verbesserung von Formularen und Benutzerführung
+- Unterstützung bei MongoDB-Abfragen
+- Strukturierung der Projektdokumentation
 - Formulierung technischer Beschreibungen
 
-Für die Dokumentation wurden zunächst eigene Stichpunkte und Inhalte vorbereitet. Anschliessend wurden diese mit Hilfe von KI sprachlich überarbeitet und strukturiert formuliert.
+Für die Dokumentation wurden zunächst eigene Inhalte, Stichpunkte und Erkenntnisse erarbeitet. Anschliessend wurden diese mit Unterstützung von KI sprachlich überarbeitet und strukturiert formuliert.
 
-Bei der Nutzung der KI wurde darauf geachtet, keine urheberrechtlich problematischen Inhalte zu übernehmen. Verwendete Bilder, Icons und Logos stammen aus eigenen oder frei nutzbaren Quellen.
+Bei der Nutzung von KI wurde darauf geachtet, keine urheberrechtlich geschützten Inhalte ungeprüft zu übernehmen. Verwendete Bilder, Icons und Logos stammen aus eigenen oder frei nutzbaren Quellen.
 
 ---
 
-### 6.3 Reflexion
-
-Der Einsatz von KI war während des Projekts besonders hilfreich bei technischen Problemen, repetitiven Aufgaben sowie bei der sprachlichen Ausarbeitung der Dokumentation.
+## 6.3 Reflexion
 
 ### Nutzen
 
-Die KI-Unterstützung ermöglichte insbesondere:
+Der Einsatz von KI erwies sich insbesondere bei technischen Fragestellungen als hilfreich.
 
-- schnellere Fehlersuche
-- effizientere CSS-Anpassungen
-- Unterstützung bei komplexeren SvelteKit-Problemen
-- schnellere Iterationen im UI-Design
-- Unterstützung bei der Strukturierung der Dokumentation
+Vorteile waren:
 
-Vor allem bei der Umsetzung des Dark Modes, der Navigation sowie der Responsiveness konnte viel Zeit eingespart werden.
+- Schnellere Fehlersuche
+- Unterstützung bei CSS-Anpassungen
+- Hilfe bei komplexeren SvelteKit-Problemen
+- Schnellere Umsetzung von UI-Ideen
+- Unterstützung bei Refactorings
+- Unterstützung bei der sprachlichen Ausarbeitung der Dokumentation
+
+Insbesondere bei der Umsetzung des Dark Modes, der Upload-Funktion, der Navigation sowie bei der Dokumentation konnte Zeit eingespart werden.
 
 ### Grenzen
 
-Trotz der Unterstützung mussten viele Vorschläge angepasst oder korrigiert werden. Teilweise waren generierte Lösungen nicht direkt kompatibel mit der verwendeten SvelteKit- oder Svelte-Version.
+Nicht alle Vorschläge waren direkt verwendbar. Teilweise mussten generierte Lösungen angepasst oder vollständig überarbeitet werden.
 
-Auch Designentscheidungen, Benutzerführung und Architektur konnten nicht vollständig an KI delegiert werden, da hierfür ein eigenes Verständnis des Projekts notwendig war.
+Insbesondere bei:
 
-### Risiken & Qualitätssicherung
-
-Alle KI-generierten Inhalte wurden manuell überprüft und getestet. Fehlerhafte oder unpassende Vorschläge wurden angepasst oder verworfen.
-
-Besonders bei folgenden Bereichen wurde auf zusätzliche Kontrolle geachtet:
-
+- SvelteKit-spezifischen Problemen
+- Datenbankzugriffen
 - Formularlogik
+- State-Management
 - Routing
-- Datenverwaltung
-- Upload-Funktionalitäten
-- Benutzerführung
-- Dark-Mode-Kontrast
 
-Die finale Verantwortung für Code, Design und Dokumentation lag jederzeit bei der Projektverfasserin.
+waren zusätzliche eigene Anpassungen notwendig.
+
+Auch Designentscheidungen, Architekturfragen und die Benutzerführung konnten nicht vollständig an KI delegiert werden, da hierfür ein eigenes Verständnis der Anwendung erforderlich war.
+
+Die Evaluation selbst wurde eigenständig geplant, durchgeführt und ausgewertet. Die Testfälle, die Auswahl der Testpersonen sowie die Interpretation der Ergebnisse stammen von der Projektverfasserin.
+
+### Risiken und Qualitätssicherung
+
+Alle KI-generierten Inhalte wurden manuell überprüft, getestet und validiert.
+
+Besondere Aufmerksamkeit galt dabei folgenden Bereichen:
+
+- Formularvalidierung
+- Benutzerverwaltung
+- Routing
+- Outfit-Generierung
+- Datenbankzugriffe
+- Upload-Funktion
+- Favoriten-System
+- Dashboard-Statistiken
+
+Fehlerhafte oder ungeeignete Vorschläge wurden verworfen oder angepasst.
+
+Die finale Verantwortung für Code, Design, Evaluation und Dokumentation lag jederzeit bei der Projektverfasserin.
 
 ## 7. Anhang
 
