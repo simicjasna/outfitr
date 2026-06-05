@@ -1488,55 +1488,65 @@ Fehlerhafte oder ungeeignete Vorschläge wurden verworfen oder angepasst.
 
 Die finale Verantwortung für Code, Design, Evaluation und Dokumentation lag jederzeit bei der Projektverfasserin.
 
-## 7. Anhang
+# 7. Anhang
 
-### 7.1 Quellen & Abhängigkeiten
+## 7.1 Quellen & Abhängigkeiten
 
-| Ressource      | Typ                         | Lizenz                  |
-| -------------- | --------------------------- | ----------------------- |
-| SvelteKit      | Web Framework               | MIT                     |
-| Supabase       | Authentifizierung & Storage | Kommerziell (Free Tier) |
-| MongoDB Atlas  | Datenbank                   | Kommerziell (Free Tier) |
-| Netlify        | Hosting & Deployment        | Kommerziell (Free Tier) |
-| GitHub         | Versionsverwaltung          | Kommerziell (Free Tier) |
-| Vite           | Build Tool                  | MIT                     |
-| Node.js        | JavaScript Runtime          | MIT                     |
-| CSS            | Styling                     | –                       |
-| Flaticon       | Icons & UI-Assets           | Flaticon License        |
-| ChatGPT        | KI-Unterstützung            | Proprietär              |
-| Claude         | KI-Unterstützung            | Proprietär              |
-| GitHub Copilot | KI-Unterstützung            | Proprietär              |
+### Frameworks & Technologien
 
----
+| Ressource     | Verwendung           | Lizenz    |
+| ------------- | -------------------- | --------- |
+| SvelteKit     | Web Framework        | MIT       |
+| MongoDB Atlas | Datenbank            | Free Tier |
+| Netlify       | Hosting & Deployment | Free Tier |
+| GitHub        | Versionsverwaltung   | Free Tier |
+| Vite          | Build Tool           | MIT       |
+| Node.js       | JavaScript Runtime   | MIT       |
 
-### 7.2 Verwendete Bilder & Assets
+### KI-Unterstützung
 
-| Ressource               | Verwendung                             | Quelle                    |
-| ----------------------- | -------------------------------------- | ------------------------- |
-| UI-Icons                | Navigation, Buttons und User Interface | https://www.flaticon.com/ |
-| Moodboard & Farbpalette | Dokumentation                          | Eigenständig erstellt     |
-| Mockup                  | Figma-Prototyp                         | Eigenständig erstellt     |
+| Tool              | Verwendung                                            |
+| ----------------- | ----------------------------------------------------- |
+| ChatGPT (GPT-5.5) | Dokumentation, Debugging und technische Unterstützung |
+| GitHub Copilot    | Codevorschläge und Autovervollständigung              |
+| Claude Sonnet     | Formulierungs- und Strukturvorschläge                 |
 
 ---
 
-### 7.3 Testskript & Materialien
+## 7.2 Verwendete Bilder & Assets
 
-Die wichtigsten Testszenarien wurden in Kapitel 3.5 beschrieben.
+| Ressource    | Verwendung                                 | Quelle                   |
+| ------------ | ------------------------------------------ | ------------------------ |
+| UI-Icons     | Navigation, Buttons und Benutzeroberfläche | https://www.flaticon.com |
+| Outfitr Logo | Anwendung und Dokumentation                | Eigenständig erstellt    |
+| Mockups      | Prototyping und Dokumentation              | Eigenständig erstellt    |
+| Screenshots  | Dokumentation und Evaluation               | Eigenständig erstellt    |
+
+---
+
+## 7.3 Testmaterialien
+
+Die vollständigen Testfälle sowie die Auswertung der Evaluation befinden sich in Kapitel 3.5.
 
 Getestete Hauptfunktionen:
 
-- Registrierung und Login
+- Registrierung
+- Login
+- Profilverwaltung
+- Passwortänderung
 - Kleidungsstücke hinzufügen
-- Kleidung filtern
-- Outfit generieren
-- Outfit speichern
-- Favoriten markieren
-- Navigation zwischen den Seiten
-- Dark Mode aktivieren
+- Kleidungsstücke bearbeiten
+- Kleidungsstücke löschen
+- Outfit-Generierung
+- Outfit-Speicherung
+- Favoriten-System
+- Dashboard-Statistiken
+- Dark Mode
+- Navigation und Benutzerführung
 
 ---
 
-### 7.4 Deployment
+## 7.4 Deployment
 
 | Bereich    | Information                           |
 | ---------- | ------------------------------------- |
@@ -1546,9 +1556,9 @@ Getestete Hauptfunktionen:
 
 ---
 
-### 7.5 Lokale Entwicklung
+## 7.5 Lokale Entwicklung
 
-### Dependencies installieren
+### Abhängigkeiten installieren
 
 ```bash
 npm install
@@ -1568,15 +1578,13 @@ npm run build
 
 ---
 
-### 7.6 Umgebungsvariablen
+## 7.6 Umgebungsvariablen
 
-Die Anwendung verwendet Umgebungsvariablen für die Verbindung mit Supabase und MongoDB.
+Die Anwendung verwendet Umgebungsvariablen für die Verbindung mit MongoDB Atlas.
 
 Beispiel:
 
 ```env
-PUBLIC_SUPABASE_URL=...
-PUBLIC_SUPABASE_ANON_KEY=...
 MONGODB_URI=...
 ```
 
