@@ -288,6 +288,22 @@ Der typische Ablauf eines Nutzers besteht aus folgenden Schritten:
 
 Das Ziel dieses Ablaufs besteht darin, mit möglichst wenigen Schritten passende Outfit-Kombinationen zu erstellen und dauerhaft verfügbar zu machen.
 
+#### User Journey Map
+
+Die folgende Tabelle fasst die wichtigsten Aktivitäten eines Nutzers entlang der zentralen User Journey zusammen.
+
+| Phase                      | Aktion des Nutzers                           | Ziel                                        |
+| -------------------------- | -------------------------------------------- | ------------------------------------------- |
+| Einstieg                   | Registrierung oder Login                     | Zugriff auf persönliche Daten               |
+| Aufbau des Kleiderschranks | Kleidungsstücke hochladen und kategorisieren | Digitale Wardrobe erstellen                 |
+| Verwaltung                 | Kleidung filtern und verwalten               | Überblick über vorhandene Kleidung behalten |
+| Outfit-Erstellung          | Outfit generieren                            | Neue Kombinationen entdecken                |
+| Speicherung                | Outfit speichern                             | Kombination dauerhaft sichern               |
+| Favorisierung              | Outfit als Favorit markieren                 | Lieblings-Outfits hervorheben               |
+| Nutzung                    | Favoriten erneut aufrufen                    | Schneller Zugriff auf bevorzugte Outfits    |
+
+Die User Journey verdeutlicht, dass sich der gesamte Workflow auf eine möglichst einfache Verwaltung des Kleiderschranks und die schnelle Erstellung passender Outfit-Kombinationen konzentriert.
+
 #### Mockup
 
 Vor der technischen Umsetzung wurde ein interaktives Mockup in Figma erstellt. Dieses diente als Grundlage für die spätere Entwicklung des Prototyps und half dabei, Navigation, Seitenstruktur und Benutzerfluss frühzeitig zu validieren.
@@ -300,10 +316,41 @@ Folgende Bereiche wurden bereits im Mockup konzipiert:
 
 - Dashboard/Home
 - Wardrobe (digitaler Kleiderschrank)
+- Upload der Kleider
 - Outfit Generator
 - Gespeicherte Outfits
 
 Anschliessend wurden die einzelnen Ansichten iterativ weiterentwickelt und als funktionaler Prototyp in SvelteKit umgesetzt.
+
+##### Dashboard
+
+![Figma Dashboard](doc/images/figma-dashboard.png)
+
+_Abbildung 5: Dashboard-Ansicht des Figma-Mockups. Die Seite dient als zentrale Startseite der Anwendung und bietet Zugriff auf die wichtigsten Funktionen._
+
+##### Wardrobe
+
+![Figma Wardrobe](doc/images/figma-wardrobe.png)
+
+_Abbildung 6: Mockup des digitalen Kleiderschranks. Nutzer:innen können ihre Kleidungsstücke verwalten und filtern._
+
+##### Upload
+
+![Figma Upload](doc/images/figma-upload.png)
+
+_Abbildung 7: Mockup der Upload-Seite. Nutzer:innen können neue Kleidungsstücke inklusive Bild, Kategorie, Farbe und Stil erfassen und ihrem digitalen Kleiderschrank hinzufügen._
+
+##### Outfit Generator
+
+![Figma Generator](doc/images/figma-generator.png)
+
+_Abbildung 8: Entwurf des Outfit-Generators mit Filterbereich und Vorschau der generierten Outfit-Kombination._
+
+##### Gespeicherte Outfits
+
+![Figma Outfits](doc/images/figma-outfits.png)
+
+_Abbildung 9: Mockup der Outfit-Verwaltung zur Speicherung und Organisation bereits erstellter Outfits._
 
 ---
 
@@ -361,7 +408,7 @@ Die wichtigsten Ansichten der Anwendung werden in den folgenden Screenshots darg
 
 ![Landing Page](doc/images/landing-page.png)
 
-_Abbildung 5: Landing Page von Outfitr_
+_Abbildung 10: Landing Page von Outfitr_
 
 Die Landing Page bildet den Einstiegspunkt der Anwendung. Sie vermittelt den Zweck von Outfitr und erklärt die wichtigsten Funktionen bereits vor der Registrierung. Dadurch erhalten Besucher:innen einen ersten Überblick über den Nutzen der Anwendung und können entscheiden, ob sie einen Account erstellen möchten.
 
@@ -373,7 +420,7 @@ Die Seite enthält eine kurze Einführung in die Kernfunktionen von Outfitr sowi
 
 ![Registrierung](doc/images/register.png)
 
-_Abbildung 6: Registrierungsformular_
+_Abbildung 11: Registrierungsformular_
 
 Neue Nutzer:innen können über die Registrierungsseite einen persönlichen Account erstellen. Für die Registrierung werden Name, E-Mail-Adresse und Passwort erfasst.
 
@@ -385,7 +432,7 @@ Die Eingabemaske wurde bewusst einfach gehalten, um den Registrierungsprozess m�
 
 ![Login](doc/images/login.png)
 
-_Abbildung 7: Login-Seite_
+_Abbildung 12: Login-Seite_
 
 Bereits registrierte Nutzer:innen können sich über die Login-Seite anmelden. Nach erfolgreicher Authentifizierung gelangen sie direkt in ihre persönliche Anwendung.
 
@@ -397,7 +444,7 @@ Durch die Trennung zwischen öffentlichem Bereich und geschütztem Benutzerberei
 
 ![Dashboard](doc/images/dashboard.png)
 
-_Abbildung 8: Dashboard von Outfitr_
+_Abbildung 13: Dashboard von Outfitr_
 
 Das Dashboard dient als zentrale Einstiegsseite der Anwendung. Nutzer:innen erhalten einen Überblick über ihren digitalen Kleiderschrank, gespeicherte Outfits sowie mögliche Outfit-Kombinationen. Zusätzlich ermöglichen Schnellzugriffe den direkten Wechsel zu den wichtigsten Funktionen.
 
@@ -407,7 +454,7 @@ Das Dashboard dient als zentrale Einstiegsseite der Anwendung. Nutzer:innen erha
 
 ![Wardrobe](doc/images/wardrobe.png)
 
-_Abbildung 9: Wardrobe-Ansicht mit vorhandenen Kleidungsstücken_
+_Abbildung 14: Wardrobe-Ansicht mit vorhandenen Kleidungsstücken_
 
 Die Wardrobe bildet den digitalen Kleiderschrank der Anwendung und stellt einen zentralen Bestandteil von Outfitr dar. Alle gespeicherten Kleidungsstücke werden in einer übersichtlichen Kartenansicht dargestellt. Nutzer:innen können ihre Kleidung filtern, bearbeiten oder löschen und behalten dadurch jederzeit den Überblick über ihren Bestand.
 
@@ -415,7 +462,7 @@ Die Karten enthalten die wichtigsten Informationen zu einem Kleidungsstück, wie
 
 ![Kleidungsstück hinzufügen](doc/images/add-clothing.png)
 
-_Abbildung 10: Formular zum Hinzufügen eines neuen Kleidungsstücks_
+_Abbildung 15: Formular zum Hinzufügen eines neuen Kleidungsstücks_
 
 Neue Kleidungsstücke können über die Schaltfläche **„Kleidungsstück hinzufügen“** im oberen Bereich der Seite erfasst werden. Anschliessend öffnet sich ein Formular, über das alle relevanten Informationen hinterlegt werden können.
 
@@ -437,7 +484,7 @@ Durch die Kombination aus visueller Darstellung, Filtermöglichkeiten und einfac
 
 ![Generator](doc/images/generator.png)
 
-_Abbildung 11: Outfit Generator_
+_Abbildung 16: Outfit Generator_
 
 Der Outfit Generator stellt die Kernfunktion der Anwendung dar. Nutzer:innen können Stil, Anlass und Farbe auswählen und erhalten auf Basis der vorhandenen Kleidungsstücke automatisch eine passende Outfit-Kombination.
 
@@ -447,7 +494,7 @@ Der Outfit Generator stellt die Kernfunktion der Anwendung dar. Nutzer:innen kö
 
 ![Outfits](doc/images/outfits.png)
 
-_Abbildung 12: Übersicht gespeicherter Outfits_
+_Abbildung 17: Übersicht gespeicherter Outfits_
 
 In diesem Bereich werden alle gespeicherten Outfit-Kombinationen angezeigt. Nutzer:innen können ihre generierten Outfits erneut betrachten, verwalten oder als Favorit markieren.
 
@@ -457,7 +504,7 @@ In diesem Bereich werden alle gespeicherten Outfit-Kombinationen angezeigt. Nutz
 
 ![Favoriten](doc/images/favoriten.png)
 
-_Abbildung 13: Favoritenbereich_
+_Abbildung 18: Favoritenbereich_
 
 Der Favoritenbereich enthält ausschliesslich die vom Benutzer markierten Lieblings-Outfits. Dadurch entsteht eine klare Trennung zwischen gespeicherten Outfits und besonders bevorzugten Kombinationen.
 
@@ -467,7 +514,7 @@ Der Favoritenbereich enthält ausschliesslich die vom Benutzer markierten Liebli
 
 ![Profil](doc/images/profil.png)
 
-_Abbildung 14: Profilmenü und Benutzereinstellungen_
+_Abbildung 19: Profilmenü und Benutzereinstellungen_
 
 Über das Profilmenü im oberen rechten Bereich können benutzerspezifische Funktionen aufgerufen werden. Dazu gehören die Profilansicht, die Umschaltung zwischen Light Mode und Dark Mode sowie die Abmeldung aus der Anwendung. Das Dropdown-Menü wurde bewusst kompakt gestaltet, damit häufig genutzte Funktionen jederzeit erreichbar bleiben, ohne zusätzlichen Platz in der Hauptnavigation zu beanspruchen.
 
@@ -490,7 +537,7 @@ Die Farbpalette basiert auf neutralen Beige-, Braun- und Off-White-Tönen, um ei
 
 ![Light Mode Farbpalette](doc/images/farbpalette-light.jpeg)
 
-_Abbildung 15: Farbpalette des Light Modes_
+_Abbildung 20: Farbpalette des Light Modes_
 
 ---
 
@@ -509,7 +556,7 @@ _Abbildung 15: Farbpalette des Light Modes_
 
 ![Dark Mode Farbpalette](doc/images/farbpalette-dark.jpeg)
 
-_Abbildung 16: Farbpalette des Dark Modes_
+_Abbildung 21: Farbpalette des Dark Modes_
 
 ---
 
@@ -858,7 +905,7 @@ Während der Evaluation wurde deutlich, dass die ursprüngliche Outfit-Verwaltun
 
 ![Ursprüngliche Outfit-Ansicht ohne separate Favoriten-Seite](doc/images/testing-outfits-before-favorites.png)
 
-_Abbildung 17: Ursprüngliche Outfit-Ansicht ohne separate Favoriten-Funktion_
+_Abbildung 22: Ursprüngliche Outfit-Ansicht ohne separate Favoriten-Funktion_
 
 ---
 
@@ -868,7 +915,7 @@ Während der Evaluation trat auf der deployten Netlify-Version ein HTTP-500-Fehl
 
 ![Fehler beim Erstellen von Kleidungsstücken](doc/images/testing-upload-error.png)
 
-_Abbildung 18: Während der Evaluation identifizierter HTTP-500-Fehler beim Speichern eines Kleidungsstücks_
+_Abbildung 23: Während der Evaluation identifizierter HTTP-500-Fehler beim Speichern eines Kleidungsstücks_
 
 ---
 
@@ -878,11 +925,11 @@ Beim Hochladen eines Bildes wurde beobachtet, dass die bereits ausgewählte Bild
 
 ![Bildvorschau vor Abbruch des Dateidialogs](doc/images/testing-cancel-image-upload.png)
 
-_Abbildung 19: Bildauswahl während des Upload-Prozesses_
+_Abbildung 24: Bildauswahl während des Upload-Prozesses_
 
 ![Bildvorschau nach Abbruch des Dateidialogs](doc/images/no-image-selected.png)
 
-_Abbildung 20: Bildauswahl während des Upload-Prozesses_
+_Abbildung 25: Bildauswahl während des Upload-Prozesses_
 
 ---
 
@@ -892,7 +939,7 @@ Im Dashboard wurden Kleidungsstücke wie Shirts, Hosen und Schuhe angezeigt. Acc
 
 ![Dashboard ohne Anzeige der Accessoires](doc/images/testing-dashboard-no-accessories.png)
 
-_Abbildung 21: Dashboard ohne separate Anzeige der gespeicherten Accessoires_
+_Abbildung 26: Dashboard ohne separate Anzeige der gespeicherten Accessoires_
 
 ---
 
@@ -979,25 +1026,25 @@ Die Umsetzung erfolgte bewusst über den ursprünglichen Projektumfang hinaus, d
 
 ![Landing Page Light Mode](doc/images/landing-light.png)
 
-_Abbildung 22: Landing Page im Light Mode_
+_Abbildung 27: Landing Page im Light Mode_
 
 ##### Landing Page – Dark Mode
 
 ![Landing Page Dark Mode](doc/images/landing-dark.png)
 
-_Abbildung 23: Landing Page im Dark Mode_
+_Abbildung 28: Landing Page im Dark Mode_
 
 ##### Dashboard – Light Mode
 
 ![Dashboard Light Mode](doc/images/dashboard-light.png)
 
-_Abbildung 24: Dashboard im Light Mode_
+_Abbildung 29: Dashboard im Light Mode_
 
 ##### Dashboard – Dark Mode
 
 ![Dashboard Dark Mode](doc/images/dashboard-dark.png)
 
-_Abbildung 25: Dashboard im Dark Mode_
+_Abbildung 30: Dashboard im Dark Mode_
 
 Zusätzlich beschrieben in:
 
@@ -1062,7 +1109,7 @@ Nein. Der Dark Mode wurde bereits während der Entwicklung als zusätzliche Funk
 
 ![Auswahl des Accessoire-Typs beim Hinzufügen eines neuen Kleidungsstücks](doc/images/accessoire-typ-auswahl.png)
 
-_Abbildung 26: Nach Auswahl der Kategorie „Accessoire“ wird automatisch ein zusätzliches Formularfeld eingeblendet, über welches der genaue Accessoire-Typ definiert werden kann. Dadurch können verschiedene Arten von Accessoires strukturiert gespeichert und später bei der Outfit-Generierung berücksichtigt werden._
+_Abbildung 31: Nach Auswahl der Kategorie „Accessoire“ wird automatisch ein zusätzliches Formularfeld eingeblendet, über welches der genaue Accessoire-Typ definiert werden kann. Dadurch können verschiedene Arten von Accessoires strukturiert gespeichert und später bei der Outfit-Generierung berücksichtigt werden._
 
 ---
 
@@ -1164,7 +1211,7 @@ Die folgenden Kennzahlen werden automatisch berechnet und dargestellt:
 
 ![Dashboard Statistiken](doc/images/dashboard-statistics.png)
 
-_Abbildung 27: Dynamische Auswertung des digitalen Kleiderschranks mit Anzahl Kleidungsstücke, Accessoires, gespeicherten Outfits und möglichen Outfit-Kombinationen._
+_Abbildung 32: Dynamische Auswertung des digitalen Kleiderschranks mit Anzahl Kleidungsstücke, Accessoires, gespeicherten Outfits und möglichen Outfit-Kombinationen._
 
 ---
 
@@ -1250,13 +1297,13 @@ Falls eine der benötigten Hauptkategorien fehlt, wird kein Outfit generiert und
 
 ![Outfit Generator](doc/images/generated-outfit.png)
 
-_Abbildung 28: Dynamisch generiertes Outfit basierend auf den gespeicherten Kleidungsstücken des Benutzers._
+_Abbildung 33: Dynamisch generiertes Outfit basierend auf den gespeicherten Kleidungsstücken des Benutzers._
 
 ##### Duplikat-Erkennung
 
 ![Duplikat Erkennung](doc/images/outfit-duplicate.png)
 
-_Abbildung 29: Meldung beim Versuch, ein bereits gespeichertes Outfit erneut zu speichern._
+_Abbildung 34: Meldung beim Versuch, ein bereits gespeichertes Outfit erneut zu speichern._
 
 ---
 
