@@ -1102,7 +1102,7 @@ Nein. Der Dark Mode wurde bereits während der Entwicklung als zusätzliche Funk
 - **Referenz:**
   - Kapitel 3.3 End-to-End-Ablauf
   - Kapitel 3.4.1 Benutzeroberfläche und Informationsarchitektur
-  - Abbildung X: Auswahl eines Accessoire-Typs beim Hinzufügen eines neuen Kleidungsstücks
+  - Abbildung 31: Auswahl eines Accessoire-Typs beim Hinzufügen eines neuen Kleidungsstücks
 
 - **Aus Evaluation abgeleitet?:**  
   Nein. Die Erweiterung entstand während der Weiterentwicklung der Anwendung. Bei der Analyse bestehender Mode- und Shopping-Plattformen zeigte sich, dass Accessoires einen wichtigen Bestandteil vollständiger Outfits darstellen. Die Funktion wurde deshalb ergänzt, um die erzeugten Outfit-Kombinationen realistischer und näher an realen Styling-Situationen abzubilden.
